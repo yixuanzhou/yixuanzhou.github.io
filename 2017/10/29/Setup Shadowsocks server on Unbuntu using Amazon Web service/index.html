@@ -97,24 +97,24 @@
 <meta name="keywords" content="Shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Setup Shadowsocks Server On Ubuntu Using Amazon Web Service">
-<meta property="og:url" content="http://yoursite.com/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/index.html">
+<meta property="og:url" content="https://yixuanzhou.github.io/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/index.html">
 <meta property="og:site_name" content="Yixuan&#39;s Digital Life">
 <meta property="og:description" content="Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outsi">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/awsins.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/awsconn.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/awslog.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/ssconfig.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/inbound.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/ssqt1.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/ssqt0.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/ubuntunw.png">
-<meta property="og:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/gg.png">
-<meta property="og:updated_time" content="2017-10-30T05:28:10.525Z">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/awsins.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/awsconn.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/awslog.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/ssconfig.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/inbound.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/ssqt1.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/ssqt0.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/ubuntunw.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/_posts/ss/gg.png">
+<meta property="og:updated_time" content="2018-02-12T23:54:34.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Setup Shadowsocks Server On Ubuntu Using Amazon Web Service">
 <meta name="twitter:description" content="Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outsi">
-<meta name="twitter:image" content="http://yoursite.com/2017/10/29/Setup%20Shadowsocks%20server%20on%20Unbuntu%20using%20Amazon%20Web%20service/ss/awsins.png">
+<meta name="twitter:image" content="https://yixuanzhou.github.io/_posts/ss/awsins.png">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/"/>
 
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -334,11 +334,11 @@
         <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
 <h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
 <p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
-<p><img src="ss/awsins.png" alt=""></p>
+<p><img src="/_posts/ss/awsins.png" alt=""></p>
 <p>After that, you can connect to the instance by simply following the instructions:</p>
-<p><img src="ss/awsconn.png" alt=""></p>
+<p><img src="/_posts/ss/awsconn.png" alt=""></p>
 <p>A successful connection through SSH should be like this:</p>
-<p><img src="ss/awslog.png" alt=""></p>
+<p><img src="/_posts/ss/awslog.png" alt=""></p>
 <p>Next, you should install Shadowsocks on the instance:</p>
 <pre><code>sudo yum install -y python-setuptools
 sudo easy_install pip
@@ -346,23 +346,23 @@ sudo pip install shadowsocks
 </code></pre><p>And configure Shadowsocks server:</p>
 <pre><code>mkdir /etc/shadowsocks
 sudo vim /etc/shadowsocks/config.json
-</code></pre><p><img src="ss/ssconfig.png" alt=""></p>
+</code></pre><p><img src="/_posts/ss/ssconfig.png" alt=""></p>
 <p>Run &amp; Stop Shadowsocks server:</p>
 <pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
 sudo ssserver -c /etc/shadowsocks/config.json -d stop
 sudo ssserver -c /etc/shadowsocks/config.json -d restart
 </code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
-<p><img src="ss/inbound.png" alt=""></p>
+<p><img src="/_posts/ss/inbound.png" alt=""></p>
 <h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
 <p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
-<p><img src="ss/ssqt1.png" alt=""></p>
+<p><img src="/_posts/ss/ssqt1.png" alt=""></p>
 <p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
-<p><img src="ss/ssqt0.png" alt=""></p>
+<p><img src="/_posts/ss/ssqt0.png" alt=""></p>
 <p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
 <pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
 HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
-</code></pre><p><img src="ss/ubuntunw.png" alt=""></p>
-<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="ss/gg.png" alt=""></p>
+</code></pre><p><img src="/_posts/ss/ubuntunw.png" alt=""></p>
+<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/_posts/ss/gg.png" alt=""></p>
 <p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
 
       
@@ -416,7 +416,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/25/hello-world/" rel="prev" title="Hello World">
+              <a href="/2017/12/24/hello-world/" rel="prev" title="Hello World">
                 Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -562,7 +562,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
