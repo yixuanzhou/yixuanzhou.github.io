@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="Shadowsocks," />
 
 
 
@@ -93,18 +93,28 @@
 
 
 
-<meta name="description" content="a += b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;gt;&amp;gt; a2 += [3] &amp;gt;&amp;gt;&amp;gt; a1 [0, 1, 2, 3] &amp;gt;&amp;gt;&amp;gt; a2 [0, 1, 2, 3] a = a + b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;g">
-<meta name="keywords" content="Python">
+<meta name="description" content="Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outsi">
+<meta name="keywords" content="Shadowsocks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Difference between &#39;a += b&#39; and &#39;a = a + b&#39; in Python">
-<meta property="og:url" content="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/index.html">
+<meta property="og:title" content="Setup Shadowsocks server on Unbuntu">
+<meta property="og:url" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/index.html">
 <meta property="og:site_name" content="Yixuan&#39;s Digital Life">
-<meta property="og:description" content="a += b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;gt;&amp;gt; a2 += [3] &amp;gt;&amp;gt;&amp;gt; a1 [0, 1, 2, 3] &amp;gt;&amp;gt;&amp;gt; a2 [0, 1, 2, 3] a = a + b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;g">
+<meta property="og:description" content="Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outsi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-07-30T10:55:37.921Z">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png">
+<meta property="og:updated_time" content="2018-02-13T00:02:57.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Difference between &#39;a += b&#39; and &#39;a = a + b&#39; in Python">
-<meta name="twitter:description" content="a += b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;gt;&amp;gt; a2 += [3] &amp;gt;&amp;gt;&amp;gt; a1 [0, 1, 2, 3] &amp;gt;&amp;gt;&amp;gt; a2 [0, 1, 2, 3] a = a + b&amp;gt;&amp;gt;&amp;gt; a1 = [0, 1, 2] &amp;gt;&amp;gt;&amp;gt; a2 = a1 &amp;gt;&amp;g">
+<meta name="twitter:title" content="Setup Shadowsocks server on Unbuntu">
+<meta name="twitter:description" content="Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outsi">
+<meta name="twitter:image" content="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png">
 
 
 
@@ -132,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/"/>
 
 
 
 
 
-  <title>Difference between 'a += b' and 'a = a + b' in Python | Yixuan's Digital Life</title>
+  <title>Setup Shadowsocks server on Unbuntu | Yixuan's Digital Life</title>
   
 
 
@@ -257,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -274,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Difference between 'a += b' and 'a = a + b' in Python</h1>
+          <h1 class="post-title" itemprop="name headline">Setup Shadowsocks server on Unbuntu</h1>
         
 
         <div class="post-meta">
@@ -286,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T02:48:10-07:00">
-                2017-07-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-29T20:49:10+08:00">
+                2017-10-29
               </time>
             
 
@@ -321,25 +331,39 @@
       
 
       
-        <h2 id="a-b"><a href="#a-b" class="headerlink" title="a += b"></a>a += b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 += [3]
-&gt;&gt;&gt; a1
-[0, 1, 2, 3]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><h2 id="a-a-b"><a href="#a-a-b" class="headerlink" title="a = a + b"></a>a = a + b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 = a2 + [3]
-&gt;&gt;&gt; a1
-[0, 1, 2]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><p>Obviously there is difference between ‘a += b’ and ‘a = a + b’, it is because in Python, ‘+=’ operator call ‘__iadd__‘ method, which is different from ‘__add__‘ method called by ‘+’ operator.</p>
-<p>However, the difference only occurs in <strong>mutable objects</strong>.</p>
-<p>‘__iadd__‘ method directly <strong>updates</strong> the original object after the operation, which means the previous pointer to that object is unchanged. The return value of ‘__iadd__‘ method is None.</p>
-<p>‘__add__‘ method would return <strong>a new object</strong> and change the previous pointer to this new object.</p>
-<p>It must be noted that for immutable objects like ‘int’ and ‘string’, the functions of these two methods are same since immutable objects are directly used by interpreter, not referenced like ‘list’ object.</p>
+        <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
+<h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
+<p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png" alt=""></p>
+<p>After that, you can connect to the instance by simply following the instructions:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png" alt=""></p>
+<p>A successful connection through SSH should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png" alt=""></p>
+<p>Next, you should install Shadowsocks on the instance:</p>
+<pre><code>sudo yum install -y python-setuptools
+sudo easy_install pip
+sudo pip install shadowsocks
+</code></pre><p>And configure Shadowsocks server:</p>
+<pre><code>mkdir /etc/shadowsocks
+sudo vim /etc/shadowsocks/config.json
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png" alt=""></p>
+<p>Run &amp; Stop Shadowsocks server:</p>
+<pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
+sudo ssserver -c /etc/shadowsocks/config.json -d stop
+sudo ssserver -c /etc/shadowsocks/config.json -d restart
+</code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png" alt=""></p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
+<p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png" alt=""></p>
+<p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png" alt=""></p>
+<p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
+<pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
+HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png" alt=""></p>
+<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png" alt=""></p>
+<p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
 
       
     </div>
@@ -369,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Shadowsocks/" rel="tag"># Shadowsocks</a>
           
         </div>
       
@@ -382,14 +406,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/" rel="next" title="Setup Shadowsocks Server On Ubuntu Using Amazon Web Service">
+                <i class="fa fa-chevron-left"></i> Setup Shadowsocks Server On Ubuntu Using Amazon Web Service
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/29/Setup Shadowsocks server on Unbuntu using Amazon Web service/" rel="prev" title="Setup Shadowsocks Server On Ubuntu Using Amazon Web Service">
-                Setup Shadowsocks Server On Ubuntu Using Amazon Web Service <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/24/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -511,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-b"><span class="nav-number">1.</span> <span class="nav-text">a += b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-a-b"><span class="nav-number">2.</span> <span class="nav-text">a = a + b</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Web-Service"><span class="nav-number">1.</span> <span class="nav-text">Amazon Web Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Here-we-go-Come-on"><span class="nav-number">3.</span> <span class="nav-text">Here we go, Come on!</span></a></li></ol></div>
             
 
           </div>
