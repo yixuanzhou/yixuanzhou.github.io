@@ -267,6 +267,164 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/69-Sqrt(x)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/12/69-Sqrt(x)/" itemprop="url">69. Sqrt(x)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-12T18:49:54+08:00">
+                2018-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x.</p>
+<p>x is guaranteed to be a non-negative integer.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>A big obstacle of this problem is to deal with the integer overflow. I mean, the result of integer operation should not exceed the maximum value of Java (-2,147,483,648 ~ 2,147,483,647). For example, to get a mid-point, we typically calculate the half of the left plus right. However, if left plus right exceeds the maximum integer of Java, which would result in troubles. To avoid this, we can use methods like <strong>“mid = left + (right - left) / 2”</strong> and <strong>“mid &gt; x / mid”</strong>.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int sqrt_x(int x) {
+    if (x == 0 || x == 1) {
+        return x;
+    }
+    int left = 0;
+    int right = x;
+    int mid;
+    while (true) {
+        mid = left + (right - left) / 2;  // avoid overflow
+        if (mid &gt; x / mid) {  // avoid overflow
+            right = mid;
+        }
+        else if (mid * mid == x) {
+            return mid;
+        }
+        else {
+            if ((mid + 1) &gt; x / (mid + 1)) { return mid; }
+            left = mid;
+        }
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/67-Add-Binary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -357,7 +515,7 @@
       
         
           
-            <p>###Problem Description:<br>Given two binary strings, return their sum (also a binary string).</p>
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two binary strings, return their sum (also a binary string).</p>
 <p>For example, a = “11”, b = “1”, Return “100”.</p>
 <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Not much thing to talk about this problem. Note that an integer should be used to keep track of the carry. Originally I used “result = Integer.toString(sum) + result” to update result，however, Intellij IDE reminds me to use <strong>“StringBuilder”</strong> when updating String in loops. So, that’s it.</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String addBinary(String a, String b) {
@@ -729,7 +887,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
