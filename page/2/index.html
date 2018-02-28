@@ -96,7 +96,7 @@
 <meta name="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yixuan in US">
-<meta property="og:url" content="https://yixuanzhou.github.io/archives/2017/index.html">
+<meta property="og:url" content="https://yixuanzhou.github.io/page/2/index.html">
 <meta property="og:site_name" content="Yixuan in US">
 <meta property="og:description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
 <meta property="og:locale" content="en">
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/archives/2017/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/page/2/"/>
 
 
 
 
 
-  <title>Archive | Yixuan in US</title>
+  <title>Yixuan in US</title>
   
 
 
@@ -161,7 +161,9 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,103 +256,144 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 11 posts in total. Keep on posting.
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
     </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/" itemprop="url">Difference between 'a += b' and 'a = a + b' in Python</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T17:48:10+08:00">
+                2017-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/" itemprop="url">
-              
-                <span itemprop="name">Setup Shadowsocks server on Unbuntu</span>
-              
-            </a>
+          
+            <h2 id="a-b"><a href="#a-b" class="headerlink" title="a += b"></a>a += b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
+&gt;&gt;&gt; a2 = a1
+&gt;&gt;&gt; a2 += [3]
+&gt;&gt;&gt; a1
+[0, 1, 2, 3]
+&gt;&gt;&gt; a2
+[0, 1, 2, 3]
+</code></pre><h2 id="a-a-b"><a href="#a-a-b" class="headerlink" title="a = a + b"></a>a = a + b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
+&gt;&gt;&gt; a2 = a1
+&gt;&gt;&gt; a2 = a2 + [3]
+&gt;&gt;&gt; a1
+[0, 1, 2]
+&gt;&gt;&gt; a2
+[0, 1, 2, 3]
+</code></pre><p>Obviously there is difference between ‘a += b’ and ‘a = a + b’, it is because in Python, ‘+=’ operator call ‘__iadd__‘ method, which is different from ‘__add__‘ method called by ‘+’ operator.</p>
+<p>However, the difference only occurs in <strong>mutable objects</strong>.</p>
+<p>‘__iadd__‘ method directly <strong>updates</strong> the original object after the operation, which means the previous pointer to that object is unchanged. The return value of ‘__iadd__‘ method is None.</p>
+<p>‘__add__‘ method would return <strong>a new object</strong> and change the previous pointer to this new object.</p>
+<p>It must be noted that for immutable objects like ‘int’ and ‘string’, the functions of these two methods are same since immutable objects are directly used by interpreter, not referenced like ‘list’ object.</p>
+
+          
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-29T20:49:10+08:00"
-              content="2017-10-29" >
-          10-29
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
-
     
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/" itemprop="url">
-              
-                <span itemprop="name">Difference between 'a += b' and 'a = a + b' in Python</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-30T17:48:10+08:00"
-              content="2017-07-30" >
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
@@ -555,12 +598,10 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
+  
 
   
 
