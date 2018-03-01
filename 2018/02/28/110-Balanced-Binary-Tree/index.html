@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Problem Description:Given a sorted linked list, delete all duplicates such that each element appear only once. For example, Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2. Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return">
+<meta name="description" content="Problem Description:Given a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of ever">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="83. Remove Duplicates from Sorted List">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/13/83-Remove-Duplicates-from-Sorted-List/index.html">
+<meta property="og:title" content="110. Balanced Binary Tree">
+<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/28/110-Balanced-Binary-Tree/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Given a sorted linked list, delete all duplicates such that each element appear only once. For example, Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2. Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return">
+<meta property="og:description" content="Problem Description:Given a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of ever">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-23T18:05:29.636Z">
+<meta property="og:updated_time" content="2018-03-01T17:36:17.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="83. Remove Duplicates from Sorted List">
-<meta name="twitter:description" content="Problem Description:Given a sorted linked list, delete all duplicates such that each element appear only once. For example, Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2. Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return">
+<meta name="twitter:title" content="110. Balanced Binary Tree">
+<meta name="twitter:description" content="Problem Description:Given a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of ever">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/13/83-Remove-Duplicates-from-Sorted-List/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/28/110-Balanced-Binary-Tree/"/>
 
 
 
 
 
-  <title>83. Remove Duplicates from Sorted List | Yixuan in US</title>
+  <title>110. Balanced Binary Tree | Yixuan in US</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/13/83-Remove-Duplicates-from-Sorted-List/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/28/110-Balanced-Binary-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">83. Remove Duplicates from Sorted List</h1>
+          <h1 class="post-title" itemprop="name headline">110. Balanced Binary Tree</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-13T01:23:12-08:00">
-                2018-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T09:30:24+08:00">
+                2018-03-01
               </time>
             
 
@@ -353,34 +353,22 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
-<p>For example,</p>
-<p>Given 1-&gt;1-&gt;2, return 1-&gt;2.</p>
-<p>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Create a new ListNode instance, and iteratively scan the original ListNode to add unique Node into the new ListNode. Also, be sure to use a pointer to point at the head of the new ListNode so to return the full ListNodes.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public ListNode deleteDuplicates(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        int last = head.val;
-        ListNode r = new ListNode(last);
-        ListNode result = r;
-        int curr;
-        while (head.next != null) {       
-            head = head.next;
-            curr = head.val;
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as:</p>
+<pre><code>a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For this problem, we can calculate and compare the depth of two subtrees of every nodes.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isBalanced(TreeNode root) {
+    if (root == null) { return true;}
+    if (root.left == null &amp;&amp; root.right == null) { return true; }        
+    if (Math.abs(calcDepth(root.left) - calcDepth(root.right)) &gt; 1) { return false; }        
+    return isBalanced(root.left) &amp;&amp; isBalanced(root.right);             
+}
 
-            if (curr != last) {
-                last = curr;
-                r.next = new ListNode(curr);
-                r = r.next;
-            } else {
-                continue;
-            }
-
-        }
-        return result;            
-    }
+private int calcDepth(TreeNode root) {
+    if (root == null) { return 0; }
+    if (root.left == null &amp;&amp; root.right == null) { return 1; }
+    return 1 + Math.max(calcDepth(root.left), calcDepth(root.right));
+}
 </code></pre>
       
     </div>
@@ -423,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/12/70-Climbing-Stairs/" rel="next" title="70. Climbing Stairs">
-                <i class="fa fa-chevron-left"></i> 70. Climbing Stairs
+              <a href="/2018/02/27/108-Convert-Sorted-Array-to-Binary-Search-Tree/" rel="next" title="108. Convert Sorted Array to Binary Search Tree">
+                <i class="fa fa-chevron-left"></i> 108. Convert Sorted Array to Binary Search Tree
               </a>
             
           </div>
@@ -433,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/13/88-Merge-Sorted-Array/" rel="prev" title="88. Merge Sorted Array">
-                88. Merge Sorted Array <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/28/111-Minimum-Depth-of-Binary-Tree/" rel="prev" title="111. Minimum Depth of Binary Tree">
+                111. Minimum Depth of Binary Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

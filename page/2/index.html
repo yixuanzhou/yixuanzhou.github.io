@@ -267,6 +267,301 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/67-Add-Binary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/12/67-Add-Binary/" itemprop="url">67. Add Binary</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-12T16:16:32+08:00">
+                2018-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two binary strings, return their sum (also a binary string).</p>
+<p>For example, a = “11”, b = “1”, Return “100”.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Not much thing to talk about this problem. Note that an integer should be used to keep track of the carry. Originally I used “result = Integer.toString(sum) + result” to update result，however, Intellij IDE reminds me to use <strong>“StringBuilder”</strong> when updating String in loops. So, that’s it.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String addBinary(String a, String b) {
+    int la = a.length() - 1; int lb = b.length() - 1; int carry = 0;
+    StringBuilder result = new StringBuilder();
+
+    while (la &gt;= 0 || lb &gt;= 0) {
+        int sum = carry;            
+        if (la &gt;= 0) {sum += a.charAt(la) - &apos;0&apos;; la--;}
+        if (lb &gt;= 0) {sum += b.charAt(lb) - &apos;0&apos;; lb--;}
+        if (sum &gt; 1) {carry = 1; sum = sum % 2;}
+        else {carry = 0;}
+        result.insert(0, sum);
+    }
+    if (carry &gt; 0) {result.insert(0, carry);}
+    return result.toString();
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/" itemprop="url">Setup Shadowsocks server on Unbuntu</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-29T20:49:10+08:00">
+                2017-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
+<h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
+<p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png" alt=""></p>
+<p>After that, you can connect to the instance by simply following the instructions:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png" alt=""></p>
+<p>A successful connection through SSH should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png" alt=""></p>
+<p>Next, you should install Shadowsocks on the instance:</p>
+<pre><code>sudo yum install -y python-setuptools
+sudo easy_install pip
+sudo pip install shadowsocks
+</code></pre><p>And configure Shadowsocks server:</p>
+<pre><code>mkdir /etc/shadowsocks
+sudo vim /etc/shadowsocks/config.json
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png" alt=""></p>
+<p>Run &amp; Stop Shadowsocks server:</p>
+<pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
+sudo ssserver -c /etc/shadowsocks/config.json -d stop
+sudo ssserver -c /etc/shadowsocks/config.json -d restart
+</code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png" alt=""></p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
+<p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png" alt=""></p>
+<p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png" alt=""></p>
+<p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
+<pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
+HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png" alt=""></p>
+<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png" alt=""></p>
+<p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,7 +733,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
