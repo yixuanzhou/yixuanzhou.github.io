@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Problem Description:Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. NoteUse a helper fun">
+<meta name="description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one sha">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="111. Minimum Depth of Binary Tree">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/28/111-Minimum-Depth-of-Binary-Tree/index.html">
+<meta property="og:title" content="121. Best Time to Buy and Sell Stock">
+<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/03/121-Best-Time-to-Buy-and-Sell-Stock/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. NoteUse a helper fun">
+<meta property="og:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one sha">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-01T17:39:30.290Z">
+<meta property="og:updated_time" content="2018-03-11T00:51:50.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="111. Minimum Depth of Binary Tree">
-<meta name="twitter:description" content="Problem Description:Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. NoteUse a helper fun">
+<meta name="twitter:title" content="121. Best Time to Buy and Sell Stock">
+<meta name="twitter:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one sha">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/28/111-Minimum-Depth-of-Binary-Tree/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/03/121-Best-Time-to-Buy-and-Sell-Stock/"/>
 
 
 
 
 
-  <title>111. Minimum Depth of Binary Tree | Yixuan in US</title>
+  <title>121. Best Time to Buy and Sell Stock | Yixuan in US</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/28/111-Minimum-Depth-of-Binary-Tree/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/03/121-Best-Time-to-Buy-and-Sell-Stock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">111. Minimum Depth of Binary Tree</h1>
+          <h1 class="post-title" itemprop="name headline">121. Best Time to Buy and Sell Stock</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T17:36:49-08:00">
-                2018-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-03T16:14:00+08:00">
+                2018-03-03
               </time>
             
 
@@ -353,22 +353,29 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, find its minimum depth.</p>
-<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a helper function to calculate the depth of each node, and if the node is a leaf, return its depth. Then choose the minimum depth among all leaves.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int minDepth(TreeNode root) {
-    if (root == null) { return 0; }
-    int depth = 1;
-    return minDepthHelper(root, depth);
-}
-
-private int minDepthHelper(TreeNode root, int depth) {
-    if (root == null) { return Integer.MAX_VALUE; }
-    if (root.left == null &amp;&amp; root.right == null) {
-        return depth;
-    } else {
-        return Math.min(minDepthHelper(root.left, ++depth), minDepthHelper(root.right, ++depth));
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<pre><code>Example 1:
+Input: [7, 1, 5, 3, 6, 4]
+Output: 5
+</code></pre><p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p>
+<pre><code>Example 2:
+Input: [7, 6, 4, 3, 1]
+Output: 0
+</code></pre><p>In this case, no transaction is done, i.e. max profit = 0.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Since we are only allowed to make exactly one transaction,what we should do is to buy at the lowest price and sell at the highest price. And note that we must first buy stock and then sell it. So this is actually a time sequential list.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int maxProfit(int[] prices) {
+    if (prices.length == 0) { return 0; }
+    int min_price = prices[0];
+    int max_profit = 0;
+    for (int i = 0; i &lt; prices.length; ++i) {
+        if (prices[i] &gt; min_price) {
+            max_profit = Math.max(max_profit, prices[i] - min_price);
+        } else {
+            min_price = prices[i];
+        }
     }
+    return max_profit;
 }
 </code></pre>
       
@@ -412,8 +419,8 @@ private int minDepthHelper(TreeNode root, int depth) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/28/110-Balanced-Binary-Tree/" rel="next" title="110. Balanced Binary Tree">
-                <i class="fa fa-chevron-left"></i> 110. Balanced Binary Tree
+              <a href="/2018/03/02/119-Pascal-s-Triangle-II/" rel="next" title="119. Pascal's Triangle II">
+                <i class="fa fa-chevron-left"></i> 119. Pascal's Triangle II
               </a>
             
           </div>
@@ -422,8 +429,8 @@ private int minDepthHelper(TreeNode root, int depth) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/02/112-Path-Sum/" rel="prev" title="112. Path Sum">
-                112. Path Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="prev" title="122. Best Time to Buy and Sell Stock II">
+                122. Best Time to Buy and Sell Stock II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
