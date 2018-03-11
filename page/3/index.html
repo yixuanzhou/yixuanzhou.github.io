@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,18 +93,16 @@
 
 
 
-<meta name="description" content="Problem Description:Given numRows, generate the first numRows of Pascal’s triangle. NoteWrite code according to the rule of Pascal’s Triangles. Codepublic List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int">
-<meta name="keywords" content="LeetCode">
-<meta property="og:type" content="article">
-<meta property="og:title" content="118. Pascal&#39;s Triangle">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/02/118-Pascal-s-Triangle/index.html">
+<meta name="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yixuan in US">
+<meta property="og:url" content="https://yixuanzhou.github.io/page/3/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Given numRows, generate the first numRows of Pascal’s triangle. NoteWrite code according to the rule of Pascal’s Triangles. Codepublic List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int">
+<meta property="og:description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-03T07:56:05.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="118. Pascal&#39;s Triangle">
-<meta name="twitter:description" content="Problem Description:Given numRows, generate the first numRows of Pascal’s triangle. NoteWrite code according to the rule of Pascal’s Triangles. Codepublic List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int">
+<meta name="twitter:title" content="Yixuan in US">
+<meta name="twitter:description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
 
 
 
@@ -132,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/02/118-Pascal-s-Triangle/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/page/3/"/>
 
 
 
 
 
-  <title>118. Pascal's Triangle | Yixuan in US</title>
+  <title>Yixuan in US</title>
   
 
 
@@ -163,7 +161,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/118-Pascal-s-Triangle/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -284,7 +284,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">118. Pascal's Triangle</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/" itemprop="url">Setup Shadowsocks server on Unbuntu</a></h1>
         
 
         <div class="post-meta">
@@ -296,8 +298,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T07:47:36-08:00">
-                2018-03-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-29T20:49:10+08:00">
+                2017-10-29
               </time>
             
 
@@ -306,28 +308,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -353,97 +333,212 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given numRows, generate the first numRows of Pascal’s triangle.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Write code according to the rule of Pascal’s Triangles.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) {
-    List&lt;List&lt;Integer&gt;&gt; pascalTriangle = new ArrayList&lt;&gt;();
-    if (numRows == 0) { return pascalTriangle; }
-    List&lt;Integer&gt; curr = new ArrayList&lt;&gt;();
-    curr.add(1);
-    pascalTriangle.add(curr);
-    for (int i = 1; i &lt; numRows; i++) {
-        List&lt;Integer&gt; next = new ArrayList&lt;&gt;();
-        next.add(1);
-        for (int j = 0; j &lt; curr.size()-1; j++) {
-            next.add(curr.get(j)+curr.get(j+1));
-        }
-        next.add(1);
-        curr = next;
-        pascalTriangle.add(curr);
-    }
-    return pascalTriangle;
-}
-</code></pre>
+        
+          
+            <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
+<h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
+<p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png" alt=""></p>
+<p>After that, you can connect to the instance by simply following the instructions:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png" alt=""></p>
+<p>A successful connection through SSH should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png" alt=""></p>
+<p>Next, you should install Shadowsocks on the instance:</p>
+<pre><code>sudo yum install -y python-setuptools
+sudo easy_install pip
+sudo pip install shadowsocks
+</code></pre><p>And configure Shadowsocks server:</p>
+<pre><code>mkdir /etc/shadowsocks
+sudo vim /etc/shadowsocks/config.json
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png" alt=""></p>
+<p>Run &amp; Stop Shadowsocks server:</p>
+<pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
+sudo ssserver -c /etc/shadowsocks/config.json -d stop
+sudo ssserver -c /etc/shadowsocks/config.json -d restart
+</code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png" alt=""></p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
+<p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png" alt=""></p>
+<p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
+<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png" alt=""></p>
+<p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
+<pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
+HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
+</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png" alt=""></p>
+<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png" alt=""></p>
+<p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
+
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/02/112-Path-Sum/" rel="next" title="112. Path Sum">
-                <i class="fa fa-chevron-left"></i> 112. Path Sum
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/02/119-Pascal-s-Triangle-II/" rel="prev" title="119. Pascal's Triangle II">
-                119. Pascal's Triangle II <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/" itemprop="url">Difference between 'a += b' and 'a = a + b' in Python</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T17:48:10+08:00">
+                2017-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="a-b"><a href="#a-b" class="headerlink" title="a += b"></a>a += b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
+&gt;&gt;&gt; a2 = a1
+&gt;&gt;&gt; a2 += [3]
+&gt;&gt;&gt; a1
+[0, 1, 2, 3]
+&gt;&gt;&gt; a2
+[0, 1, 2, 3]
+</code></pre><h2 id="a-a-b"><a href="#a-a-b" class="headerlink" title="a = a + b"></a>a = a + b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
+&gt;&gt;&gt; a2 = a1
+&gt;&gt;&gt; a2 = a2 + [3]
+&gt;&gt;&gt; a1
+[0, 1, 2]
+&gt;&gt;&gt; a2
+[0, 1, 2, 3]
+</code></pre><p>Obviously there is difference between ‘a += b’ and ‘a = a + b’, it is because in Python, ‘+=’ operator call ‘__iadd__‘ method, which is different from ‘__add__‘ method called by ‘+’ operator.</p>
+<p>However, the difference only occurs in <strong>mutable objects</strong>.</p>
+<p>‘__iadd__‘ method directly <strong>updates</strong> the original object after the operation, which means the previous pointer to that object is unchanged. The return value of ‘__iadd__‘ method is None.</p>
+<p>‘__add__‘ method would return <strong>a new object</strong> and change the previous pointer to this new object.</p>
+<p>It must be noted that for immutable objects like ‘int’ and ‘string’, the functions of these two methods are same since immutable objects are directly used by interpreter, not referenced like ‘list’ object.</p>
+
+          
+        
       
     </div>
-  </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -451,10 +546,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -475,17 +566,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -547,22 +629,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -676,10 +742,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-
+  
 
   
 

@@ -267,6 +267,301 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/28/110-Balanced-Binary-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/110-Balanced-Binary-Tree/" itemprop="url">110. Balanced Binary Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T09:30:24+08:00">
+                2018-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as:</p>
+<pre><code>a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For this problem, we can calculate and compare the depth of two subtrees of every nodes.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isBalanced(TreeNode root) {
+    if (root == null) { return true;}
+    if (root.left == null &amp;&amp; root.right == null) { return true; }        
+    if (Math.abs(calcDepth(root.left) - calcDepth(root.right)) &gt; 1) { return false; }        
+    return isBalanced(root.left) &amp;&amp; isBalanced(root.right);             
+}
+
+private int calcDepth(TreeNode root) {
+    if (root == null) { return 0; }
+    if (root.left == null &amp;&amp; root.right == null) { return 1; }
+    return 1 + Math.max(calcDepth(root.left), calcDepth(root.right));
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/27/108-Convert-Sorted-Array-to-Binary-Search-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/27/108-Convert-Sorted-Array-to-Binary-Search-Tree/" itemprop="url">108. Convert Sorted Array to Binary Search Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T09:13:39+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>We can use dichotomy method to solve this problem. Since it’s a sorted array, the mid-point of the array is also the mid-value of the array. So we can use the mid-point as the root of each subtree. And for the first half of the array, make it as the left subtree, the second half as the right subtree. And do it recursively.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public TreeNode sortedArrayToBST(int[] nums) {
+    if (nums.length == 0) { return null; }
+    if (nums.length == 1) { return new TreeNode(nums[0]); }
+
+    TreeNode root = new TreeNode(nums[nums.length/2]);
+    root.left = sortedArrayToBST(Arrays.copyOfRange(nums, 0, nums.length/2));
+    root.right = sortedArrayToBST(Arrays.copyOfRange(nums, nums.length/2+1, nums.length));
+
+    return root;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/25/104-Maximum-Depth-of-Binary-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1522,285 +1817,11 @@ public boolean isSymmetricStack(TreeNode root) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/" itemprop="url">Setup Shadowsocks server on Unbuntu</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-29T20:49:10+08:00">
-                2017-10-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
-<h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
-<p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png" alt=""></p>
-<p>After that, you can connect to the instance by simply following the instructions:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png" alt=""></p>
-<p>A successful connection through SSH should be like this:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png" alt=""></p>
-<p>Next, you should install Shadowsocks on the instance:</p>
-<pre><code>sudo yum install -y python-setuptools
-sudo easy_install pip
-sudo pip install shadowsocks
-</code></pre><p>And configure Shadowsocks server:</p>
-<pre><code>mkdir /etc/shadowsocks
-sudo vim /etc/shadowsocks/config.json
-</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png" alt=""></p>
-<p>Run &amp; Stop Shadowsocks server:</p>
-<pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
-sudo ssserver -c /etc/shadowsocks/config.json -d stop
-sudo ssserver -c /etc/shadowsocks/config.json -d restart
-</code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png" alt=""></p>
-<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
-<p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png" alt=""></p>
-<p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png" alt=""></p>
-<p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
-<pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
-HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
-</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png" alt=""></p>
-<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png" alt=""></p>
-<p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/" itemprop="url">Difference between 'a += b' and 'a = a + b' in Python</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T17:48:10+08:00">
-                2017-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="a-b"><a href="#a-b" class="headerlink" title="a += b"></a>a += b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 += [3]
-&gt;&gt;&gt; a1
-[0, 1, 2, 3]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><h2 id="a-a-b"><a href="#a-a-b" class="headerlink" title="a = a + b"></a>a = a + b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 = a2 + [3]
-&gt;&gt;&gt; a1
-[0, 1, 2]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><p>Obviously there is difference between ‘a += b’ and ‘a = a + b’, it is because in Python, ‘+=’ operator call ‘__iadd__‘ method, which is different from ‘__add__‘ method called by ‘+’ operator.</p>
-<p>However, the difference only occurs in <strong>mutable objects</strong>.</p>
-<p>‘__iadd__‘ method directly <strong>updates</strong> the original object after the operation, which means the previous pointer to that object is unchanged. The return value of ‘__iadd__‘ method is None.</p>
-<p>‘__add__‘ method would return <strong>a new object</strong> and change the previous pointer to this new object.</p>
-<p>It must be noted that for immutable objects like ‘int’ and ‘string’, the functions of these two methods are same since immutable objects are directly used by interpreter, not referenced like ‘list’ object.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1846,7 +1867,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
