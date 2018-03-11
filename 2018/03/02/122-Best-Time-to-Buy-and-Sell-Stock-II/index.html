@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Problem Description:Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). NoteThere are two ways to solve this problem: Recursive and Non-Recursive. For the re">
+<meta name="description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="101. Symmetric Tree">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/22/101-Symmetric-Tree/index.html">
+<meta property="og:title" content="122. Best Time to Buy and Sell Stock II">
+<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/02/122-Best-Time-to-Buy-and-Sell-Stock-II/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). NoteThere are two ways to solve this problem: Recursive and Non-Recursive. For the re">
+<meta property="og:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-28T17:24:24.454Z">
+<meta property="og:updated_time" content="2018-03-11T00:45:40.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="101. Symmetric Tree">
-<meta name="twitter:description" content="Problem Description:Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). NoteThere are two ways to solve this problem: Recursive and Non-Recursive. For the re">
+<meta name="twitter:title" content="122. Best Time to Buy and Sell Stock II">
+<meta name="twitter:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/22/101-Symmetric-Tree/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/02/122-Best-Time-to-Buy-and-Sell-Stock-II/"/>
 
 
 
 
 
-  <title>101. Symmetric Tree | Yixuan in US</title>
+  <title>122. Best Time to Buy and Sell Stock II | Yixuan in US</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/22/101-Symmetric-Tree/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/122-Best-Time-to-Buy-and-Sell-Stock-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">101. Symmetric Tree</h1>
+          <h1 class="post-title" itemprop="name headline">122. Best Time to Buy and Sell Stock II</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-22T17:51:01-08:00">
-                2018-02-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T00:14:16-08:00">
+                2018-03-02
               </time>
             
 
@@ -353,79 +353,39 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>There are two ways to solve this problem: Recursive and Non-Recursive.</p>
-<p>For the recursive one, we need to recursively compare the left child from the left with the right child from the right, and right child from the left with the left child from the right, since symmetric means symmetric around the center.</p>
-<p>For the non-recursive one, the idea is similar to the recursive method, what’s different is that I use <strong>stack</strong> this time. The order of push nodes into stack is: left.left, right.right, left.right, right,right. And pop two nodes at a time to compare their value.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isSymmetric(TreeNode root) {
-       return root == null || isSymmetricHelp(root.left, root.right);
-   }
-
-private boolean isSymmetricHelp(TreeNode left, TreeNode right) {
-    if (left == null || right == null) {
-        return left == right;
-    }
-    if (left.val  != right.val) {
-        return false;
-    } else {
-        return isSymmetricHelp(left.right, right.left) &amp;&amp; isSymmetricHelp(left.left, right.right);
-    }
-}
-
-/* Non-Recursive method */
-public boolean isSymmetricStack(TreeNode root) {
-    if (root == null) { return true; }
-    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
-    TreeNode left, right;
-    if (root.left != null) {
-        if (root.right == null) {
-            return false;
-        }
-        left = root.left;
-        right = root.right;
-        stack.push(left);
-        stack.push(right);
-    }
-
-        if (root.right != null) {
-        if (root.left == null) {
-            return false;
-        }
-    }
-
-    while (!stack.empty()) {
-        right = stack.pop();
-        left = stack.pop();
-        if (left.val != right.val) {
-            return false;
-        }
-        if (left.left != null) {
-            if (right.right == null) {
-                return false;
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem is kind like a real stock transaction. Given a sequence of the price of a stock in a period of time, and calculate the maximum profit one can make in such period.</p>
+<p>If you know something about stock market, this problem is quite easy. Imaging a Candlestick chart, the key idea of the solution is in every increasing trend, buy the stock at the bottom and sell it at the top. And just waiting for the next increasing trend when there is a decreasing trend.</p>
+<p>To do this, first we need to set a boolean variable “position” which tells us whether we have already buy a stock and not sold yet.</p>
+<p>If we haven’t bought any stock, then we should only concern about the bid price, if the next price is higher than the current price (which means an increasing trend), we buy the stock. If not, we wait.</p>
+<p>If we have already bought a stock and not sold yet, if the price is increasing, we hold. Otherwise, we sell it and calculate our profit.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code> public int maxProfit(int[] prices) {
+    if (prices.length == 0) { return 0; }
+    int bid_price = prices[0];
+    int ask_price = prices[0];
+    boolean position = false;
+    int profit = 0;
+    for (int price : prices) {
+        if (!position) {
+            if (price &lt;= bid_price) {
+                bid_price = price;
+            } else {
+                ask_price = price;
+                position = true;
             }
-            stack.push(left.left);
-            stack.push(right.right);
-        }
-        if (right.right != null) {
-            if (left.left == null) {
-                return false;
+        } else {
+            if (price &gt; ask_price) {
+                ask_price = price;
+            } else {
+                profit += ask_price - bid_price;
+                bid_price = price;
+                position = false;
             }
         }
-
-            if (left.right != null) {
-            if (right.left == null) {
-                return false;
-            }
-            stack.push(left.right);
-            stack.push(right.left);
-        }
-        if (right.left != null) {
-            if (left.right == null) {
-                return false;
-            }
-        }
-    }    
-    return true;
+    }
+    if (position) { profit += ask_price - bid_price; }
+    return profit;
 }
 </code></pre>
       
@@ -469,8 +429,8 @@ public boolean isSymmetricStack(TreeNode root) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/13/100-Same-Tree/" rel="next" title="100. Same Tree">
-                <i class="fa fa-chevron-left"></i> 100. Same Tree
+              <a href="/2018/03/02/121-Best-Time-to-Buy-and-Sell-Stock/" rel="next" title="121. Best Time to Buy and Sell Stock">
+                <i class="fa fa-chevron-left"></i> 121. Best Time to Buy and Sell Stock
               </a>
             
           </div>
@@ -479,8 +439,8 @@ public boolean isSymmetricStack(TreeNode root) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/25/104-Maximum-Depth-of-Binary-Tree/" rel="prev" title="104. Maximum Depth of Binary Tree">
-                104. Maximum Depth of Binary Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/02/112-Path-Sum/" rel="prev" title="112. Path Sum">
+                112. Path Sum <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
