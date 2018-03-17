@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
+<meta name="description" content="Problem Description:A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game. The boar">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="122. Best Time to Buy and Sell Stock II">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/index.html">
+<meta property="og:title" content="794. Valid Tic-Tac-Toe State">
+<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
+<meta property="og:description" content="Problem Description:A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game. The boar">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-11T00:51:50.606Z">
+<meta property="og:updated_time" content="2018-03-17T03:12:57.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="122. Best Time to Buy and Sell Stock II">
-<meta name="twitter:description" content="Problem Description:Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you">
+<meta name="twitter:title" content="794. Valid Tic-Tac-Toe State">
+<meta name="twitter:description" content="Problem Description:A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game. The boar">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/"/>
 
 
 
 
 
-  <title>122. Best Time to Buy and Sell Stock II | Yixuan in US</title>
+  <title>794. Valid Tic-Tac-Toe State | Yixuan in US</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">122. Best Time to Buy and Sell Stock II</h1>
+          <h1 class="post-title" itemprop="name headline">794. Valid Tic-Tac-Toe State</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-03T00:14:16-08:00">
-                2018-03-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T05:03:41-07:00">
+                2018-03-16
               </time>
             
 
@@ -353,39 +353,72 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem is kind like a real stock transaction. Given a sequence of the price of a stock in a period of time, and calculate the maximum profit one can make in such period.</p>
-<p>If you know something about stock market, this problem is quite easy. Imaging a Candlestick chart, the key idea of the solution is in every increasing trend, buy the stock at the bottom and sell it at the top. And just waiting for the next increasing trend when there is a decreasing trend.</p>
-<p>To do this, first we need to set a boolean variable “position” which tells us whether we have already buy a stock and not sold yet.</p>
-<p>If we haven’t bought any stock, then we should only concern about the bid price, if the next price is higher than the current price (which means an increasing trend), we buy the stock. If not, we wait.</p>
-<p>If we have already bought a stock and not sold yet, if the price is increasing, we hold. Otherwise, we sell it and calculate our profit.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code> public int maxProfit(int[] prices) {
-    if (prices.length == 0) { return 0; }
-    int bid_price = prices[0];
-    int ask_price = prices[0];
-    boolean position = false;
-    int profit = 0;
-    for (int price : prices) {
-        if (!position) {
-            if (price &lt;= bid_price) {
-                bid_price = price;
-            } else {
-                ask_price = price;
-                position = true;
-            }
-        } else {
-            if (price &gt; ask_price) {
-                ask_price = price;
-            } else {
-                profit += ask_price - bid_price;
-                bid_price = price;
-                position = false;
-            }
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.</p>
+<p>The board is a 3 x 3 array, and consists of characters “ “, “X”, and “O”.  The “ “ character represents an empty square.</p>
+<p>Here are the rules of Tic-Tac-Toe:</p>
+<ul>
+<li>Players take turns placing characters into empty squares (“ “).</li>
+<li>The first player always places “X” characters, while the second player always places “O” characters.</li>
+<li>“X” and “O” characters are always placed into empty squares, never filled ones.</li>
+<li>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</li>
+<li>The game also ends if all squares are non-empty.</li>
+<li>No more moves can be played if the game is over.</li>
+</ul>
+<pre><code>Example 1:
+Input: board = [&quot;O  &quot;, &quot;   &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: The first player always plays “X”.</p>
+<pre><code>Example 2:
+Input: board = [&quot;XOX&quot;, &quot; X &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: Players take turns making moves.</p>
+<pre><code>Example 3:
+Input: board = [&quot;XXX&quot;, &quot;   &quot;, &quot;OOO&quot;]
+Output: false
+
+Example 4:
+Input: board = [&quot;XOX&quot;, &quot;O O&quot;, &quot;XOX&quot;]
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>To Code as playing Tic-Tac-Toe.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean validTicTacToe(String[] board) {
+    int player1 = 0;
+    int player2 = 0;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            if (board[i].charAt(j) == &apos;X&apos;) { player1++; }
+            if (board[i].charAt(j) == &apos;O&apos;) { player2++; }
         }
     }
-    if (position) { profit += ask_price - bid_price; }
-    return profit;
+    if (player1 &lt; player2) { return false; }
+    if (player1 - player2 &gt; 1) { return false; }
+
+    for (int m = 0; m &lt; 3; m++) {
+        if (board[m].equals(&quot;XXX&quot;)) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[m].equals(&quot;OOO&quot;)) {
+            if (player2 != player1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;X&apos; &amp;&amp; board[1].charAt(m) == &apos;X&apos; &amp;&amp; board[2].charAt(m) == &apos;X&apos;) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;O&apos; &amp;&amp; board[1].charAt(m) == &apos;O&apos; &amp;&amp; board[2].charAt(m) == &apos;O&apos;) {
+            if (player2 != player1) { return false; }
+        }
+    }
+    if (board[0].charAt(0) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(2) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(0) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(2) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(0) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(0) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    return true;
 }
 </code></pre>
       
@@ -429,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/03/121-Best-Time-to-Buy-and-Sell-Stock/" rel="next" title="121. Best Time to Buy and Sell Stock">
-                <i class="fa fa-chevron-left"></i> 121. Best Time to Buy and Sell Stock
+              <a href="/2018/03/16/792-Number-of-Matching-Subsequences/" rel="next" title="792. Number of Matching Subsequences">
+                <i class="fa fa-chevron-left"></i> 792. Number of Matching Subsequences
               </a>
             
           </div>
@@ -438,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/03/125-Valid-Palindrome/" rel="prev" title="125. Valid Palindrome">
-                125. Valid Palindrome <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

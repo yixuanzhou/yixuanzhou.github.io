@@ -267,6 +267,541 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/794-Valid-Tic-Tac-Toe-State/" itemprop="url">794. Valid Tic-Tac-Toe State</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T20:03:41+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.</p>
+<p>The board is a 3 x 3 array, and consists of characters “ “, “X”, and “O”.  The “ “ character represents an empty square.</p>
+<p>Here are the rules of Tic-Tac-Toe:</p>
+<ul>
+<li>Players take turns placing characters into empty squares (“ “).</li>
+<li>The first player always places “X” characters, while the second player always places “O” characters.</li>
+<li>“X” and “O” characters are always placed into empty squares, never filled ones.</li>
+<li>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</li>
+<li>The game also ends if all squares are non-empty.</li>
+<li>No more moves can be played if the game is over.</li>
+</ul>
+<pre><code>Example 1:
+Input: board = [&quot;O  &quot;, &quot;   &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: The first player always plays “X”.</p>
+<pre><code>Example 2:
+Input: board = [&quot;XOX&quot;, &quot; X &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: Players take turns making moves.</p>
+<pre><code>Example 3:
+Input: board = [&quot;XXX&quot;, &quot;   &quot;, &quot;OOO&quot;]
+Output: false
+
+Example 4:
+Input: board = [&quot;XOX&quot;, &quot;O O&quot;, &quot;XOX&quot;]
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>To Code as playing Tic-Tac-Toe.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean validTicTacToe(String[] board) {
+    int player1 = 0;
+    int player2 = 0;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            if (board[i].charAt(j) == &apos;X&apos;) { player1++; }
+            if (board[i].charAt(j) == &apos;O&apos;) { player2++; }
+        }
+    }
+    if (player1 &lt; player2) { return false; }
+    if (player1 - player2 &gt; 1) { return false; }
+
+    for (int m = 0; m &lt; 3; m++) {
+        if (board[m].equals(&quot;XXX&quot;)) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[m].equals(&quot;OOO&quot;)) {
+            if (player2 != player1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;X&apos; &amp;&amp; board[1].charAt(m) == &apos;X&apos; &amp;&amp; board[2].charAt(m) == &apos;X&apos;) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;O&apos; &amp;&amp; board[1].charAt(m) == &apos;O&apos; &amp;&amp; board[2].charAt(m) == &apos;O&apos;) {
+            if (player2 != player1) { return false; }
+        }
+    }
+    if (board[0].charAt(0) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(2) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(0) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(2) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(0) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(0) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    return true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/792-Number-of-Matching-Subsequences/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/792-Number-of-Matching-Subsequences/" itemprop="url">792. Number of Matching Subsequences</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T19:42:36+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given string S and a dictionary of words words, find the number of words[i] that is a subsequence of S.</p>
+<pre><code>Example :
+Input: 
+S = &quot;abcde&quot;
+words = [&quot;a&quot;, &quot;bb&quot;, &quot;acd&quot;, &quot;ace&quot;]
+Output: 3
+</code></pre><p>Explanation: There are three words in words that are a subsequence of S: “a”, “acd”, “ace”.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Compare each character of the word to the characters of given S. If match, compare next character with position + 1.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int numMatchingSubseq(String S, String[] words) {
+    int count = 0;
+    for (String word : words) {
+        int j = 0;
+        boolean found = false;
+        for (int i = 0; i &lt; word.length(); i++) {
+            char curr = word.charAt(i);
+            found = false;
+            while (j &lt; S.length()) {
+                if (curr == S.charAt(j)) {
+                    j++;
+                    found = true;
+                    break;
+                }
+                j++;
+            }
+        }
+        if (found) { count++; }
+    }
+    return count;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/795-Number-of-Subarrays-with-Bounded-Maximum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yixuan in US">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/795-Number-of-Subarrays-with-Bounded-Maximum/" itemprop="url">795. Number of Subarrays with Bounded Maximum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T19:15:24+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>We are given an array A of positive integers, and two positive integers L and R (L &lt;= R).</p>
+<p>Return the number of (contiguous, non-empty) subarrays such that the value of the maximum array element in that subarray is at least L and at most R.</p>
+<pre><code>Example :
+Input: 
+A = [2, 1, 4, 3]
+L = 2
+R = 3
+Output: 3
+</code></pre><p>Explanation: There are three subarrays that meet the requirements: [2], [2, 1], [3].</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Traverse the array from the head, if the element is between L and R, then count how many both preceding and subsequent elements are between L and R. Say, if there are 1 preceding and 2 subsequent elements satisfy the requirement, we would have totally 1 (the element itself) + 1 * (2 + 1) (subarrays including the preceding element) + 2 (subarrays not including preceding element) = 6 subarrays that satisfy the requirement. </p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int numSubarrayBoundedMax(int[] A, int L, int R) {
+    int count = 0;
+    for (int i = 0; i &lt; A.length; i++) {
+        if (A[i] &gt;= L &amp;&amp; A[i] &lt;= R) {
+            count++;
+            int index = i;
+            int front = 0;
+            int back = 0;
+            while (index &gt; 0) {
+                index--;
+                if (A[index] &gt;= L &amp;&amp; A[index] &lt;= R) { break; }
+                if (A[index] &lt;= R) {
+                    front++;
+                } else {
+                    break;
+                }
+            }
+            index = i;
+            while (index &lt; A.length-1) {
+                if (A[++index] &lt;= R) {
+                    back++;
+                } else {
+                    break;
+                }
+            }
+            count += front * (back + 1) + back;
+        }
+    }
+    return count;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/10/142-Linked-List-Cycle-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1339,451 +1874,6 @@ Output: 0
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/118-Pascal-s-Triangle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/118-Pascal-s-Triangle/" itemprop="url">118. Pascal's Triangle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T23:47:36+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given numRows, generate the first numRows of Pascal’s triangle.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Write code according to the rule of Pascal’s Triangles.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) {
-    List&lt;List&lt;Integer&gt;&gt; pascalTriangle = new ArrayList&lt;&gt;();
-    if (numRows == 0) { return pascalTriangle; }
-    List&lt;Integer&gt; curr = new ArrayList&lt;&gt;();
-    curr.add(1);
-    pascalTriangle.add(curr);
-    for (int i = 1; i &lt; numRows; i++) {
-        List&lt;Integer&gt; next = new ArrayList&lt;&gt;();
-        next.add(1);
-        for (int j = 0; j &lt; curr.size()-1; j++) {
-            next.add(curr.get(j)+curr.get(j+1));
-        }
-        next.add(1);
-        curr = next;
-        pascalTriangle.add(curr);
-    }
-    return pascalTriangle;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/112-Path-Sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/112-Path-Sum/" itemprop="url">112. Path Sum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T23:29:42+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Keep in mind that it’s a root-to-<strong>leaf</strong> path.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean hasPathSum(TreeNode root, int sum) {
-    if (root == null) { return false; }
-    if (root.left == null &amp;&amp; root.right == null) {
-        if (sum-root.val == 0) { return true; }
-    }
-    return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/28/111-Minimum-Depth-of-Binary-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/28/111-Minimum-Depth-of-Binary-Tree/" itemprop="url">111. Minimum Depth of Binary Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T09:36:49+08:00">
-                2018-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, find its minimum depth.</p>
-<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a helper function to calculate the depth of each node, and if the node is a leaf, return its depth. Then choose the minimum depth among all leaves.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int minDepth(TreeNode root) {
-    if (root == null) { return 0; }
-    int depth = 1;
-    return minDepthHelper(root, depth);
-}
-
-private int minDepthHelper(TreeNode root, int depth) {
-    if (root == null) { return Integer.MAX_VALUE; }
-    if (root.left == null &amp;&amp; root.right == null) {
-        return depth;
-    } else {
-        return Math.min(minDepthHelper(root.left, ++depth), minDepthHelper(root.right, ++depth));
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1834,7 +1924,7 @@ private int minDepthHelper(TreeNode root, int depth) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
