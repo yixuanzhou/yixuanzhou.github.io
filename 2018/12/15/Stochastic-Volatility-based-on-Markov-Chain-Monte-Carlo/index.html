@@ -104,25 +104,30 @@
 
 
 
-  <meta name="description" content="Problem Description:Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m +">
-<meta name="keywords" content="LeetCode">
+  <meta name="description" content="IntroductionThe variance of returns of assets tends to change over time. The stochastic volatility model (SV) attempts to model this variance by assuming that they follow some latent stochastic proces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="88. Merge Sorted Array">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/13/88-Merge-Sorted-Array/index.html">
+<meta property="og:title" content="Market Returns Volatility based on Markov Chain Monte Carlo">
+<meta property="og:url" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/index.html">
 <meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="Problem Description:Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m +">
+<meta property="og:description" content="IntroductionThe variance of returns of assets tends to change over time. The stochastic volatility model (SV) attempts to model this variance by assuming that they follow some latent stochastic proces">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-16T09:11:16.912Z">
+<meta property="og:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_change.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/h.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_volatility.png">
+<meta property="og:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/return.png">
+<meta property="og:updated_time" content="2018-12-16T23:29:45.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="88. Merge Sorted Array">
-<meta name="twitter:description" content="Problem Description:Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m +">
+<meta name="twitter:title" content="Market Returns Volatility based on Markov Chain Monte Carlo">
+<meta name="twitter:description" content="IntroductionThe variance of returns of assets tends to change over time. The stochastic volatility model (SV) attempts to model this variance by assuming that they follow some latent stochastic proces">
+<meta name="twitter:image" content="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/13/88-Merge-Sorted-Array/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/"/>
 
 
 
@@ -132,7 +137,7 @@
   };
 </script>
 
-  <title>88. Merge Sorted Array | Yixuan in US</title>
+  <title>Market Returns Volatility based on Markov Chain Monte Carlo | Yixuan in US</title>
   
 
 
@@ -330,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/13/88-Merge-Sorted-Array/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -347,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">88. Merge Sorted Array
+          <h1 class="post-title" itemprop="name headline">Market Returns Volatility based on Markov Chain Monte Carlo
 
               
             
@@ -373,7 +378,7 @@
                 
               
 
-              <time title="Created: 2018-02-14 10:23:46" itemprop="dateCreated datePublished" datetime="2018-02-14T10:23:46+08:00">2018-02-14</time>
+              <time title="Created: 2018-12-16 14:33:32" itemprop="dateCreated datePublished" datetime="2018-12-16T14:33:32+08:00">2018-12-16</time>
             
 
             
@@ -390,29 +395,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-17 07:29:45" itemprop="dateModified" datetime="2018-12-17T07:29:45+08:00">2018-12-17</time>
               
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -441,23 +428,29 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
-<p>Note:</p>
-<p>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Since nums1 has enough space to hold all elements, we may assume that the length of nums1 is <strong>m + n - 1</strong>. Then we can iteratively compare two arrays and add bigger element into nums1 from back to front. In case that there are remaining elements in nums2 (which means the remaining elements are all smaller than the smallest element in nums1), we also have to add the remaining elements into the nums1.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public void merge(int[] nums1, int m, int[] nums2, int n) {
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The variance of returns of assets tends to change over time. The stochastic volatility model (SV) attempts to model this variance by assuming that they follow some latent stochastic process. However, even the simplest SV model is difficult to fit due to various reasons. Naive strategy of maximum likelihood estimation fails due to the fact that the marginal distribution is evaluated in high dimensional space. Monte Carlo Markov Chain (MCMC), on the other hand, faces difficulty in simulating some non-analytical distributions and people needs to resort to indirect approach such as Metropolis-Hastings algorithm or reject-accept sampling.</p>
+<p>This article is about using MCMC algorithm for SV model. And model is applied in estimating the stock price volatility of <a href="https://www.marketwatch.com/investing/stock/600891?countrycode=cn" target="_blank" rel="noopener">600891:CH</a> in Shanghai Stock Exchange. All experiments are implemented using Jupyter Notebook under Python3.</p>
+<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>Consider $$y_{t}, t = 1,2,…N$$ is the stock price series, the standard stochastic volatility model is:</p>
+<p>$$y<em>{t} = \sqrt{h</em>{t}}\cdot u<em>{t}, u</em>{t}\sim N(0, 1)$$</p>
+<p>$$lnh<em>{t} = \mu + \phi\cdot lnh</em>{t-1} + \sigma<em>{n}\eta</em>{t}, \eta_{t}\sim N(0,1)$$</p>
+<p>where $$h<em>{t}$$ is the unobserved log-volatility of $$y</em>{t}$$, the error terms $$\mu<em>{t}$$ and 𝜂𝜂𝑡𝑡 are Gaussian white noise sequence, $$\phi$$ is the volatility resistence, and $$\sigma</em>{n}^2$$ is the standard deviation of the volatility.</p>
+<h2 id="Experienment"><a href="#Experienment" class="headerlink" title="Experienment"></a>Experienment</h2><p>Data samples are the index of Harbin Churin Group Jointstock Co Ltd (stock quote: 600891:CH), from Shanghai Composite. The data range is from November 22, 2015 to November 22, 2018. And data was collected using <a href="https://pypi.org/project/tushare/" target="_blank" rel="noopener">TuShare</a>, which is a Python package designed for crawling historical and Real-time Quotes data of mainland China stocks.</p>
+<p>The equation of the return rate is defined as:</p>
+<p>$$y<em>{t} = log(price</em>{t+1}/price_{t})$$</p>
+<p>where $$price_{t}$$ is the closing price at day t.</p>
+<p>The stock price of 600891:CH during the given period (11/22/2015~11/22/2018) and the log change of prices during that period.</p>
+<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png" alt=""></p>
+<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_change.png" alt=""></p>
+<p>All sampled h:</p>
+<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/h.png" alt=""></p>
+<p>The estimated stochastic volatility (mean of all sampled h) and absolute returns ($$|y_t|$$)</p>
+<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_volatility.png" alt=""></p>
+<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/return.png" alt=""></p>
+<p>From above two figures, one can see that the estimated stochastic volatility closely mimics the movements of absolute returns.</p>
+<p><a href="">Detailed report is available here</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Eric Jacquier, Nicholas G. Polson and Peter E. Rossi, “Bayesian Analysis of Stochastic Volatility Models”, Journal of Business &amp; Economic Statistics, 1994, Vol. 12, No. 4</p>
+<p>[2] Kim, S., Shephard, N., &amp; Chib, S. (1998). Stochastic volatility: Likelihood inference and comparison with ARCH models, Review of Economic Studies 65: 361–393</p>
 
-    int i = m - 1;
-    int j = n - 1;
-    int k = m + n - 1;
-    while (i &gt;= 0 &amp;&amp; j &gt;= 0) {
-        nums1[k--] = nums1[i] &gt; nums2[j] ? nums1[i--] : nums2[j--];
-    }
-    while (j &gt;= 0) {
-        nums1[j] = nums2[j--];
-    }
- }
-</code></pre>
       
     </div>
 
@@ -478,12 +471,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-        </div>
-      
 
       
       
@@ -493,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/13/83-Remove-Duplicates-from-Sorted-List/" rel="next" title="83. Remove Duplicates from Sorted List">
-                <i class="fa fa-chevron-left"></i> 83. Remove Duplicates from Sorted List
+              <a href="/2018/12/15/haha/" rel="next" title="haha">
+                <i class="fa fa-chevron-left"></i> haha
               </a>
             
           </div>
@@ -502,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/13/100-Same-Tree/" rel="prev" title="100. Same Tree">
-                100. Same Tree <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -681,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Theory"><span class="nav-number">2.</span> <span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experienment"><span class="nav-number">3.</span> <span class="nav-text">Experienment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
