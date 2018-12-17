@@ -113,7 +113,7 @@
 <meta property="og:description" content="Problem Description:Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram. For example, given a hi">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png">
-<meta property="og:updated_time" content="2018-12-17T05:12:25.627Z">
+<meta property="og:updated_time" content="2018-12-17T05:42:23.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="84. Largest Rectangle in Histogram">
 <meta name="twitter:description" content="Problem Description:Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram. For example, given a hi">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2018-12-16 18:44:47 / Modified: 21:12:25" itemprop="dateCreated datePublished" datetime="2018-12-16T18:44:47-08:00">2018-12-16</time>
+              <time title="Created: 2018-12-16 18:44:47 / Modified: 21:42:23" itemprop="dateCreated datePublished" datetime="2018-12-16T18:44:47-08:00">2018-12-16</time>
             
 
             
@@ -434,8 +434,7 @@
         <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
 <p>For example, given a histogram where width of each bar is 1, given height = [2,1,5,6,2,3]. The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
 <p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png" alt="alt text"></p>
-<p>Input: [2,1,5,6,2,3]</p>
-<p>Output: 10</p>
+<p>Input: [2,1,5,6,2,3]<br>Output: 10</p>
 <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem can be solved using stack. The stack stores the index of heights. At ith iteration, if heights[i] is bigger or equal to heights[top of stack], push index i into stack. On the other hand, if heights[i] is smaller than heights[top of stack], we know that the maximum area must happen before index i.</p>
 <p>Now on the top of stack gives is the index of the biggest height till index i. And the width is directly derived from stack.</p>
 <p>This solution comes from <a href="https://www.geeksforgeeks.org/largest-rectangle-under-histogram/" target="_blank" rel="noopener">GeekforGeeks</a>.</p>
@@ -501,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/16/85-Maximal-Rectangle/" rel="prev" title="85. Maximal Rectangle">
+                85. Maximal Rectangle <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,7 +577,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
