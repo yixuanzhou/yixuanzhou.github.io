@@ -174,7 +174,7 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
-#social:
+social:
   GitHub: https://github.com/yixuanzhou || github
   #E-Mail: mailto:yourname@gmail.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
@@ -186,7 +186,7 @@ site_state: true
   #YouTube: https://youtube.com/yourname || youtube
   Instagram: https://instagram.com/ethanzhou95 || instagram
   #Skype: skype:yourname?call|chat || skype
-  LinkedInL https://www.linkedin.com/in/yixuanzhou || linkedin
+  LinkedIn: https://www.linkedin.com/in/yixuanzhou || linkedin
 
 social_icons:
   enable: true
@@ -212,7 +212,7 @@ avatar:
   # in theme directory(source/images): /images/avatar.gif
   # in site  directory(source/uploads): /uploads/avatar.gif
   # You can also use other linking images.
-  url: #/images/avatar.gif
+  url: /images/takumi.jpg
   # If true, the avatar would be dispalyed in circle.
   rounded: false
   # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.

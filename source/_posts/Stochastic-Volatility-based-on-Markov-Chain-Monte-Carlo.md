@@ -18,7 +18,7 @@ $$y_{t} = \sqrt{h_{t}}\cdot u_{t}, u_{t}\sim N(0, 1)$$
 
 $$lnh_{t} = \mu + \phi\cdot lnh_{t-1} + \sigma_{n}\eta_{t}, \eta_{t}\sim N(0,1)$$
 
-where $$h_{t}$$ is the unobserved log-volatility of $$y_{t}$$, the error terms $$\mu_{t}$$ and 𝜂𝜂𝑡𝑡 are Gaussian white noise sequence, $$\phi$$ is the volatility resistence, and $$\sigma_{n}^2$$ is the standard deviation of the volatility.
+where $$h_{t}$$ is the unobserved log-volatility of $$y_{t}$$, the error terms $$\mu_{t}$$ and $$\eta_{t}$$ are Gaussian white noise sequence, $$\phi$$ is the volatility resistance, and $$\sigma_{n}^2$$ is the standard deviation of the volatility.
 
 ## Experienment
 
@@ -48,7 +48,7 @@ The estimated stochastic volatility (mean of all sampled h) and absolute returns
 
 From above two figures, one can see that the estimated stochastic volatility closely mimics the movements of absolute returns.
 
-[Detailed report is available here]()
+[Detailed report is available here!]()
 
 ## Reference
 [1] Eric Jacquier, Nicholas G. Polson and Peter E. Rossi, “Bayesian Analysis of Stochastic Volatility Models”, Journal of Business & Economic Statistics, 1994, Vol. 12, No. 4
