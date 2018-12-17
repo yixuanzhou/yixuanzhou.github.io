@@ -329,6 +329,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/84-Largest-Rectangle-in-Histogram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/16/84-Largest-Rectangle-in-Histogram/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">84. Largest Rectangle in Histogram</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-16 18:44:47 / Modified: 21:12:25" itemprop="dateCreated datePublished" datetime="2018-12-16T18:44:47-08:00">2018-12-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
+<p>For example, given a histogram where width of each bar is 1, given height = [2,1,5,6,2,3]. The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
+<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png" alt="alt text"></p>
+<p>Input: [2,1,5,6,2,3]</p>
+<p>Output: 10</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem can be solved using stack. The stack stores the index of heights. At ith iteration, if heights[i] is bigger or equal to heights[top of stack], push index i into stack. On the other hand, if heights[i] is smaller than heights[top of stack], we know that the maximum area must happen before index i.</p>
+<p>Now on the top of stack gives is the index of the biggest height till index i. And the width is directly derived from stack.</p>
+<p>This solution comes from <a href="https://www.geeksforgeeks.org/largest-rectangle-under-histogram/" target="_blank" rel="noopener">GeekforGeeks</a>.</p>
+<p>Complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int largestRectangleArea(int[] heights) {
+    if (heights == null || heights.length == 0) return 0;
+    Stack&lt;Integer&gt; s = new Stack&lt;&gt;();
+    int maxArea = 0;
+    for (int i = 0; i &lt;= heights.length; i++) {
+        int h1 = i == heights.length ? 0 : heights[i];
+        if (s.isEmpty() || h1 &gt;= heights[s.peek()]) s.push(i);
+        else {
+            int h = heights[s.pop()];
+            int w = s.isEmpty() ? i : i-s.peek()-1;
+            maxArea = Math.max(maxArea, w*h);
+            i--;
+        }
+    }
+    return maxArea;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -492,159 +676,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/15/haha/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/15/haha/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">haha</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-15 09:12:52" itemprop="dateCreated datePublished" datetime="2018-12-15T09:12:52-08:00">2018-12-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:12:52" itemprop="dateModified" datetime="2018-12-16T01:12:52-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/6-ZigZag-Conversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -690,7 +721,7 @@
                 
               
 
-              <time title="Created: 2018-03-18 06:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:11-07:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 21:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T21:26:11-07:00">2018-03-18</time>
             
 
             
@@ -895,7 +926,7 @@ Y   I   R
                 
               
 
-              <time title="Created: 2018-03-18 06:07:52" itemprop="dateCreated datePublished" datetime="2018-03-18T06:07:52-07:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 21:07:52" itemprop="dateCreated datePublished" datetime="2018-03-18T21:07:52-07:00">2018-03-18</time>
             
 
             
@@ -1148,7 +1179,7 @@ Y   I   R
                 
               
 
-              <time title="Created: 2018-03-18 05:47:18" itemprop="dateCreated datePublished" datetime="2018-03-18T05:47:18-07:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 20:47:18" itemprop="dateCreated datePublished" datetime="2018-03-18T20:47:18-07:00">2018-03-18</time>
             
 
             
@@ -1311,7 +1342,7 @@ private boolean isPalindrome(String s, int start, int end) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/17/3-Longest-Substring-Without-Repeating-Characters/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -1331,7 +1362,7 @@ private boolean isPalindrome(String s, int start, int end) {
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/03/17/3-Longest-Substring-Without-Repeating-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">3. Longest Substring Without Repeating Characters</a>
+                <a href="/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">3. Longest Substring Without Repeating Characters</a>
               
             
           </h1>
@@ -1356,7 +1387,7 @@ private boolean isPalindrome(String s, int start, int end) {
                 
               
 
-              <time title="Created: 2018-03-17 15:43:33" itemprop="dateCreated datePublished" datetime="2018-03-17T15:43:33-07:00">2018-03-17</time>
+              <time title="Created: 2018-03-18 06:43:33" itemprop="dateCreated datePublished" datetime="2018-03-18T06:43:33-07:00">2018-03-18</time>
             
 
             
@@ -1506,7 +1537,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/17/2-Add-Two-Numbers/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -1526,7 +1557,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/03/17/2-Add-Two-Numbers/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">2. Add Two Numbers</a>
+                <a href="/2018/03/18/2-Add-Two-Numbers/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">2. Add Two Numbers</a>
               
             
           </h1>
@@ -1551,7 +1582,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
                 
               
 
-              <time title="Created: 2018-03-17 15:26:03" itemprop="dateCreated datePublished" datetime="2018-03-17T15:26:03-07:00">2018-03-17</time>
+              <time title="Created: 2018-03-18 06:26:03" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:03-07:00">2018-03-18</time>
             
 
             
@@ -1758,7 +1789,7 @@ Explanation: 342 + 465 = 807.
                 
               
 
-              <time title="Created: 2018-03-16 05:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T05:03:41-07:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 20:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T20:03:41-07:00">2018-03-16</time>
             
 
             
@@ -1997,7 +2028,7 @@ Output: true
                 
               
 
-              <time title="Created: 2018-03-16 04:42:36" itemprop="dateCreated datePublished" datetime="2018-03-16T04:42:36-07:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 19:42:36" itemprop="dateCreated datePublished" datetime="2018-03-16T19:42:36-07:00">2018-03-16</time>
             
 
             
@@ -2197,7 +2228,7 @@ Output: 3
                 
               
 
-              <time title="Created: 2018-03-16 04:15:24" itemprop="dateCreated datePublished" datetime="2018-03-16T04:15:24-07:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 19:15:24" itemprop="dateCreated datePublished" datetime="2018-03-16T19:15:24-07:00">2018-03-16</time>
             
 
             
