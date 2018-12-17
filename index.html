@@ -104,16 +104,16 @@
 
 
 
-  <meta name="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
+  <meta name="description" content="To die, to sleep � to sleep, perchance to dream">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Yixuan in US">
+<meta property="og:title" content="Ethan&#39;s Depot">
 <meta property="og:url" content="https://yixuanzhou.github.io/index.html">
-<meta property="og:site_name" content="Yixuan in US">
-<meta property="og:description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
+<meta property="og:site_name" content="Ethan&#39;s Depot">
+<meta property="og:description" content="To die, to sleep � to sleep, perchance to dream">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yixuan in US">
-<meta name="twitter:description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
+<meta name="twitter:title" content="Ethan&#39;s Depot">
+<meta name="twitter:description" content="To die, to sleep � to sleep, perchance to dream">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Yixuan in US</title>
+  <title>Ethan's Depot</title>
   
 
 
@@ -190,7 +190,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Yixuan in US</span>
+        <span class="site-title">Ethan's Depot</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -329,16 +329,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -349,7 +349,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">Market Returns Volatility based on Markov Chain Monte Carlo</a>
+                <a href="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">Market Returns Volatility based on Markov Chain Monte Carlo</a>
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="Created: 2018-12-16 14:33:32" itemprop="dateCreated datePublished" datetime="2018-12-16T14:33:32+08:00">2018-12-16</time>
+              <time title="Created: 2018-12-16 14:33:32 / Modified: 16:05:27" itemprop="dateCreated datePublished" datetime="2018-12-16T14:33:32-08:00">2018-12-16</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-17 07:29:45" itemprop="dateModified" datetime="2018-12-17T07:29:45+08:00">2018-12-17</time>
               
             
           </span>
@@ -431,21 +419,21 @@
 <h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>Consider $$y_{t}, t = 1,2,…N$$ is the stock price series, the standard stochastic volatility model is:</p>
 <p>$$y<em>{t} = \sqrt{h</em>{t}}\cdot u<em>{t}, u</em>{t}\sim N(0, 1)$$</p>
 <p>$$lnh<em>{t} = \mu + \phi\cdot lnh</em>{t-1} + \sigma<em>{n}\eta</em>{t}, \eta_{t}\sim N(0,1)$$</p>
-<p>where $$h<em>{t}$$ is the unobserved log-volatility of $$y</em>{t}$$, the error terms $$\mu<em>{t}$$ and 𝜂𝜂𝑡𝑡 are Gaussian white noise sequence, $$\phi$$ is the volatility resistence, and $$\sigma</em>{n}^2$$ is the standard deviation of the volatility.</p>
+<p>where $$h<em>{t}$$ is the unobserved log-volatility of $$y</em>{t}$$, the error terms $$\mu<em>{t}$$ and $$\eta</em>{t}$$ are Gaussian white noise sequence, $$\phi$$ is the volatility resistance, and $$\sigma_{n}^2$$ is the standard deviation of the volatility.</p>
 <h2 id="Experienment"><a href="#Experienment" class="headerlink" title="Experienment"></a>Experienment</h2><p>Data samples are the index of Harbin Churin Group Jointstock Co Ltd (stock quote: 600891:CH), from Shanghai Composite. The data range is from November 22, 2015 to November 22, 2018. And data was collected using <a href="https://pypi.org/project/tushare/" target="_blank" rel="noopener">TuShare</a>, which is a Python package designed for crawling historical and Real-time Quotes data of mainland China stocks.</p>
 <p>The equation of the return rate is defined as:</p>
 <p>$$y<em>{t} = log(price</em>{t+1}/price_{t})$$</p>
 <p>where $$price_{t}$$ is the closing price at day t.</p>
 <p>The stock price of 600891:CH during the given period (11/22/2015~11/22/2018) and the log change of prices during that period.</p>
-<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png" alt=""></p>
-<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_change.png" alt=""></p>
+<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png" alt=""></p>
+<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_change.png" alt=""></p>
 <p>All sampled h:</p>
-<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/h.png" alt=""></p>
+<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/h.png" alt=""></p>
 <p>The estimated stochastic volatility (mean of all sampled h) and absolute returns ($$|y_t|$$)</p>
-<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_volatility.png" alt=""></p>
-<p><img src="/2018/12/15/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/return.png" alt=""></p>
+<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_volatility.png" alt=""></p>
+<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/return.png" alt=""></p>
 <p>From above two figures, one can see that the estimated stochastic volatility closely mimics the movements of absolute returns.</p>
-<p><a href="">Detailed report is available here</a></p>
+<p><a href="">Detailed report is available here!</a></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Eric Jacquier, Nicholas G. Polson and Peter E. Rossi, “Bayesian Analysis of Stochastic Volatility Models”, Journal of Business &amp; Economic Statistics, 1994, Vol. 12, No. 4</p>
 <p>[2] Kim, S., Shephard, N., &amp; Chib, S. (1998). Stochastic volatility: Likelihood inference and comparison with ARCH models, Review of Economic Studies 65: 361–393</p>
 
@@ -508,12 +496,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -549,12 +537,24 @@
                 
               
 
-              <time title="Created: 2018-12-16 01:12:52 / Modified: 17:12:52" itemprop="dateCreated datePublished" datetime="2018-12-16T01:12:52+08:00">2018-12-16</time>
+              <time title="Created: 2018-12-15 09:12:52" itemprop="dateCreated datePublished" datetime="2018-12-15T09:12:52-08:00">2018-12-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:12:52" itemprop="dateModified" datetime="2018-12-16T01:12:52-08:00">2018-12-16</time>
               
             
           </span>
@@ -649,12 +649,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -690,7 +690,7 @@
                 
               
 
-              <time title="Created: 2018-03-18 21:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T21:26:11+08:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 06:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:11-07:00">2018-03-18</time>
             
 
             
@@ -707,7 +707,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -854,12 +854,12 @@ Y   I   R
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -895,7 +895,7 @@ Y   I   R
                 
               
 
-              <time title="Created: 2018-03-18 21:07:52" itemprop="dateCreated datePublished" datetime="2018-03-18T21:07:52+08:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 06:07:52" itemprop="dateCreated datePublished" datetime="2018-03-18T06:07:52-07:00">2018-03-18</time>
             
 
             
@@ -912,7 +912,7 @@ Y   I   R
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -1107,12 +1107,12 @@ Y   I   R
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -1148,7 +1148,7 @@ Y   I   R
                 
               
 
-              <time title="Created: 2018-03-18 20:47:18" itemprop="dateCreated datePublished" datetime="2018-03-18T20:47:18+08:00">2018-03-18</time>
+              <time title="Created: 2018-03-18 05:47:18" itemprop="dateCreated datePublished" datetime="2018-03-18T05:47:18-07:00">2018-03-18</time>
             
 
             
@@ -1165,7 +1165,7 @@ Y   I   R
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -1315,12 +1315,12 @@ private boolean isPalindrome(String s, int start, int end) {
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -1356,7 +1356,7 @@ private boolean isPalindrome(String s, int start, int end) {
                 
               
 
-              <time title="Created: 2018-03-18 06:43:33" itemprop="dateCreated datePublished" datetime="2018-03-18T06:43:33+08:00">2018-03-18</time>
+              <time title="Created: 2018-03-17 15:43:33" itemprop="dateCreated datePublished" datetime="2018-03-17T15:43:33-07:00">2018-03-17</time>
             
 
             
@@ -1373,7 +1373,7 @@ private boolean isPalindrome(String s, int start, int end) {
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -1510,12 +1510,12 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -1551,7 +1551,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
                 
               
 
-              <time title="Created: 2018-03-18 06:26:03" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:03+08:00">2018-03-18</time>
+              <time title="Created: 2018-03-17 15:26:03" itemprop="dateCreated datePublished" datetime="2018-03-17T15:26:03-07:00">2018-03-17</time>
             
 
             
@@ -1568,7 +1568,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -1717,12 +1717,12 @@ Explanation: 342 + 465 = 807.
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -1758,7 +1758,7 @@ Explanation: 342 + 465 = 807.
                 
               
 
-              <time title="Created: 2018-03-16 20:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T20:03:41+08:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 05:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T05:03:41-07:00">2018-03-16</time>
             
 
             
@@ -1775,7 +1775,7 @@ Explanation: 342 + 465 = 807.
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -1956,12 +1956,12 @@ Output: true
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -1997,7 +1997,7 @@ Output: true
                 
               
 
-              <time title="Created: 2018-03-16 19:42:36" itemprop="dateCreated datePublished" datetime="2018-03-16T19:42:36+08:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 04:42:36" itemprop="dateCreated datePublished" datetime="2018-03-16T04:42:36-07:00">2018-03-16</time>
             
 
             
@@ -2014,7 +2014,7 @@ Output: true
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -2156,12 +2156,12 @@ Output: 3
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="ֽ�ϵ����վ�ǳ ��֪����Ҫ����">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yixuan in US">
+      <meta itemprop="name" content="Ethan's Depot">
     </span>
 
     
@@ -2197,7 +2197,7 @@ Output: 3
                 
               
 
-              <time title="Created: 2018-03-16 19:15:24" itemprop="dateCreated datePublished" datetime="2018-03-16T19:15:24+08:00">2018-03-16</time>
+              <time title="Created: 2018-03-16 04:15:24" itemprop="dateCreated datePublished" datetime="2018-03-16T04:15:24-07:00">2018-03-16</time>
             
 
             
@@ -2214,7 +2214,7 @@ Output: 3
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-16 17:11:16" itemprop="dateModified" datetime="2018-12-16T17:11:16+08:00">2018-12-16</time>
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -2384,8 +2384,12 @@ Output: 3
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/takumi.jpg"
+                alt="Yixuan Zhou" />
+            
               <p class="site-author-name" itemprop="name">Yixuan Zhou</p>
-              <p class="site-description motion-element" itemprop="description">ֽ�ϵ����վ�ǳ ��֪����Ҫ����</p>
+              <p class="site-description motion-element" itemprop="description">To die, to sleep � to sleep, perchance to dream</p>
           </div>
 
           
