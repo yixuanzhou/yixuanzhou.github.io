@@ -12,8 +12,7 @@ For example, given a histogram where width of each bar is 1, given height = [2,1
 
 ![alt text](https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png)
 
-Input: [2,1,5,6,2,3]
-
+Input: [2,1,5,6,2,3]  
 Output: 10
 
 ### Note
