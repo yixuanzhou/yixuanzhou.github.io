@@ -104,25 +104,25 @@
 
 
 
-  <meta name="description" content="Problem Description:You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? Note: Given n">
+  <meta name="description" content="Problem Description:Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. Note: The input string may contain letters other than the par">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="70. Climbing Stairs">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/12/70-Climbing-Stairs/index.html">
+<meta property="og:title" content="301. Remove Invalid Parentheses">
+<meta property="og:url" content="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/index.html">
 <meta property="og:site_name" content="Ethan&#39;s Depot">
-<meta property="og:description" content="Problem Description:You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? Note: Given n">
+<meta property="og:description" content="Problem Description:Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. Note: The input string may contain letters other than the par">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-16T09:11:16.911Z">
+<meta property="og:updated_time" content="2019-01-05T04:46:38.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="70. Climbing Stairs">
-<meta name="twitter:description" content="Problem Description:You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? Note: Given n">
+<meta name="twitter:title" content="301. Remove Invalid Parentheses">
+<meta name="twitter:description" content="Problem Description:Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. Note: The input string may contain letters other than the par">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/12/70-Climbing-Stairs/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/"/>
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>70. Climbing Stairs | Ethan's Depot</title>
+  <title>301. Remove Invalid Parentheses | Ethan's Depot</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/70-Climbing-Stairs/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">70. Climbing Stairs
+          <h1 class="post-title" itemprop="name headline">301. Remove Invalid Parentheses
 
               
             
@@ -373,24 +373,12 @@
                 
               
 
-              <time title="Created: 2018-02-12 20:36:24" itemprop="dateCreated datePublished" datetime="2018-02-12T20:36:24-08:00">2018-02-12</time>
+              <time title="Created: 2019-01-04 20:34:36 / Modified: 20:46:38" itemprop="dateCreated datePublished" datetime="2019-01-04T20:34:36-08:00">2019-01-04</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -441,27 +429,59 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>You are climbing a stair case. It takes n steps to reach to the top.</p>
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
-<p>Note: Given n will be a positive integer.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This is a typical Fibonacci problem.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int climbingStairs (int n) {
-    if (n == 1) {
-        return 1;
-    }
-    if (n == 2) {
-        return 2;
-    }
-    int step_one = 1;
-    int step_two = 2;
-    int all_steps = 0;
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
+<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
+<pre><code>Example 1:
 
-    for (int i = 2; i &lt; n; i++) {
-        all_steps = step_one + step_two;
-        step_one = step_two;
-        step_two = all_steps;
+Input: &quot;()())()&quot;
+Output: [&quot;()()()&quot;, &quot;(())()&quot;]
+
+Example 2:
+
+Input: &quot;(a)())()&quot;
+Output: [&quot;(a)()()&quot;, &quot;(a())()&quot;]
+
+Example 3:
+
+Input: &quot;)(&quot;
+Output: [&quot;&quot;]
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>BFS. Use HashSet and LinkedList to store all possible substrings. And check if each substring is valid parentheses.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;String&gt; removeInvalidParentheses(String s) {
+
+    // s = s.replaceAll(&quot;[^().]&quot;, &quot;&quot;);
+    List&lt;String&gt; res = new ArrayList&lt;&gt;();
+    Queue&lt;String&gt; waitlist = new LinkedList&lt;&gt;();
+    Set&lt;String&gt; visited = new HashSet&lt;&gt;();
+    waitlist.add(s); visited.add(s);
+
+    while (!waitlist.isEmpty()) {
+        String cur = waitlist.poll();
+        if (isValidParentheses(cur)) {
+            if (!res.isEmpty() &amp;&amp; cur.length() &lt; res.get(0).length()) continue;
+            res.add(cur); continue;
+        }
+
+        for (int i = 0; i &lt; cur.length(); i++) {
+            if (cur.charAt(i) != &apos;(&apos; &amp;&amp; cur.charAt(i) != &apos;)&apos;) continue;
+            String sub = cur.substring(0, i) + cur.substring(i+1);
+            if (visited.contains(sub)) continue;
+            visited.add(sub); waitlist.add(sub);
+        }
     }
-    return all_steps;
+
+    return res;
+}
+
+private boolean isValidParentheses(String s) {
+    int count = 0;
+
+    for (int i = 0; i &lt; s.length(); i++) {
+        char c = s.charAt(i);
+        if (c == &apos;(&apos;) count++;
+        if (c == &apos;)&apos; &amp;&amp; count-- == 0) return false;
+    }
+
+    return count == 0;        
 }
 </code></pre>
       
@@ -499,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/12/69-Sqrt(x)/" rel="next" title="69. Sqrt(x)">
-                <i class="fa fa-chevron-left"></i> 69. Sqrt(x)
+              <a href="/2019/01/04/560-Subarray-Sum-Equals-K/" rel="next" title="560. Subarray Sum Equals K">
+                <i class="fa fa-chevron-left"></i> 560. Subarray Sum Equals K
               </a>
             
           </div>
@@ -508,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/13/83-Remove-Duplicates-from-Sorted-List/" rel="prev" title="83. Remove Duplicates from Sorted List">
-                83. Remove Duplicates from Sorted List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -329,6 +329,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/16/794-Valid-Tic-Tac-Toe-State/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">794. Valid Tic-Tac-Toe State</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-16 20:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T20:03:41-07:00">2018-03-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.</p>
+<p>The board is a 3 x 3 array, and consists of characters “ “, “X”, and “O”.  The “ “ character represents an empty square.</p>
+<p>Here are the rules of Tic-Tac-Toe:</p>
+<ul>
+<li>Players take turns placing characters into empty squares (“ “).</li>
+<li>The first player always places “X” characters, while the second player always places “O” characters.</li>
+<li>“X” and “O” characters are always placed into empty squares, never filled ones.</li>
+<li>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</li>
+<li>The game also ends if all squares are non-empty.</li>
+<li>No more moves can be played if the game is over.</li>
+</ul>
+<pre><code>Example 1:
+Input: board = [&quot;O  &quot;, &quot;   &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: The first player always plays “X”.</p>
+<pre><code>Example 2:
+Input: board = [&quot;XOX&quot;, &quot; X &quot;, &quot;   &quot;]
+Output: false
+</code></pre><p>Explanation: Players take turns making moves.</p>
+<pre><code>Example 3:
+Input: board = [&quot;XXX&quot;, &quot;   &quot;, &quot;OOO&quot;]
+Output: false
+
+
+Example 4:
+Input: board = [&quot;XOX&quot;, &quot;O O&quot;, &quot;XOX&quot;]
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>To Code as playing the Tic-Tac-Toe.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean validTicTacToe(String[] board) {
+    int player1 = 0;
+    int player2 = 0;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            if (board[i].charAt(j) == &apos;X&apos;) { player1++; }
+            if (board[i].charAt(j) == &apos;O&apos;) { player2++; }
+        }
+    }
+    if (player1 &lt; player2) { return false; }
+    if (player1 - player2 &gt; 1) { return false; }
+
+    for (int m = 0; m &lt; 3; m++) {
+        if (board[m].equals(&quot;XXX&quot;)) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[m].equals(&quot;OOO&quot;)) {
+            if (player2 != player1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;X&apos; &amp;&amp; board[1].charAt(m) == &apos;X&apos; &amp;&amp; board[2].charAt(m) == &apos;X&apos;) {
+            if (player1 != player2 + 1) { return false; }
+        }
+        if (board[0].charAt(m) == &apos;O&apos; &amp;&amp; board[1].charAt(m) == &apos;O&apos; &amp;&amp; board[2].charAt(m) == &apos;O&apos;) {
+            if (player2 != player1) { return false; }
+        }
+    }
+    if (board[0].charAt(0) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(2) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(0) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(2) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(0) == &apos;X&apos;) {
+        if (player1 != player2 + 1) { return false; }
+    }
+    if (board[0].charAt(2) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(0) == &apos;O&apos;) {
+        if (player2 != player1) { return false; }
+    }
+    return true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/792-Number-of-Matching-Subsequences/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2056,193 +2295,6 @@ Output: 0
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/119-Pascal-s-Triangle-II/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/02/119-Pascal-s-Triangle-II/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">119. Pascal's Triangle II</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-02 23:56:45" itemprop="dateCreated datePublished" datetime="2018-03-02T23:56:45-08:00">2018-03-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an index k, return the kth row of the Pascal’s triangle.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Write code according to the rule of Pascal’s Triangles.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;Integer&gt; getRow(int rowIndex) {
-    List&lt;Integer&gt; curr = new ArrayList&lt;&gt;();
-    curr.add(1);
-    for (int i = 0; i &lt; rowIndex; i++) {
-        List&lt;Integer&gt; next = new ArrayList&lt;&gt;();
-        next.add(1);
-        for (int j = 0; j &lt; curr.size()-1; j++) {
-            next.add(curr.get(j)+curr.get(j+1));
-        }
-        next.add(1);
-        curr = next;
-    }
-    return curr;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2294,7 +2346,7 @@ Output: 0
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
