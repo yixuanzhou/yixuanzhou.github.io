@@ -329,6 +329,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/05/929-Unique-Email-Addresses/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/05/929-Unique-Email-Addresses/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">929. Unique Email Addresses</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-05 20:36:47 / Modified: 20:39:39" itemprop="dateCreated datePublished" datetime="2019-01-05T20:36:47-08:00">2019-01-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Every email consists of a local name and a domain name, separated by the @ sign.</p>
+<p>For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.</p>
+<p>Besides lowercase letters, these emails may contain ‘.’s or ‘+’s.</p>
+<p>If you add periods (‘.’) between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, “alice.z@leetcode.com” and “alicez@leetcode.com” forward to the same email address.  (Note that this rule does not apply for domain names.)</p>
+<p>If you add a plus (‘+’) in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to my@email.com.  (Again, this rule does not apply for domain names.)</p>
+<p>It is possible to use both of these rules at the same time.</p>
+<p>Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails?</p>
+<pre><code>Example 1:
+
+Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]
+Output: 2
+Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>The solution for this problem is pretty straightforward.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int numUniqueEmails(String[] emails) {
+    Set&lt;String&gt; uniqueEmails = new HashSet&lt;&gt;();
+    for (String email : emails) {
+        String[] names = email.split(&quot;@&quot;, 2);
+        String localName = names[0];
+        String domainName = &quot;@&quot;+names[1];
+        localName = localName.replaceAll(&quot;.&quot;, &quot;&quot;);
+        int plusIndex = localName.indexOf(&apos;+&apos;);
+        if (plusIndex == -1) { // no plus sign
+            uniqueEmails.add(localName + domainName);
+        } else {
+            int nextPlusIndex = localName.indexOf(&apos;+&apos;, plusIndex+1);
+            if (nextPlusIndex == -1) { // only 1 plus sign
+                uniqueEmails.add(localName.substring(0, plusIndex)+domainName);
+            } else {
+                uniqueEmails.add(localName.substring(0, plusIndex)+localName.substring(plusIndex+1, nextPlusIndex)+domainName);
+            }
+        }            
+    }
+    return uniqueEmails.size();       
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/05/621-Task-Scheduler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2125,201 +2318,6 @@ private boolean isPalindrome(String s, int start, int end) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">3. Longest Substring Without Repeating Characters</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-18 06:43:33" itemprop="dateCreated datePublished" datetime="2018-03-18T06:43:33-07:00">2018-03-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, find the length of the longest substring without repeating characters.</p>
-<pre><code>Examples:
-Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.
-Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.
-Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For each char of string, count how many different chars subsequently it has. And return the maximum count.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstring(String s) {
-    int max_len = 0;
-    if (s.length() == 1) { return 1; }
-    for (int i = 0; i &lt; s.length(); i++) {
-        String curr = &quot;&quot; + s.charAt(i);
-        int curr_len = 1;
-        for (int j = i+1; j &lt; s.length(); j++) {
-            if (curr.indexOf(s.charAt(j)) &gt;= 0) {
-                max_len = curr_len &gt; max_len ? curr_len : max_len;
-                break;
-            } else {
-                curr = s.substring(i,j+1);
-                if (++curr_len &gt; max_len) { max_len = curr_len; }
-            }
-        }
-    }
-    return max_len;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2371,7 +2369,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

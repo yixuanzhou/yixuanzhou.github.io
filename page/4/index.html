@@ -329,6 +329,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/14/100-Same-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/14/100-Same-Tree/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/4/index.html">100. Same Tree</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-02-14 10:36:21" itemprop="dateCreated datePublished" datetime="2018-02-14T10:36:21-08:00">2018-02-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two binary trees, write a function to check if they are the same or not.</p>
+<p>Two binary trees are considered the same if they are structurally identical and the nodes have the same value.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Just compare leaves recursively.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isSameTree(TreeNode p, TreeNode q) {
+    if (p == null || q == null) { return p == q; }
+    if (p.val == q.val) { return isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right); }
+    return false;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/14/88-Merge-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1687,7 +1866,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

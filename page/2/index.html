@@ -329,6 +329,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">3. Longest Substring Without Repeating Characters</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-18 06:43:33" itemprop="dateCreated datePublished" datetime="2018-03-18T06:43:33-07:00">2018-03-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<pre><code>Examples:
+Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.
+Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.
+Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For each char of string, count how many different chars subsequently it has. And return the maximum count.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstring(String s) {
+    int max_len = 0;
+    if (s.length() == 1) { return 1; }
+    for (int i = 0; i &lt; s.length(); i++) {
+        String curr = &quot;&quot; + s.charAt(i);
+        int curr_len = 1;
+        for (int j = i+1; j &lt; s.length(); j++) {
+            if (curr.indexOf(s.charAt(j)) &gt;= 0) {
+                max_len = curr_len &gt; max_len ? curr_len : max_len;
+                break;
+            } else {
+                curr = s.substring(i,j+1);
+                if (++curr_len &gt; max_len) { max_len = curr_len; }
+            }
+        }
+    }
+    return max_len;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2102,211 +2297,6 @@ Output: 3
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">122. Best Time to Buy and Sell Stock II</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-03 16:14:16" itemprop="dateCreated datePublished" datetime="2018-03-03T16:14:16-08:00">2018-03-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem is kind like a real stock transaction. Given a sequence of the price of a stock in a period of time, and calculate the maximum profit one can make in such period.</p>
-<p>If you know something about stock market, this problem is quite easy. Imaging a Candlestick chart, the key idea of the solution is in every increasing trend, buy the stock at the bottom and sell it at the top. And just waiting for the next increasing trend when there is a decreasing trend.</p>
-<p>To do this, first we need to set a boolean variable “position” which tells us whether we have already buy a stock and not sold yet.</p>
-<p>If we haven’t bought any stock, then we should only concern about the bid price, if the next price is higher than the current price (which means an increasing trend), we buy the stock. If not, we wait.</p>
-<p>If we have already bought a stock and not sold yet, if the price is increasing, we hold. Otherwise, we sell it and calculate our profit.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code> public int maxProfit(int[] prices) {
-    if (prices.length == 0) { return 0; }
-    int bid_price = prices[0];
-    int ask_price = prices[0];
-    boolean position = false;
-    int profit = 0;
-    for (int price : prices) {
-        if (!position) {
-            if (price &lt;= bid_price) {
-                bid_price = price;
-            } else {
-                ask_price = price;
-                position = true;
-            }
-        } else {
-            if (price &gt; ask_price) {
-                ask_price = price;
-            } else {
-                profit += ask_price - bid_price;
-                bid_price = price;
-                position = false;
-            }
-        }
-    }
-    if (position) { profit += ask_price - bid_price; }
-    return profit;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2358,7 +2348,7 @@ Output: 3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
