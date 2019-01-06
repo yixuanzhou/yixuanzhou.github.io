@@ -329,6 +329,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/05/621-Task-Scheduler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/05/621-Task-Scheduler/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">621. Task Scheduler</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-05 16:09:03 / Modified: 16:16:35" itemprop="dateCreated datePublished" datetime="2019-01-05T16:09:03-08:00">2019-01-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
+<p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
+<p>You need to return the least number of intervals the CPU will take to finish all the given tasks.</p>
+<pre><code>Example:
+
+Input: tasks = [&quot;A&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;B&quot;,&quot;B&quot;], n = 2
+Output: 8
+Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>The key idea here is to use a PriorityQueue to keep track of the remaining executing times of each task. We give priority to the task with highest remaining executing times. Besides, I use a HashMap to keep track of the last executing time of each task in order not to violate the cooling interval policy.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int leastInterval(char[] tasks, int n) {
+    Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+    for (char task : tasks) map.put(task, map.getOrDefault(task, 0)+1);
+
+    PriorityQueue&lt;Map.Entry&lt;Character, Integer&gt;&gt; pq = new PriorityQueue&lt;&gt;(
+        (a,b) -&gt; a.getValue() != b.getValue() ? b.getValue() - a.getValue() : a.getKey() - b.getKey());
+    pq.addAll(map.entrySet());
+
+    Map&lt;Character, Integer&gt; clk = new HashMap&lt;&gt;();
+    for (char task : map.keySet()) clk.put(task, -n-1);
+    int timeStamp = -1;
+    int completed = 0;
+    int cnt = 0;
+    List&lt;Map.Entry&lt;Character, Integer&gt;&gt; cache = new ArrayList&lt;&gt;();
+
+    while (completed &lt; tasks.length) {
+        timeStamp++;
+        int k = n + 1;
+
+        while (k &gt; 0 &amp;&amp; !pq.isEmpty()) {
+            Map.Entry&lt;Character, Integer&gt; top = pq.poll();
+            char task = top.getKey();
+            if (timeStamp - clk.get(task) &gt; n) {
+                clk.replace(task, timeStamp);
+                top.setValue(top.getValue()-1);
+                if (top.getValue() != 0) pq.add(top);
+                completed++; k--; cnt++; break;
+            }
+            cache.add(top);
+        }
+
+        if (pq.isEmpty() &amp;&amp; k == n+1) cnt++; // idle
+        pq.addAll(cache); cache.clear();
+    }
+
+    return cnt;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2115,213 +2320,6 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/18/2-Add-Two-Numbers/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">2. Add Two Numbers</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-18 06:26:03" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:03-07:00">2018-03-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<pre><code>Example
-Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
-Output: 7 -&gt; 0 -&gt; 8
-Explanation: 342 + 465 = 807.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This is basically a sum of digit problem, we can do it by traverse these two linked lists, and sum the value of each ListNode sum. Then take the sum as the new ListNode of the result. Make sure that the carry is included. And note that if there is a carry when the traversal is over, don’t forget to add a new ListNode to the head.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    ListNode sum = new ListNode(0);
-    ListNode result = sum;
-    int carry = 0;
-    int v1, v2;
-    int currdigit;
-    while (l1 != null || l2 != null) {
-        if (l1 != null) {
-            v1 = l1.val;
-            l1 = l1.next;
-        } else {
-            v1 = 0;
-        }
-        if (l2 != null) {
-            v2 = l2.val;
-            l2 = l2.next;
-        } else {
-            v2 = 0;
-        }
-        currdigit = v1 + v2 + carry;
-        sum.next = new ListNode(currdigit % 10);
-        carry = currdigit &gt; 9 ? 1 : 0;
-        sum = sum.next;
-    }
-    if (carry == 1) {
-        sum.next = new ListNode(1);
-    }
-    return result.next;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2373,7 +2371,7 @@ Explanation: 342 + 465 = 807.
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
