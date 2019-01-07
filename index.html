@@ -329,6 +329,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">340. Longest Substring with At Most K Distinct Characters</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-06 23:39:12 / Modified: 23:40:43" itemprop="dateCreated datePublished" datetime="2019-01-06T23:39:12-08:00">2019-01-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<pre><code>Example 1:
+
+Input: s = &quot;eceba&quot;, k = 2
+Output: 3
+Explanation: T is &quot;ece&quot; which its length is 3.
+
+Example 2:
+
+Input: s = &quot;aa&quot;, k = 1
+Output: 2
+Explanation: T is &quot;aa&quot; which its length is 2.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Almost the same as LC159.<br>Use a HashMap to keep track of frequency of each character, if map size exceeds k, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
+    int left = 0, right = 0;
+    int maxLength = 0;
+    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
+
+    while (right &lt; s.length()) {
+        char curr = s.charAt(right);
+        window.put(curr, window.getOrDefault(curr, 0)+1);
+        while (window.size() &gt; k) {
+            char prev = s.charAt(left++);
+            window.replace(prev, window.get(prev)-1);
+            window.remove(prev, 0);
+        }
+        maxLength = Math.max(maxLength, right-left+1);
+        right++;
+    }
+
+    return maxLength;    
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2034,216 +2208,11 @@ private int calculateArea(int[] heights) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/6-ZigZag-Conversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/18/6-ZigZag-Conversion/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">6. ZigZag Conversion</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-18 21:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T21:26:11-07:00">2018-03-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>The string <strong>“PAYPALISHIRING”</strong> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<pre><code>P   A   H   N
-A P L S I I G
-Y   I   R
-</code></pre><p>And then read line by line: <strong>“PAHNAPLSIIGYIR”</strong></p>
-<p>Write the code that will take a string and make this conversion given a number of rows:</p>
-<pre><code>string convert(string text, int nRows);
-</code></pre><p><strong>convert(“PAYPALISHIRING”, 3)</strong> should return <strong>“PAHNAPLSIIGYIR”</strong>.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>An intuitively way to do this is to construct nRows of strings, and add char to each string according to the zigzag order. We can use StringBuilder because it is much faster than string concatenation.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String convert(String s, int numRows) {
-    StringBuilder zigzag = new StringBuilder();
-    StringBuilder[] sbarray = new StringBuilder[numRows];
-    for(int i = 0; i &lt; numRows; i++){
-        sbarray[i] = new StringBuilder(&quot;&quot;);
-    }
-    int i = 0;
-    while (i &lt; s.length()) {
-        for (int j = 0; j &lt; numRows; j++) {
-            if (i &gt;= s.length()) { break; }
-            sbarray[j].append(s.charAt(i++));
-        }
-
-        for (int k = numRows-2; k &gt; 0; k--) {
-            if (i &gt;= s.length()) { break; }
-            sbarray[k].append(s.charAt(i++));
-        }
-    }
-
-    for (StringBuilder sb : sbarray) {
-        zigzag.append(sb.toString());
-    }
-
-    return zigzag.toString();
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2290,7 +2259,7 @@ Y   I   R
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
