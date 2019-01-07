@@ -329,6 +329,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">159. Longest Substring with At Most Two Distinct Characters</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-06 23:32:53 / Modified: 23:38:29" itemprop="dateCreated datePublished" datetime="2019-01-06T23:32:53-08:00">2019-01-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.</p>
+<pre><code>Example 1:
+
+Input: &quot;eceba&quot;
+Output: 3
+Explanation: t is &quot;ece&quot; which its length is 3.
+Example 2:
+
+Input: &quot;ccaabbb&quot;
+Output: 5
+Explanation: t is &quot;aabbb&quot; which its length is 5.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a HashMap to keep track of frequency of each character, if map size exceeds 2, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
+    int left = 0, right = 0;
+    int maxLength = 0;
+    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
+
+    while (right &lt; s.length()) {
+        char curr = s.charAt(right);
+        window.put(curr, window.getOrDefault(curr, 0)+1);
+        while (window.size() &gt; 2) { // can be extended to k distinct characters
+            char prev = s.charAt(left++);
+            window.replace(prev, window.get(prev)-1);
+            window.remove(prev, 0);
+        }
+        maxLength = Math.max(maxLength, right-left+1);
+        right++;
+    }
+
+    return maxLength;    
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/239-Sliding-Window-Maximum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2048,259 +2239,6 @@ Y   I   R
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/12-Integer-to-Roman/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/18/12-Integer-to-Roman/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">12. Integer to Roman</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-18 21:07:52" itemprop="dateCreated datePublished" datetime="2018-03-18T21:07:52-07:00">2018-03-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an integer, convert it to a roman numeral.</p>
-<p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Here is the list of Roman symbols which include subtractive cases:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">SYMBOL</th>
-<th style="text-align:center">VALUE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">I</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">IV</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">V</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">IX</td>
-<td style="text-align:center">9</td>
-</tr>
-<tr>
-<td style="text-align:center">X</td>
-<td style="text-align:center">10</td>
-</tr>
-<tr>
-<td style="text-align:center">XL</td>
-<td style="text-align:center">40</td>
-</tr>
-<tr>
-<td style="text-align:center">L</td>
-<td style="text-align:center">50</td>
-</tr>
-<tr>
-<td style="text-align:center">XC</td>
-<td style="text-align:center">90</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">100</td>
-</tr>
-<tr>
-<td style="text-align:center">CD</td>
-<td style="text-align:center">400</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">500</td>
-</tr>
-<tr>
-<td style="text-align:center">CM</td>
-<td style="text-align:center">900</td>
-</tr>
-<tr>
-<td style="text-align:center">M</td>
-<td style="text-align:center">1000</td>
-</tr>
-</tbody>
-</table>
-<p>It’s pretty fast to use this table to transfer integer to Roman numerals.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String intToRoman(int num) {
-    StringBuilder roman = new StringBuilder(&quot;&quot;);
-    int[] values = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
-    String[] symbols = {&quot;M&quot;,&quot;CM&quot;,&quot;D&quot;,&quot;CD&quot;,&quot;C&quot;,&quot;XC&quot;,&quot;L&quot;,&quot;XL&quot;,&quot;X&quot;,&quot;IX&quot;,&quot;V&quot;,&quot;IV&quot;,&quot;I&quot;};
-    int q = 0;
-    for (int i = 0; i &lt; 13; i++) {
-        if (num &gt;= values[i]) {
-            q = num / values[i];
-            num = num % values[i];
-            for (int j = 0; j &lt; q; j++) {
-                roman.append(symbols[i]);
-            }
-        }
-    }
-    return roman.toString();
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2352,7 +2290,7 @@ Y   I   R
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

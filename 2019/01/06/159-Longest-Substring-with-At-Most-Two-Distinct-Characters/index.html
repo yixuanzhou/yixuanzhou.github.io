@@ -104,25 +104,25 @@
 
 
 
-  <meta name="description" content="Problem Description:Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the sa">
+  <meta name="description" content="Problem Description:Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters. Example 1:  Input: &amp;quot;eceba&amp;quot; Output: 3 Explanation: t is &amp;quot;e">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="100. Same Tree">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/02/14/100-Same-Tree/index.html">
+<meta property="og:title" content="159. Longest Substring with At Most Two Distinct Characters">
+<meta property="og:url" content="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/index.html">
 <meta property="og:site_name" content="Ethan&#39;s Depot">
-<meta property="og:description" content="Problem Description:Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the sa">
+<meta property="og:description" content="Problem Description:Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters. Example 1:  Input: &amp;quot;eceba&amp;quot; Output: 3 Explanation: t is &amp;quot;e">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-16T09:11:16.903Z">
+<meta property="og:updated_time" content="2019-01-07T07:38:29.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="100. Same Tree">
-<meta name="twitter:description" content="Problem Description:Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the sa">
+<meta name="twitter:title" content="159. Longest Substring with At Most Two Distinct Characters">
+<meta name="twitter:description" content="Problem Description:Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters. Example 1:  Input: &amp;quot;eceba&amp;quot; Output: 3 Explanation: t is &amp;quot;e">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/02/14/100-Same-Tree/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/"/>
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>100. Same Tree | Ethan's Depot</title>
+  <title>159. Longest Substring with At Most Two Distinct Characters | Ethan's Depot</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/14/100-Same-Tree/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">100. Same Tree
+          <h1 class="post-title" itemprop="name headline">159. Longest Substring with At Most Two Distinct Characters
 
               
             
@@ -373,24 +373,12 @@
                 
               
 
-              <time title="Created: 2018-02-14 10:36:21" itemprop="dateCreated datePublished" datetime="2018-02-14T10:36:21-08:00">2018-02-14</time>
+              <time title="Created: 2019-01-06 23:32:53 / Modified: 23:38:29" itemprop="dateCreated datePublished" datetime="2019-01-06T23:32:53-08:00">2019-01-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -441,13 +429,37 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two binary trees, write a function to check if they are the same or not.</p>
-<p>Two binary trees are considered the same if they are structurally identical and the nodes have the same value.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Just compare leaves recursively.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isSameTree(TreeNode p, TreeNode q) {
-    if (p == null || q == null) { return p == q; }
-    if (p.val == q.val) { return isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right); }
-    return false;
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.</p>
+<pre><code>Example 1:
+
+Input: &quot;eceba&quot;
+Output: 3
+Explanation: t is &quot;ece&quot; which its length is 3.
+Example 2:
+
+Input: &quot;ccaabbb&quot;
+Output: 5
+Explanation: t is &quot;aabbb&quot; which its length is 5.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a HashMap to keep track of frequency of each character, if map size exceeds 2, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
+    int left = 0, right = 0;
+    int maxLength = 0;
+    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
+
+    while (right &lt; s.length()) {
+        char curr = s.charAt(right);
+        window.put(curr, window.getOrDefault(curr, 0)+1);
+        while (window.size() &gt; 2) { // can be extended to k distinct characters
+            char prev = s.charAt(left++);
+            window.replace(prev, window.get(prev)-1);
+            window.remove(prev, 0);
+        }
+        maxLength = Math.max(maxLength, right-left+1);
+        right++;
+    }
+
+    return maxLength;    
 }
 </code></pre>
       
@@ -485,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/14/88-Merge-Sorted-Array/" rel="next" title="88. Merge Sorted Array">
-                <i class="fa fa-chevron-left"></i> 88. Merge Sorted Array
+              <a href="/2019/01/06/239-Sliding-Window-Maximum/" rel="next" title="239. Sliding Window Maximum">
+                <i class="fa fa-chevron-left"></i> 239. Sliding Window Maximum
               </a>
             
           </div>
@@ -494,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/23/101-Symmetric-Tree/" rel="prev" title="101. Symmetric Tree">
-                101. Symmetric Tree <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
