@@ -329,6 +329,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/03/125-Valid-Palindrome/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/03/125-Valid-Palindrome/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">125. Valid Palindrome</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-03 16:14:37" itemprop="dateCreated datePublished" datetime="2018-03-03T16:14:37-08:00">2018-03-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example,<br>“A man, a plan, a canal: Panama” is a palindrome.<br>“race a car” is not a palindrome.</p>
+<p>Note:<br>Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>It’s a typical two-pointer problem, just remember to check out whether the character is a letter or a digit.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isPalindrome(String s) {
+    if (s.length() == 0) { return true; }
+    s = s.toLowerCase();
+    int head = 0;
+    int tail = s.length()-1;
+    while (head &lt;= tail) {
+        char chHead = s.charAt(head);
+        char chTail = s.charAt(tail);
+        if (!Character.isLetterOrDigit(chHead)) { head++; continue; }
+        if (!Character.isLetterOrDigit(chTail)) { tail--; continue; }
+        if (Character.isLetterOrDigit(chHead) &amp;&amp; Character.isLetterOrDigit(chTail)) {
+            if (chHead != chTail) { return false; }
+            head++; tail--;
+        }
+    }
+    return true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/03/122-Best-Time-to-Buy-and-Sell-Stock-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2011,251 +2204,6 @@ private int calcDepth(TreeNode root) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/23/101-Symmetric-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/02/23/101-Symmetric-Tree/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">101. Symmetric Tree</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-02-23 09:51:01" itemprop="dateCreated datePublished" datetime="2018-02-23T09:51:01-08:00">2018-02-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>There are two ways to solve this problem: Recursive and Non-Recursive.</p>
-<p>For the recursive one, we need to recursively compare the left child from the left with the right child from the right, and right child from the left with the left child from the right, since symmetric means symmetric around the center.</p>
-<p>For the non-recursive one, the idea is similar to the recursive method, what’s different is that I use <strong>stack</strong> this time. The order of push nodes into stack is: left.left, right.right, left.right, right,right. And pop two nodes at a time to compare their value.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isSymmetric(TreeNode root) {
-       return root == null || isSymmetricHelp(root.left, root.right);
-   }
-
-private boolean isSymmetricHelp(TreeNode left, TreeNode right) {
-    if (left == null || right == null) {
-        return left == right;
-    }
-    if (left.val  != right.val) {
-        return false;
-    } else {
-        return isSymmetricHelp(left.right, right.left) &amp;&amp; isSymmetricHelp(left.left, right.right);
-    }
-}
-
-/* Non-Recursive method */
-public boolean isSymmetricStack(TreeNode root) {
-    if (root == null) { return true; }
-    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
-    TreeNode left, right;
-    if (root.left != null) {
-        if (root.right == null) {
-            return false;
-        }
-        left = root.left;
-        right = root.right;
-        stack.push(left);
-        stack.push(right);
-    }
-
-        if (root.right != null) {
-        if (root.left == null) {
-            return false;
-        }
-    }
-
-    while (!stack.empty()) {
-        right = stack.pop();
-        left = stack.pop();
-        if (left.val != right.val) {
-            return false;
-        }
-        if (left.left != null) {
-            if (right.right == null) {
-                return false;
-            }
-            stack.push(left.left);
-            stack.push(right.right);
-        }
-        if (right.right != null) {
-            if (left.left == null) {
-                return false;
-            }
-        }
-
-            if (left.right != null) {
-            if (right.left == null) {
-                return false;
-            }
-            stack.push(left.right);
-            stack.push(right.left);
-        }
-        if (right.left != null) {
-            if (left.right == null) {
-                return false;
-            }
-        }
-    }    
-    return true;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2307,7 +2255,7 @@ public boolean isSymmetricStack(TreeNode root) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
