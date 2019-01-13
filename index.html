@@ -329,6 +329,1048 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/642-Design-Search-Autocomplete-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/13/642-Design-Search-Autocomplete-System/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">642. Design Search Autocomplete System</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-13 11:28:56 / Modified: 11:34:30" itemprop="dateCreated datePublished" datetime="2019-01-13T11:28:56-08:00">2019-01-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a special character ‘#’). For each character they type except ‘#’, you need to return the top 3 historical hot sentences that have prefix the same as the part of sentence already typed. Here are the specific rules:</p>
+<p>The hot degree for a sentence is defined as the number of times a user typed the exactly same sentence before.<br>The returned top 3 hot sentences should be sorted by hot degree (The first is the hottest one). If several sentences have the same degree of hot, you need to use ASCII-code order (smaller one appears first).<br>If less than 3 hot sentences exist, then just return as many as you can.<br>When the input is a special character, it means the sentence ends, and in this case, you need to return an empty list.<br>Your job is to implement the following functions:</p>
+<p>The constructor function:</p>
+<p>AutocompleteSystem(String[] sentences, int[] times): This is the constructor. The input is historical data. Sentences is a string array consists of previously typed sentences. Times is the corresponding times a sentence has been typed. Your system should record these historical data.</p>
+<p>Now, the user wants to input a new sentence. The following function will provide the next character the user types:</p>
+<p>List<string> input(char c): The input c is the next character typed by the user. The character will only be lower-case letters (‘a’ to ‘z’), blank space (‘ ‘) or a special character (‘#’). Also, the previously typed sentence should be recorded in your system. The output will be the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.</string></p>
+<pre><code>Example:
+Operation: AutocompleteSystem([&quot;i love you&quot;, &quot;island&quot;,&quot;ironman&quot;, &quot;i love leetcode&quot;], [5,3,2,2])
+The system have already tracked down the following sentences and their corresponding times:
+&quot;i love you&quot; : 5 times
+&quot;island&quot; : 3 times
+&quot;ironman&quot; : 2 times
+&quot;i love leetcode&quot; : 2 times
+Now, the user begins another search:
+
+Operation: input(&apos;i&apos;)
+Output: [&quot;i love you&quot;, &quot;island&quot;,&quot;i love leetcode&quot;]
+Explanation:
+There are four sentences that have prefix &quot;i&quot;. Among them, &quot;ironman&quot; and &quot;i love leetcode&quot; have same hot degree. Since &apos; &apos; has ASCII code 32 and &apos;r&apos; has ASCII code 114, &quot;i love leetcode&quot; should be in front of &quot;ironman&quot;. Also we only need to output top 3 hot sentences, so &quot;ironman&quot; will be ignored.
+
+Operation: input(&apos; &apos;)
+Output: [&quot;i love you&quot;,&quot;i love leetcode&quot;]
+Explanation:
+There are only two sentences that have prefix &quot;i &quot;.
+
+Operation: input(&apos;a&apos;)
+Output: []
+Explanation:
+There are no sentences that have prefix &quot;i a&quot;.
+
+Operation: input(&apos;#&apos;)
+Output: []
+Explanation:
+The user finished the input, the sentence &quot;i a&quot; should be saved as a historical sentence in system. And the following input will be counted as a new search.
+</code></pre><p>Note:</p>
+<p>The input sentence will always start with a letter and end with ‘#’, and only one blank space will exist between two words.<br>The number of complete sentences that to be searched won’t exceed 100. The length of each sentence including those in the historical data won’t exceed 100.<br>Please use double-quote instead of single-quote when you write test cases even for a character input.<br>Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see here for more details.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem is designed for using Trie and PriorityQueue.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>class AutocompleteSystem {
+    private class Trie {
+        private final int R = 256;
+        private Node root = new Node();
+
+        private class Node {
+            boolean exists;
+            Node[] next;
+
+            public Node() {
+                exists = false;
+                next = new Node[R];
+            }
+        }
+
+        public void insert(String key) { insert(root, key, 0); }
+
+        private Node insert(Node n, String key, int d) {
+            if (n == null) n = new Node();
+            if (d == key.length()) {
+                n.exists = true;
+                return n;
+            }
+            char c = key.charAt(d);
+            n.next[c] = insert(n.next[c], key, d+1);
+            return n;
+        }
+
+        public List&lt;String&gt; search(String pre) {
+            List&lt;String&gt; keys = new ArrayList&lt;&gt;();
+            Node x = root;
+            for (int i = 0; i &lt; pre.length(); i++) {
+                char c = pre.charAt(i);                
+                x = x.next[c];
+                if (x == null) return keys;
+            }
+            collect(x, pre, keys);
+            return keys;      
+        }
+
+        private void collect(Node n, String pre, List&lt;String&gt; keys) {
+            if (n == null) return;
+            if (n.exists) keys.add(pre);
+            for (char c = 0; c &lt; R; c++) collect(n.next[c], pre+c, keys);
+        }       
+    }
+
+    private class Pair {
+        public String s;
+        public int ct;
+
+        public Pair(String s, int ct) {
+            this.s = s;
+            this.ct = ct;
+        }
+    }
+
+    PriorityQueue&lt;Pair&gt; pq;
+    Map&lt;String, Integer&gt; count;
+    Trie trie;
+    StringBuilder curr;
+
+    public AutocompleteSystem(String[] sentences, int[] times) {
+        pq = new PriorityQueue&lt;&gt;((a,b) -&gt; a.ct != b.ct ? b.ct - a.ct : a.s.compareTo(b.s));
+        count = new HashMap&lt;&gt;();
+        trie = new Trie();
+        curr = new StringBuilder();
+        for (int i = 0; i &lt; sentences.length; i++) {
+            trie.insert(sentences[i]);
+            count.put(sentences[i], times[i]);
+        }
+    }
+
+    public List&lt;String&gt; input(char c) {
+        List&lt;String&gt; matches = new ArrayList&lt;&gt;();
+        if (c == &apos;#&apos;) {
+            String sentence = curr.toString();
+            curr.setLength(0);
+            count.put(sentence, count.getOrDefault(sentence, 0)+1);
+            trie.insert(sentence);
+        } else {
+            curr.append(c);
+            matches = trie.search(curr.toString());
+        }
+
+        pq.clear();
+        for (String match : matches) pq.add(new Pair(match, count.get(match)));
+
+        List&lt;String&gt; res = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 3 &amp;&amp; !pq.isEmpty(); i++) res.add(pq.poll().s);
+        return res;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/53-Maximum-Subarray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/10/53-Maximum-Subarray/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">53. Maximum Subarray</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-10 19:30:25 / Modified: 19:43:42" itemprop="dateCreated datePublished" datetime="2019-01-10T19:30:25-08:00">2019-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<pre><code>Example:
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+
+Explanation: [4,-1,2,1] has the largest sum = 6.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Dynamic programming, there are two results at position i: either max subarray happen before i, or max subarray contains i. </p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int maxSubArray(int[] nums) {
+
+    int[] sums = new int[nums.length];
+    sums[0] = nums[0];
+    int max = nums[0];
+
+    for (int i = 1; i &lt; nums.length; i++) {
+        sums[i] = Math.max(sums[i-1] + nums[i], nums[i]);
+        max = Math.max(max, sums[i]);            
+    }
+    return max;        
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/238-Product-of-Array-Except-Self/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/10/238-Product-of-Array-Except-Self/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">238. Product of Array Except Self</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-10 18:46:45 / Modified: 18:54:51" itemprop="dateCreated datePublished" datetime="2019-01-10T18:46:45-08:00">2019-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given an array nums of n integers where n &gt; 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</p>
+<pre><code>Example:
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+</code></pre><p>Note: Please solve it without division and in O(n).</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>A straightforward solution is to get the product of all elements in the array, and use that product to divide each element. However, it says we should not use division here. An alternative solution is two-pass. In the first pass, we calculate the product of all elements before element i. In the second pass, we calculate the product of all elements after element i. Thus we obtain the product except itself.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int[] productExceptSelf(int[] nums) {
+    int[] res = new int[nums.length];
+    for (int i = 0, tmp = 1; i &lt; nums.length; i++) {
+        res[i] = tmp;
+        tmp *= nums[i];
+    }
+
+    for (int i = nums.length-1, tmp = 1; i &gt; -1; i--) {
+        res[i] *= tmp;
+        tmp *= nums[i];
+    }        
+    return res;        
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/205-Isomorphic-Strings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/10/205-Isomorphic-Strings/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">205. Isomorphic Strings</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-10 18:21:45 / Modified: 18:29:39" itemprop="dateCreated datePublished" datetime="2019-01-10T18:21:45-08:00">2019-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<pre><code>Example 1:
+
+Input: s = &quot;egg&quot;, t = &quot;add&quot;
+Output: true
+
+Example 2:
+
+Input: s = &quot;foo&quot;, t = &quot;bar&quot;
+Output: false
+
+Example 3:
+
+Input: s = &quot;paper&quot;, t = &quot;title&quot;
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a map to establish the corresponding characters between two strings s and t. Also use a list to store used characters in t.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isIsomorphic(String s, String t) {
+    Map&lt;Character, Character&gt; map = new HashMap&lt;&gt;();
+    List&lt;Character&gt; used = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; s.length(); i++) {
+        char curr_s = s.charAt(i);
+        char curr_t = t.charAt(i);
+        if (map.containsKey(curr_s)) {
+            if (map.get(curr_s) != curr_t) return false;
+        } else {
+            if (used.contains(curr_t)) return false;
+            else {
+                used.add(curr_t);
+                map.put(curr_s, curr_t);
+            }
+        }
+    }
+
+    return true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/20-Valid-Parentheses/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/10/20-Valid-Parentheses/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">20. Valid Parentheses</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-10 18:15:35 / Modified: 18:18:56" itemprop="dateCreated datePublished" datetime="2019-01-10T18:15:35-08:00">2019-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<p>Open brackets must be closed by the same type of brackets.<br>Open brackets must be closed in the correct order.<br>Note that an empty string is also considered valid.</p>
+<pre><code>Example 1:
+
+Input: &quot;()&quot;
+Output: true
+
+Example 2:
+
+Input: &quot;()[]{}&quot;
+Output: true
+
+Example 3:
+
+Input: &quot;(]&quot;
+Output: false
+
+Example 4:
+
+Input: &quot;([)]&quot;
+Output: false
+
+Example 5:
+
+Input: &quot;{[]}&quot;
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Typical stack problem.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isValid(String s) {
+    Stack&lt;Character&gt; stack = new Stack&lt;&gt;();
+
+    for (char c : s.toCharArray()) {
+        if (c == &apos;(&apos;) stack.push(&apos;)&apos;);
+        else if (c == &apos;[&apos;) stack.push(&apos;]&apos;);
+        else if (c == &apos;{&apos;) stack.push(&apos;}&apos;);
+        else if (stack.isEmpty() || stack.pop() != c) return false;
+    }
+
+    return stack.isEmpty();        
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/103-Binary-Tree-Zigzag-Level-Order-Traversal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1323,999 +2365,6 @@ Explanation: T is &quot;aa&quot; which its length is 2.
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">159. Longest Substring with At Most Two Distinct Characters</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-06 23:32:53 / Modified: 23:38:29" itemprop="dateCreated datePublished" datetime="2019-01-06T23:32:53-08:00">2019-01-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.</p>
-<pre><code>Example 1:
-
-Input: &quot;eceba&quot;
-Output: 3
-Explanation: t is &quot;ece&quot; which its length is 3.
-Example 2:
-
-Input: &quot;ccaabbb&quot;
-Output: 5
-Explanation: t is &quot;aabbb&quot; which its length is 5.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a HashMap to keep track of frequency of each character, if map size exceeds 2, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
-<p>Time complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
-    int left = 0, right = 0;
-    int maxLength = 0;
-    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
-
-    while (right &lt; s.length()) {
-        char curr = s.charAt(right);
-        window.put(curr, window.getOrDefault(curr, 0)+1);
-        while (window.size() &gt; 2) { // can be extended to k distinct characters
-            char prev = s.charAt(left++);
-            window.replace(prev, window.get(prev)-1);
-            window.remove(prev, 0);
-        }
-        maxLength = Math.max(maxLength, right-left+1);
-        right++;
-    }
-
-    return maxLength;    
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/239-Sliding-Window-Maximum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/06/239-Sliding-Window-Maximum/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">239. Sliding Window Maximum</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-06 19:50:58 / Modified: 20:24:15" itemprop="dateCreated datePublished" datetime="2019-01-06T19:50:58-08:00">2019-01-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.</p>
-<pre><code>Example:
-
-Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
-Output: [3,3,5,5,6,7]
-Explanation:
-
-Window position                Max
----------------               -----
-[1  3  -1] -3  5  3  6  7       3
- 1 [3  -1  -3] 5  3  6  7       3
- 1  3 [-1  -3  5] 3  6  7       5
- 1  3  -1 [-3  5  3] 6  7       5
- 1  3  -1  -3 [5  3  6] 7       6
- 1  3  -1  -3  5 [3  6  7]      7
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For this problem, just use a doubly-linked list and two pointers. When iterating through nums array, add right pointer index into the list. The doubly-linked list keeps largest number within the k distance from right pointer. The rule for sliding window is as follows: if right pointer index is bigger than the index of header of the list, this means the sliding window has exceeded its size k, so to remove the head of list. If the current number is larger than previous the number added to the list, just poll out that number in the list.</p>
-<p>Time complexity: O(n), Space complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int[] maxSlidingWindow(int[] nums, int k) {
-    if (nums == null || k &lt;= 0) return new int[0];
-    int left = 0, right = 0;
-    int[] res = new int[nums.length-k+1];
-    Deque&lt;Integer&gt; win = new ArrayDeque&lt;&gt;();
-
-    while (right &lt; nums.length) {
-        while (win.size() != 0 &amp;&amp; win.peek() &lt; right-k+1) win.poll();
-        while (win.size() != 0 &amp;&amp; nums[win.peekLast()] &lt; nums[right]) win.pollLast();
-        win.add(right++);
-        if (right-left == k) res[left++] = nums[win.peek()];
-    }
-
-    return res;        
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/05/929-Unique-Email-Addresses/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/05/929-Unique-Email-Addresses/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">929. Unique Email Addresses</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-05 20:36:47 / Modified: 20:39:39" itemprop="dateCreated datePublished" datetime="2019-01-05T20:36:47-08:00">2019-01-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Every email consists of a local name and a domain name, separated by the @ sign.</p>
-<p>For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.</p>
-<p>Besides lowercase letters, these emails may contain ‘.’s or ‘+’s.</p>
-<p>If you add periods (‘.’) between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, “alice.z@leetcode.com” and “alicez@leetcode.com” forward to the same email address.  (Note that this rule does not apply for domain names.)</p>
-<p>If you add a plus (‘+’) in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to my@email.com.  (Again, this rule does not apply for domain names.)</p>
-<p>It is possible to use both of these rules at the same time.</p>
-<p>Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails?</p>
-<pre><code>Example 1:
-
-Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]
-Output: 2
-Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>The solution for this problem is pretty straightforward.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int numUniqueEmails(String[] emails) {
-    Set&lt;String&gt; uniqueEmails = new HashSet&lt;&gt;();
-    for (String email : emails) {
-        String[] names = email.split(&quot;@&quot;, 2);
-        String localName = names[0];
-        String domainName = &quot;@&quot;+names[1];
-        localName = localName.replaceAll(&quot;.&quot;, &quot;&quot;);
-        int plusIndex = localName.indexOf(&apos;+&apos;);
-        if (plusIndex == -1) { // no plus sign
-            uniqueEmails.add(localName + domainName);
-        } else {
-            int nextPlusIndex = localName.indexOf(&apos;+&apos;, plusIndex+1);
-            if (nextPlusIndex == -1) { // only 1 plus sign
-                uniqueEmails.add(localName.substring(0, plusIndex)+domainName);
-            } else {
-                uniqueEmails.add(localName.substring(0, plusIndex)+localName.substring(plusIndex+1, nextPlusIndex)+domainName);
-            }
-        }            
-    }
-    return uniqueEmails.size();       
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/05/621-Task-Scheduler/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/05/621-Task-Scheduler/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">621. Task Scheduler</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-05 16:09:03 / Modified: 16:16:35" itemprop="dateCreated datePublished" datetime="2019-01-05T16:09:03-08:00">2019-01-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
-<p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
-<p>You need to return the least number of intervals the CPU will take to finish all the given tasks.</p>
-<pre><code>Example:
-
-Input: tasks = [&quot;A&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;B&quot;,&quot;B&quot;], n = 2
-Output: 8
-Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>The key idea here is to use a PriorityQueue to keep track of the remaining executing times of each task. We give priority to the task with highest remaining executing times. Besides, I use a HashMap to keep track of the last executing time of each task in order not to violate the cooling interval policy.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int leastInterval(char[] tasks, int n) {
-    Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
-    for (char task : tasks) map.put(task, map.getOrDefault(task, 0)+1);
-
-    PriorityQueue&lt;Map.Entry&lt;Character, Integer&gt;&gt; pq = new PriorityQueue&lt;&gt;(
-        (a,b) -&gt; a.getValue() != b.getValue() ? b.getValue() - a.getValue() : a.getKey() - b.getKey());
-    pq.addAll(map.entrySet());
-
-    Map&lt;Character, Integer&gt; clk = new HashMap&lt;&gt;();
-    for (char task : map.keySet()) clk.put(task, -n-1);
-    int timeStamp = -1;
-    int completed = 0;
-    int cnt = 0;
-    List&lt;Map.Entry&lt;Character, Integer&gt;&gt; cache = new ArrayList&lt;&gt;();
-
-    while (completed &lt; tasks.length) {
-        timeStamp++;
-        int k = n + 1;
-
-        while (k &gt; 0 &amp;&amp; !pq.isEmpty()) {
-            Map.Entry&lt;Character, Integer&gt; top = pq.poll();
-            char task = top.getKey();
-            if (timeStamp - clk.get(task) &gt; n) {
-                clk.replace(task, timeStamp);
-                top.setValue(top.getValue()-1);
-                if (top.getValue() != 0) pq.add(top);
-                completed++; k--; cnt++; break;
-            }
-            cache.add(top);
-        }
-
-        if (pq.isEmpty() &amp;&amp; k == n+1) cnt++; // idle
-        pq.addAll(cache); cache.clear();
-    }
-
-    return cnt;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/04/301-Remove-Invalid-Parentheses/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">301. Remove Invalid Parentheses</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-04 20:34:36 / Modified: 20:46:38" itemprop="dateCreated datePublished" datetime="2019-01-04T20:34:36-08:00">2019-01-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
-<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
-<pre><code>Example 1:
-
-Input: &quot;()())()&quot;
-Output: [&quot;()()()&quot;, &quot;(())()&quot;]
-
-Example 2:
-
-Input: &quot;(a)())()&quot;
-Output: [&quot;(a)()()&quot;, &quot;(a())()&quot;]
-
-Example 3:
-
-Input: &quot;)(&quot;
-Output: [&quot;&quot;]
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>BFS. Use HashSet and LinkedList to store all possible substrings. And check if each substring is valid parentheses.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;String&gt; removeInvalidParentheses(String s) {
-
-    // s = s.replaceAll(&quot;[^().]&quot;, &quot;&quot;);
-    List&lt;String&gt; res = new ArrayList&lt;&gt;();
-    Queue&lt;String&gt; waitlist = new LinkedList&lt;&gt;();
-    Set&lt;String&gt; visited = new HashSet&lt;&gt;();
-    waitlist.add(s); visited.add(s);
-
-    while (!waitlist.isEmpty()) {
-        String cur = waitlist.poll();
-        if (isValidParentheses(cur)) {
-            if (!res.isEmpty() &amp;&amp; cur.length() &lt; res.get(0).length()) continue;
-            res.add(cur); continue;
-        }
-
-        for (int i = 0; i &lt; cur.length(); i++) {
-            if (cur.charAt(i) != &apos;(&apos; &amp;&amp; cur.charAt(i) != &apos;)&apos;) continue;
-            String sub = cur.substring(0, i) + cur.substring(i+1);
-            if (visited.contains(sub)) continue;
-            visited.add(sub); waitlist.add(sub);
-        }
-    }
-
-    return res;
-}
-
-private boolean isValidParentheses(String s) {
-    int count = 0;
-
-    for (int i = 0; i &lt; s.length(); i++) {
-        char c = s.charAt(i);
-        if (c == &apos;(&apos;) count++;
-        if (c == &apos;)&apos; &amp;&amp; count-- == 0) return false;
-    }
-
-    return count == 0;        
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2367,7 +2416,7 @@ private boolean isValidParentheses(String s) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

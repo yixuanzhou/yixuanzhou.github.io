@@ -104,25 +104,25 @@
 
 
 
-  <meta name="description" content="Problem Description:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two">
+  <meta name="description" content="Problem DescriptionGiven two strings s and t, determine if they are isomorphic. Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be repla">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2. Add Two Numbers">
-<meta property="og:url" content="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/index.html">
+<meta property="og:title" content="205. Isomorphic Strings">
+<meta property="og:url" content="https://yixuanzhou.github.io/2019/01/10/205-Isomorphic-Strings/index.html">
 <meta property="og:site_name" content="Ethan&#39;s Depot">
-<meta property="og:description" content="Problem Description:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two">
+<meta property="og:description" content="Problem DescriptionGiven two strings s and t, determine if they are isomorphic. Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be repla">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-16T09:11:16.909Z">
+<meta property="og:updated_time" content="2019-01-11T02:29:39.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2. Add Two Numbers">
-<meta name="twitter:description" content="Problem Description:You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two">
+<meta name="twitter:title" content="205. Isomorphic Strings">
+<meta name="twitter:description" content="Problem DescriptionGiven two strings s and t, determine if they are isomorphic. Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be repla">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/"/>
+  <link rel="canonical" href="https://yixuanzhou.github.io/2019/01/10/205-Isomorphic-Strings/"/>
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>2. Add Two Numbers | Ethan's Depot</title>
+  <title>205. Isomorphic Strings | Ethan's Depot</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/2-Add-Two-Numbers/">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/205-Isomorphic-Strings/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yixuan Zhou">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2. Add Two Numbers
+          <h1 class="post-title" itemprop="name headline">205. Isomorphic Strings
 
               
             
@@ -373,24 +373,12 @@
                 
               
 
-              <time title="Created: 2018-03-18 06:26:03" itemprop="dateCreated datePublished" datetime="2018-03-18T06:26:03-07:00">2018-03-18</time>
+              <time title="Created: 2019-01-10 18:21:45 / Modified: 18:29:39" itemprop="dateCreated datePublished" datetime="2019-01-10T18:21:45-08:00">2019-01-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
               
             
           </span>
@@ -441,41 +429,42 @@
       
 
       
-        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<pre><code>Example
-Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
-Output: 7 -&gt; 0 -&gt; 8
-Explanation: 342 + 465 = 807.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This is basically a sum of digit problem, we can do it by traverse these two linked lists, and sum the value of each ListNode sum. Then take the sum as the new ListNode of the result. Make sure that the carry is included. And note that if there is a carry when the traversal is over, don’t forget to add a new ListNode to the head.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    ListNode sum = new ListNode(0);
-    ListNode result = sum;
-    int carry = 0;
-    int v1, v2;
-    int currdigit;
-    while (l1 != null || l2 != null) {
-        if (l1 != null) {
-            v1 = l1.val;
-            l1 = l1.next;
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<pre><code>Example 1:
+
+Input: s = &quot;egg&quot;, t = &quot;add&quot;
+Output: true
+
+Example 2:
+
+Input: s = &quot;foo&quot;, t = &quot;bar&quot;
+Output: false
+
+Example 3:
+
+Input: s = &quot;paper&quot;, t = &quot;title&quot;
+Output: true
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a map to establish the corresponding characters between two strings s and t. Also use a list to store used characters in t.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isIsomorphic(String s, String t) {
+    Map&lt;Character, Character&gt; map = new HashMap&lt;&gt;();
+    List&lt;Character&gt; used = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; s.length(); i++) {
+        char curr_s = s.charAt(i);
+        char curr_t = t.charAt(i);
+        if (map.containsKey(curr_s)) {
+            if (map.get(curr_s) != curr_t) return false;
         } else {
-            v1 = 0;
+            if (used.contains(curr_t)) return false;
+            else {
+                used.add(curr_t);
+                map.put(curr_s, curr_t);
+            }
         }
-        if (l2 != null) {
-            v2 = l2.val;
-            l2 = l2.next;
-        } else {
-            v2 = 0;
-        }
-        currdigit = v1 + v2 + carry;
-        sum.next = new ListNode(currdigit % 10);
-        carry = currdigit &gt; 9 ? 1 : 0;
-        sum = sum.next;
     }
-    if (carry == 1) {
-        sum.next = new ListNode(1);
-    }
-    return result.next;
+
+    return true;
 }
 </code></pre>
       
@@ -513,8 +502,8 @@ Explanation: 342 + 465 = 807.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/16/794-Valid-Tic-Tac-Toe-State/" rel="next" title="794. Valid Tic-Tac-Toe State">
-                <i class="fa fa-chevron-left"></i> 794. Valid Tic-Tac-Toe State
+              <a href="/2019/01/10/20-Valid-Parentheses/" rel="next" title="20. Valid Parentheses">
+                <i class="fa fa-chevron-left"></i> 20. Valid Parentheses
               </a>
             
           </div>
@@ -523,8 +512,8 @@ Explanation: 342 + 465 = 807.
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/18/3-Longest-Substring-Without-Repeating-Characters/" rel="prev" title="3. Longest Substring Without Repeating Characters">
-                3. Longest Substring Without Repeating Characters <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/10/238-Product-of-Array-Except-Self/" rel="prev" title="238. Product of Array Except Self">
+                238. Product of Array Except Self <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -705,7 +694,7 @@ Explanation: 342 + 465 = 807.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
