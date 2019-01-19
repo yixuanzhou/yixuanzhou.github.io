@@ -329,6 +329,815 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/09/151-Reverse-Words-in-a-String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/09/151-Reverse-Words-in-a-String/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">151. Reverse Words in a String</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-09 20:34:54" itemprop="dateCreated datePublished" datetime="2019-01-09T20:34:54-08:00">2019-01-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-10 12:45:42" itemprop="dateModified" datetime="2019-01-10T12:45:42-08:00">2019-01-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an input string, reverse the string word by word.</p>
+<pre><code>Example:  
+
+Input: &quot;the sky is blue&quot;,
+Output: &quot;blue is sky the&quot;.
+</code></pre><p>Note:<br>A word is defined as a sequence of non-space characters.<br>Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.<br>You need to reduce multiple spaces between two words to a single space in the reversed string.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a StringBuilder, iterate the string from back to front and select word to be appended to StringBuilder.</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String reverseWords(String s) {
+  StringBuilder res = new StringBuilder();
+
+  for (int i = s.length()-1; i &gt; -1; i--) {
+      if (s.charAt(i) == &apos; &apos;) continue;
+      int start = i;
+      while (start &gt; -1 &amp;&amp; s.charAt(start) != &apos; &apos;) start--;
+      res.append(s.substring(start+1, i+1)).append(&quot; &quot;);
+      i = start;
+  }
+
+  return res.toString().trim();
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/09/653-Two-Sum-IV-Input-is-a-BST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/09/653-Two-Sum-IV-Input-is-a-BST/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">653. Two Sum IV - Input is a BST</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-09 20:28:41 / Modified: 20:33:18" itemprop="dateCreated datePublished" datetime="2019-01-09T20:28:41-08:00">2019-01-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.</p>
+<pre><code>Example 1:
+
+Input:
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 9
+Output: True
+
+Example 2:
+
+Input:
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 28
+Output: False
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Typical Two Sum. Use a stack to iterate through all nodes and add node’s value into a list. Just check if list contains (target-current).</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean findTarget(TreeNode root, int k) {
+    if (root == null) return false;
+    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+        TreeNode curr = stack.pop();
+        if (list.contains(k-curr.val)) return true;
+        list.add(curr.val);
+        if (curr.left != null) stack.push(curr.left);
+        if (curr.right != null) stack.push(curr.right);
+    }
+    return false;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/07/206-Reverse-Linked-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/07/206-Reverse-Linked-List/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">206. Reverse Linked List</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-07 14:35:20 / Modified: 18:21:14" itemprop="dateCreated datePublished" datetime="2019-01-07T14:35:20-08:00">2019-01-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Reverse a singly linked list.</p>
+<pre><code>Example:
+
+Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Iterative method just move the element that curr.next points to (the initial head of the list) to become the new head, illustration:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">head</th>
+<th style="text-align:center">curr</th>
+<th style="text-align:center">back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1 2 3 4 5</td>
+<td style="text-align:center">1 3 4 5</td>
+<td style="text-align:center">2 3 4 5 -&gt; 2 1 3 4 5</td>
+</tr>
+<tr>
+<td style="text-align:center">2 1 3 4 5</td>
+<td style="text-align:center">1 4 5</td>
+<td style="text-align:center">3 4 5 -&gt; 3 2 1 4 5</td>
+</tr>
+<tr>
+<td style="text-align:center">3 2 1 4 5</td>
+<td style="text-align:center">1 5</td>
+<td style="text-align:center">4 5 -&gt; 4 3 2 1 5</td>
+</tr>
+<tr>
+<td style="text-align:center">4 3 2 1 5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5 -&gt; 5 4 3 2 1</td>
+</tr>
+<tr>
+<td style="text-align:center">5 4 3 2 1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>Recursive method is pretty straight-forward, each time we take the head out of list and reverse the remaining list, then set head to be the remaining.next and set head.next to null.</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>// Recursive version
+public ListNode reverseList(ListNode head) {
+    if (head == null || head.next == null) return head;
+    ListNode tmp = head.next;
+    ListNode res = reverseList(tmp);
+    tmp.next = head;
+    head.next = null;
+    return res;
+}
+
+// Iterative version
+public ListNode reverseList(ListNode head) {
+    if (head == null || head.next == null) return head;
+    ListNode curr = head;
+    ListNode back = null;
+    while (curr.next != null) {
+        back = curr.next;
+        curr.next = curr.next.next;
+        back.next = head;
+        head = back;
+    }
+    return head;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">340. Longest Substring with At Most K Distinct Characters</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-06 23:39:12 / Modified: 23:42:11" itemprop="dateCreated datePublished" datetime="2019-01-06T23:39:12-08:00">2019-01-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<pre><code>Example 1:
+
+Input: s = &quot;eceba&quot;, k = 2
+Output: 3
+Explanation: T is &quot;ece&quot; which its length is 3.
+
+Example 2:
+
+Input: s = &quot;aa&quot;, k = 1
+Output: 2
+Explanation: T is &quot;aa&quot; which its length is 2.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Almost the same as LC159.<br>Use a HashMap to keep track of frequency of each character, if map size exceeds k, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
+<p>Time complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
+    int left = 0, right = 0;
+    int maxLength = 0;
+    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
+
+    while (right &lt; s.length()) {
+        char curr = s.charAt(right);
+        window.put(curr, window.getOrDefault(curr, 0)+1);
+        while (window.size() &gt; k) {
+            char prev = s.charAt(left++);
+            window.replace(prev, window.get(prev)-1);
+            window.remove(prev, 0);
+        }
+        maxLength = Math.max(maxLength, right-left+1);
+        right++;
+    }
+
+    return maxLength;    
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,767 +2292,11 @@ Output: 2
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/85-Maximal-Rectangle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/16/85-Maximal-Rectangle/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">85. Maximal Rectangle</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-16 21:27:17 / Modified: 21:42:10" itemprop="dateCreated datePublished" datetime="2018-12-16T21:27:17-08:00">2018-12-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area.</p>
-<p>Example:</p>
-<pre><code>Input:  
-[  
-  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],  
-  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],  
-  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],  
-  [&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;]  
-]  
-Output: 6
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem can be transformed into LC84 (Largest Rectangle in Histogram). So we iterate through all rows in matrix, and we count the number of continuous 1s in each column from the current row till the top. This would result in a histogram. Then we can calculate the area using that histogram (<a href="https://yixuanzhou.github.io/2018/12/16/84-Largest-Rectangle-in-Histogram/">LC84</a>).</p>
-<p>Complexity: O(n^2).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int maximalRectangle(char[][] matrix) {
-    if (matrix.length == 0) return 0;
-    int[] hist = new int[matrix[0].length];
-    int maxArea = 0;
-
-    for (int i = 0; i &lt; matrix.length; i++) {
-        char[] curr = matrix[i];
-        for (int j = 0; j &lt; curr.length; j++) {
-            if (curr[j] == &apos;1&apos;) hist[j] += 1;
-            else hist[j] = 0;
-        }            
-        maxArea = Math.max(maxArea, calculateArea(hist));
-    }
-
-    return maxArea;        
-}
-
-private int calculateArea(int[] heights) {
-    int area = 0;
-    Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
-
-    for (int i = 0; i &lt;= heights.length; i++) {
-        int h1 = i == heights.length ? 0 : heights[i];
-        if (stack.isEmpty() || h1 &gt;= heights[stack.peek()]) stack.push(i);
-        else {
-            int h = heights[stack.pop()];
-            int w = stack.isEmpty() ? i : i-stack.peek()-1;
-            area = Math.max(area, w*h);
-            i--;
-        }
-    }
-
-    return area;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/84-Largest-Rectangle-in-Histogram/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/16/84-Largest-Rectangle-in-Histogram/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">84. Largest Rectangle in Histogram</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-16 18:44:47 / Modified: 21:42:23" itemprop="dateCreated datePublished" datetime="2018-12-16T18:44:47-08:00">2018-12-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
-<p>For example, given a histogram where width of each bar is 1, given height = [2,1,5,6,2,3]. The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png" alt="alt text"></p>
-<p>Input: [2,1,5,6,2,3]<br>Output: 10</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem can be solved using stack. The stack stores the index of heights. At ith iteration, if heights[i] is bigger or equal to heights[top of stack], push index i into stack. On the other hand, if heights[i] is smaller than heights[top of stack], we know that the maximum area must happen before index i.</p>
-<p>Now on the top of stack gives is the index of the biggest height till index i. And the width is directly derived from stack.</p>
-<p>This solution comes from <a href="https://www.geeksforgeeks.org/largest-rectangle-under-histogram/" target="_blank" rel="noopener">GeekforGeeks</a>.</p>
-<p>Complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int largestRectangleArea(int[] heights) {
-    if (heights == null || heights.length == 0) return 0;
-    Stack&lt;Integer&gt; s = new Stack&lt;&gt;();
-    int maxArea = 0;
-    for (int i = 0; i &lt;= heights.length; i++) {
-        int h1 = i == heights.length ? 0 : heights[i];
-        if (s.isEmpty() || h1 &gt;= heights[s.peek()]) s.push(i);
-        else {
-            int h = heights[s.pop()];
-            int w = s.isEmpty() ? i : i-s.peek()-1;
-            maxArea = Math.max(maxArea, w*h);
-            i--;
-        }
-    }
-    return maxArea;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">Market Returns Volatility based on Markov Chain Monte Carlo</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-16 14:33:32 / Modified: 16:05:27" itemprop="dateCreated datePublished" datetime="2018-12-16T14:33:32-08:00">2018-12-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The variance of returns of assets tends to change over time. The stochastic volatility model (SV) attempts to model this variance by assuming that they follow some latent stochastic process. However, even the simplest SV model is difficult to fit due to various reasons. Naive strategy of maximum likelihood estimation fails due to the fact that the marginal distribution is evaluated in high dimensional space. Monte Carlo Markov Chain (MCMC), on the other hand, faces difficulty in simulating some non-analytical distributions and people needs to resort to indirect approach such as Metropolis-Hastings algorithm or reject-accept sampling.</p>
-<p>This article is about using MCMC algorithm for SV model. And model is applied in estimating the stock price volatility of <a href="https://www.marketwatch.com/investing/stock/600891?countrycode=cn" target="_blank" rel="noopener">600891:CH</a> in Shanghai Stock Exchange. All experiments are implemented using Jupyter Notebook under Python3.</p>
-<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>Consider $$y_{t}, t = 1,2,…N$$ is the stock price series, the standard stochastic volatility model is:</p>
-<p>$$y<em>{t} = \sqrt{h</em>{t}}\cdot u<em>{t}, u</em>{t}\sim N(0, 1)$$</p>
-<p>$$lnh<em>{t} = \mu + \phi\cdot lnh</em>{t-1} + \sigma<em>{n}\eta</em>{t}, \eta_{t}\sim N(0,1)$$</p>
-<p>where $$h<em>{t}$$ is the unobserved log-volatility of $$y</em>{t}$$, the error terms $$\mu<em>{t}$$ and $$\eta</em>{t}$$ are Gaussian white noise sequence, $$\phi$$ is the volatility resistance, and $$\sigma_{n}^2$$ is the standard deviation of the volatility.</p>
-<h2 id="Experienment"><a href="#Experienment" class="headerlink" title="Experienment"></a>Experienment</h2><p>Data samples are the index of Harbin Churin Group Jointstock Co Ltd (stock quote: 600891:CH), from Shanghai Composite. The data range is from November 22, 2015 to November 22, 2018. And data was collected using <a href="https://pypi.org/project/tushare/" target="_blank" rel="noopener">TuShare</a>, which is a Python package designed for crawling historical and Real-time Quotes data of mainland China stocks.</p>
-<p>The equation of the return rate is defined as:</p>
-<p>$$y<em>{t} = log(price</em>{t+1}/price_{t})$$</p>
-<p>where $$price_{t}$$ is the closing price at day t.</p>
-<p>The stock price of 600891:CH during the given period (11/22/2015~11/22/2018) and the log change of prices during that period.</p>
-<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/prices.png" alt=""></p>
-<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_change.png" alt=""></p>
-<p>All sampled h:</p>
-<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/h.png" alt=""></p>
-<p>The estimated stochastic volatility (mean of all sampled h) and absolute returns ($$|y_t|$$)</p>
-<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/log_volatility.png" alt=""></p>
-<p><img src="/2018/12/16/Stochastic-Volatility-based-on-Markov-Chain-Monte-Carlo/return.png" alt=""></p>
-<p>From above two figures, one can see that the estimated stochastic volatility closely mimics the movements of absolute returns.</p>
-<p><a href="">Detailed report is available here!</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Eric Jacquier, Nicholas G. Polson and Peter E. Rossi, “Bayesian Analysis of Stochastic Volatility Models”, Journal of Business &amp; Economic Statistics, 1994, Vol. 12, No. 4</p>
-<p>[2] Kim, S., Shephard, N., &amp; Chib, S. (1998). Stochastic volatility: Likelihood inference and comparison with ARCH models, Review of Economic Studies 65: 361–393</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/18/6-ZigZag-Conversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/18/6-ZigZag-Conversion/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/2/index.html">6. ZigZag Conversion</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-18 21:26:11" itemprop="dateCreated datePublished" datetime="2018-03-18T21:26:11-07:00">2018-03-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>The string <strong>“PAYPALISHIRING”</strong> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<pre><code>P   A   H   N
-A P L S I I G
-Y   I   R
-</code></pre><p>And then read line by line: <strong>“PAHNAPLSIIGYIR”</strong></p>
-<p>Write the code that will take a string and make this conversion given a number of rows:</p>
-<pre><code>string convert(string text, int nRows);
-</code></pre><p><strong>convert(“PAYPALISHIRING”, 3)</strong> should return <strong>“PAHNAPLSIIGYIR”</strong>.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>An intuitively way to do this is to construct nRows of strings, and add char to each string according to the zigzag order. We can use StringBuilder because it is much faster than string concatenation.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String convert(String s, int numRows) {
-    StringBuilder zigzag = new StringBuilder();
-    StringBuilder[] sbarray = new StringBuilder[numRows];
-    for(int i = 0; i &lt; numRows; i++){
-        sbarray[i] = new StringBuilder(&quot;&quot;);
-    }
-    int i = 0;
-    while (i &lt; s.length()) {
-        for (int j = 0; j &lt; numRows; j++) {
-            if (i &gt;= s.length()) { break; }
-            sbarray[j].append(s.charAt(i++));
-        }
-
-        for (int k = numRows-2; k &gt; 0; k--) {
-            if (i &gt;= s.length()) { break; }
-            sbarray[k].append(s.charAt(i++));
-        }
-    }
-
-    for (StringBuilder sb : sbarray) {
-        zigzag.append(sb.toString());
-    }
-
-    return zigzag.toString();
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2290,7 +2343,7 @@ Y   I   R
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

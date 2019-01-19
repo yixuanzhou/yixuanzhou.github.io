@@ -329,6 +329,745 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/02/112-Path-Sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/02/112-Path-Sum/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">112. Path Sum</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-02 23:29:42" itemprop="dateCreated datePublished" datetime="2018-03-02T23:29:42-08:00">2018-03-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Keep in mind that it’s a root-to-<strong>leaf</strong> path.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean hasPathSum(TreeNode root, int sum) {
+    if (root == null) { return false; }
+    if (root.left == null &amp;&amp; root.right == null) {
+        if (sum-root.val == 0) { return true; }
+    }
+    return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/01/111-Minimum-Depth-of-Binary-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/01/111-Minimum-Depth-of-Binary-Tree/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">111. Minimum Depth of Binary Tree</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-01 09:36:49" itemprop="dateCreated datePublished" datetime="2018-03-01T09:36:49-08:00">2018-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, find its minimum depth.</p>
+<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a helper function to calculate the depth of each node, and if the node is a leaf, return its depth. Then choose the minimum depth among all leaves.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int minDepth(TreeNode root) {
+    if (root == null) { return 0; }
+    int depth = 1;
+    return minDepthHelper(root, depth);
+}
+
+private int minDepthHelper(TreeNode root, int depth) {
+    if (root == null) { return Integer.MAX_VALUE; }
+    if (root.left == null &amp;&amp; root.right == null) {
+        return depth;
+    } else {
+        return Math.min(minDepthHelper(root.left, ++depth), minDepthHelper(root.right, ++depth));
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/01/110-Balanced-Binary-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/01/110-Balanced-Binary-Tree/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">110. Balanced Binary Tree</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-01 09:30:24" itemprop="dateCreated datePublished" datetime="2018-03-01T09:30:24-08:00">2018-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as:</p>
+<pre><code>a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For this problem, we can calculate and compare the depth of two subtrees of every nodes.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isBalanced(TreeNode root) {
+    if (root == null) { return true;}
+    if (root.left == null &amp;&amp; root.right == null) { return true; }        
+    if (Math.abs(calcDepth(root.left) - calcDepth(root.right)) &gt; 1) { return false; }        
+    return isBalanced(root.left) &amp;&amp; isBalanced(root.right);             
+}
+
+private int calcDepth(TreeNode root) {
+    if (root == null) { return 0; }
+    if (root.left == null &amp;&amp; root.right == null) { return 1; }
+    return 1 + Math.max(calcDepth(root.left), calcDepth(root.right));
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/28/108-Convert-Sorted-Array-to-Binary-Search-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/28/108-Convert-Sorted-Array-to-Binary-Search-Tree/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">108. Convert Sorted Array to Binary Search Tree</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-02-28 09:13:39" itemprop="dateCreated datePublished" datetime="2018-02-28T09:13:39-08:00">2018-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>We can use dichotomy method to solve this problem. Since it’s a sorted array, the mid-point of the array is also the mid-value of the array. So we can use the mid-point as the root of each subtree. And for the first half of the array, make it as the left subtree, the second half as the right subtree. And do it recursively.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public TreeNode sortedArrayToBST(int[] nums) {
+    if (nums.length == 0) { return null; }
+    if (nums.length == 1) { return new TreeNode(nums[0]); }
+
+    TreeNode root = new TreeNode(nums[nums.length/2]);
+    root.left = sortedArrayToBST(Arrays.copyOfRange(nums, 0, nums.length/2));
+    root.right = sortedArrayToBST(Arrays.copyOfRange(nums, nums.length/2+1, nums.length));
+
+    return root;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/25/104-Maximum-Depth-of-Binary-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1497,754 +2236,11 @@ public boolean isSymmetricStack(TreeNode root) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/69-Sqrt(x)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/02/12/69-Sqrt(x)/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">69. Sqrt(x)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-02-12 18:49:54" itemprop="dateCreated datePublished" datetime="2018-02-12T18:49:54-08:00">2018-02-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Implement int sqrt(int x).</p>
-<p>Compute and return the square root of x.</p>
-<p>x is guaranteed to be a non-negative integer.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>A big obstacle of this problem is to deal with the integer overflow. I mean, the result of integer operation should not exceed the maximum value of Java (-2,147,483,648 ~ 2,147,483,647). For example, to get a mid-point, we typically calculate the half of the left plus right. However, if left plus right exceeds the maximum integer of Java, which would result in troubles. To avoid this, we can use methods like <strong>“mid = left + (right - left) / 2”</strong> and <strong>“mid &gt; x / mid”</strong>.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int sqrt_x(int x) {
-    if (x == 0 || x == 1) {
-        return x;
-    }
-    int left = 0;
-    int right = x;
-    int mid;
-    while (true) {
-        mid = left + (right - left) / 2;  // avoid overflow
-        if (mid &gt; x / mid) {  // avoid overflow
-            right = mid;
-        }
-        else if (mid * mid == x) {
-            return mid;
-        }
-        else {
-            if ((mid + 1) &gt; x / (mid + 1)) { return mid; }
-            left = mid;
-        }
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/02/12/67-Add-Binary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/02/12/67-Add-Binary/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">67. Add Binary</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-02-12 16:16:32" itemprop="dateCreated datePublished" datetime="2018-02-12T16:16:32-08:00">2018-02-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given two binary strings, return their sum (also a binary string).</p>
-<p>For example, a = “11”, b = “1”, Return “100”.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Not much thing to talk about this problem. Note that an integer should be used to keep track of the carry. Originally I used “result = Integer.toString(sum) + result” to update result，however, Intellij IDE reminds me to use <strong>“StringBuilder”</strong> when updating String in loops. So, that’s it.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String addBinary(String a, String b) {
-    int la = a.length() - 1; int lb = b.length() - 1; int carry = 0;
-    StringBuilder result = new StringBuilder();
-
-    while (la &gt;= 0 || lb &gt;= 0) {
-        int sum = carry;            
-        if (la &gt;= 0) {sum += a.charAt(la) - &apos;0&apos;; la--;}
-        if (lb &gt;= 0) {sum += b.charAt(lb) - &apos;0&apos;; lb--;}
-        if (sum &gt; 1) {carry = 1; sum = sum % 2;}
-        else {carry = 0;}
-        result.insert(0, sum);
-    }
-    if (carry &gt; 0) {result.insert(0, carry);}
-    return result.toString();
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">Setup Shadowsocks server on Unbuntu</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-10-29 20:49:10" itemprop="dateCreated datePublished" datetime="2017-10-29T20:49:10-07:00">2017-10-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Thanks to the great great GFW, recently I have difficulty in using foreign web services. Since VPN applications are expensive and not so reliable, I decide to use Shadowsocks server to reach the outside world. Besides, Amazon Web Service (AWS) is free to use for 12 months, so it is not a tough decision for me to choose AWS as my web service.</p>
-<h2 id="Amazon-Web-Service"><a href="#Amazon-Web-Service" class="headerlink" title="Amazon Web Service"></a>Amazon Web Service</h2><p>First of all, go to <a href="aws.amazon.com">aws.amazon.com</a> to register your cloud service, then go to <strong>AWS Management Console</strong> and select <strong>EC2</strong> service. There are multiple regions of EC2 available for you to choose. Personally, I choose Tokyo service because Tokyo is the closest service to Shanghai. Thus it is the most stable service and fast service. After registering, one can simply create an instance which would later be used as a ladder.</p>
-<p>The most important thing in creating an instance is to download and keep your <strong>key file</strong> (*.pem) safely, which would be used to connect the instance.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsins.png" alt=""></p>
-<p>After that, you can connect to the instance by simply following the instructions:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awsconn.png" alt=""></p>
-<p>A successful connection through SSH should be like this:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/awslog.png" alt=""></p>
-<p>Next, you should install Shadowsocks on the instance:</p>
-<pre><code>sudo yum install -y python-setuptools
-sudo easy_install pip
-sudo pip install shadowsocks
-</code></pre><p>And configure Shadowsocks server:</p>
-<pre><code>mkdir /etc/shadowsocks
-sudo vim /etc/shadowsocks/config.json
-</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssconfig.png" alt=""></p>
-<p>Run &amp; Stop Shadowsocks server:</p>
-<pre><code>sudo ssserver -c /etc/shadowsocks/config.json -d start
-sudo ssserver -c /etc/shadowsocks/config.json -d stop
-sudo ssserver -c /etc/shadowsocks/config.json -d restart
-</code></pre><p>Note that you need to do some changes in the <strong>Security Group</strong>, specifically, to add an inbound rule. This means that one can connect instance through the port, otherwise, you would be blocked out and never connect this instance.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/inbound.png" alt=""></p>
-<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>First of all, install the Shadowsocks-GUI from <a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="noopener">github.com/shadowsocks/shadowsocks-qt5</a>, which is a cross-platform Shadowsocks client. Thank you guys.</p>
-<p>Second, manually add a connection profile. Enter the corresponding information as specified in the above /etc/shadowsocks.json file on your server. Once done, click OK to save the profile.</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt1.png" alt=""></p>
-<p>Last, try connecting the Shadowsocks server, a successful connection should be like this:</p>
-<p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ssqt0.png" alt=""></p>
-<p><strong>Important!</strong> One must edit the Ubuntu system network setting to let the proxy work.</p>
-<pre><code>System Settings =&gt; Network =&gt; Network proxy, Method =&gt; Manual    
-HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
-</code></pre><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/ubuntunw.png" alt=""></p>
-<h2 id="Here-we-go-Come-on"><a href="#Here-we-go-Come-on" class="headerlink" title="Here we go, Come on!"></a>Here we go, Come on!</h2><p><img src="/2017/10/29/Setup-Shadowsocks-server-on-Unbuntu/gg.png" alt=""></p>
-<p>Actually, the GFW blocks numerous harmful things like porn for Chinese netizens, which is benefical for the clean and healthy Internet environment. However, in the long run, GFW will disturb Chinese netizens from acknowledging global events and affairs, and most importantly, keep the regime safe and solid. All in all, We have no choice, but we have tools to make us powerful!</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/07/30/Difference-between-a-b-and-a-a-b-in-Python/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/5/index.html">Difference between 'a += b' and 'a = a + b' in Python</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-07-30 17:48:10" itemprop="dateCreated datePublished" datetime="2017-07-30T17:48:10-07:00">2017-07-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="a-b"><a href="#a-b" class="headerlink" title="a += b"></a>a += b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 += [3]
-&gt;&gt;&gt; a1
-[0, 1, 2, 3]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><h2 id="a-a-b"><a href="#a-a-b" class="headerlink" title="a = a + b"></a>a = a + b</h2><pre><code>&gt;&gt;&gt; a1 = [0, 1, 2]
-&gt;&gt;&gt; a2 = a1
-&gt;&gt;&gt; a2 = a2 + [3]
-&gt;&gt;&gt; a1
-[0, 1, 2]
-&gt;&gt;&gt; a2
-[0, 1, 2, 3]
-</code></pre><p>Obviously there is difference between ‘a += b’ and ‘a = a + b’, it is because in Python, ‘+=’ operator call ‘__iadd__‘ method, which is different from ‘__add__‘ method called by ‘+’ operator.</p>
-<p>However, the difference only occurs in <strong>mutable objects</strong>.</p>
-<p>‘__iadd__‘ method directly <strong>updates</strong> the original object after the operation, which means the previous pointer to that object is unchanged. The return value of ‘__iadd__‘ method is None.</p>
-<p>‘__add__‘ method would return <strong>a new object</strong> and change the previous pointer to this new object.</p>
-<p>It must be noted that for immutable objects like ‘int’ and ‘string’, the functions of these two methods are same since immutable objects are directly used by interpreter, not referenced like ‘list’ object.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2291,7 +2287,7 @@ HTTP Proxy =&gt; empty 8080, Socks Host =&gt; 127.0.0.1 1080
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

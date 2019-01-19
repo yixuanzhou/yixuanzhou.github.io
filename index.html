@@ -329,6 +329,759 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/19/857-Minimum-Cost-to-Hire-K-Workers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/19/857-Minimum-Cost-to-Hire-K-Workers/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">857. Minimum Cost to Hire K Workers</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-19 00:16:53 / Modified: 00:25:44" itemprop="dateCreated datePublished" datetime="2019-01-19T00:16:53-08:00">2019-01-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>There are N workers.  The i-th worker has a quality[i] and a minimum wage expectation wage[i].</p>
+<p>Now we want to hire exactly K workers to form a paid group.  When hiring a group of K workers, we must pay them according to the following rules:</p>
+<p>Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.<br>Every worker in the paid group must be paid at least their minimum wage expectation.<br>Return the least amount of money needed to form a paid group satisfying the above conditions.</p>
+<pre><code>Example 1:
+
+Input: quality = [10,20,5], wage = [70,50,30], K = 2
+Output: 105.00000
+Explanation: We pay 70 to 0-th worker and 35 to 2-th worker.
+
+Example 2:
+
+Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], K = 3
+Output: 30.66667
+Explanation: We pay 4 to 0-th worker, 13.33333 to 2-th and 3-th workers seperately.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>From: <a href="https://leetcode.com/problems/minimum-cost-to-hire-k-workers/discuss/185085/75ms-Java-with-Explanations" target="_blank" rel="noopener">LeetCode</a></p>
+<p>Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.<br>-&gt;</p>
+<pre><code>quality[i]   money[i]
+_________  = ________
+quality[j]   money[j]
+
+money[i] / quality[i] = money[j] / quality[j] -- ratio
+</code></pre><p>That is, the group of people should have the same ratio.</p>
+<p>Every worker in the paid group must be paid at least their minimum wage expectation.<br>-&gt;</p>
+<pre><code>money[i] &gt;= wage[i]
+ratio &gt;= wage[i] / quality[i] -- ratio2
+</code></pre><p>-&gt;<br><b>ratio</b> is at least the maximum <b>ratio2</b> within the group of K people.</p>
+<p>If we keep current candidates in a priority queue as below,</p>
+<pre><code>|-- &lt; k candidates--|    
+            new worker to join is with higher ratio2
+</code></pre><p>If there are k + 1candidates, we pop the highest quality to reduce total cost.<br>If there are k candidates, we can calculate the total cost.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public double mincostToHireWorkers(int[] quality, int[] wage, int K) {
+    double[][] qualityRatios = new double[quality.length][2];
+
+    for (int i = 0; i &lt; quality.length; i++) {
+        qualityRatios[i][0] = quality[i];
+        qualityRatios[i][1] = (double) wage[i] / quality[i];
+    }
+
+    Arrays.sort(qualityRatios, (a, b) -&gt; Double.compare(a[1], b[1]));
+    PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;((a, b) -&gt; Integer.compare(b, a));
+    double res = Double.MAX_VALUE;
+    int sumQuality = 0;
+
+    for (int i = 0; i &lt; qualityRatios.length; i++) {
+        pq.add((int) qualityRatios[i][0]);
+        sumQuality += qualityRatios[i][0];
+        if (pq.size() &gt; K) sumQuality -= pq.poll();
+        if (pq.size() == K) res = Math.min(res, qualityRatios[i][1]*sumQuality);
+    }
+
+    return res;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/17/829-Consecutive-Numbers-Sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/17/829-Consecutive-Numbers-Sum/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">829. Consecutive Numbers Sum</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-17 23:59:48" itemprop="dateCreated datePublished" datetime="2019-01-17T23:59:48-08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-18 00:02:02" itemprop="dateModified" datetime="2019-01-18T00:02:02-08:00">2019-01-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a positive integer N, how many ways can we write it as a sum of consecutive positive integers?</p>
+<pre><code>Example 1:
+
+Input: 5
+Output: 2
+Explanation: 5 = 5 = 2 + 3
+
+Example 2:
+
+Input: 9
+Output: 3
+Explanation: 9 = 9 = 4 + 5 = 2 + 3 + 4
+
+Example 3:
+
+Input: 15
+Output: 4
+Explanation: 15 = 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>It’s literally an arithmetic progression problem.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int consecutiveNumbersSum(int N) {
+    int res = 1;
+    // (a_1+a_n) * d / 2 = N =&gt; (a_1+a_1+d-1) * d / 2 = N =&gt; a_1 = N/d - (d + 1)/2
+    for (double i = 2; i &lt; Math.sqrt(2*N); i++) {
+        double a_1 = N/i - (i-1)/2;
+        if (a_1 &gt; 0 &amp;&amp; a_1 == Math.ceil(a_1)) res += 1; // check if a_1 is an valid integer
+    }
+    return res;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/157-Read-N-Characters-Given-Read4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/13/157-Read-N-Characters-Given-Read4/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">157. Read N Characters Given Read4</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-13 19:08:18" itemprop="dateCreated datePublished" datetime="2019-01-13T19:08:18-08:00">2019-01-13</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/13/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">158. Read N Characters Given Read4 II - Call multiple times</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-13 17:26:39 / Modified: 17:32:54" itemprop="dateCreated datePublished" datetime="2019-01-13T17:26:39-08:00">2019-01-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>The API: int read4(char *buf) reads 4 characters at a time from a file.</p>
+<p>The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.</p>
+<p>By using the read4 API, implement the function int read(char *buf, int n) that reads n characters from the file.</p>
+<p>Note:<br>The read function may be called multiple times.</p>
+<pre><code>Example 1:
+
+Given buf = &quot;abc&quot;
+read(&quot;abc&quot;, 1) // returns &quot;a&quot;
+read(&quot;abc&quot;, 2); // returns &quot;bc&quot;
+read(&quot;abc&quot;, 1); // returns &quot;&quot;
+
+Example 2:
+
+Given buf = &quot;abc&quot;
+read(&quot;abc&quot;, 4) // returns &quot;abc&quot;
+read(&quot;abc&quot;, 1); // returns &quot;&quot;
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Three points to understand this problem:</p>
+<ol>
+<li>char[] buf is not the source, it’s the output buffer.</li>
+<li>We just need to return the length of output buffer.</li>
+</ol>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>/* The read4 API is defined in the parent class Reader4.
+      int read4(char[] buf); \*/
+
+public class Solution extends Reader4 {
+    /**
+     * @param buf Destination buffer
+     * @param n   Maximum number of characters to read
+     * @return    The number of characters read
+     \*/
+
+    private int bufferPtr = 0;
+    private int bufferCnt = 0;
+    private char[] buffer = new char[4];
+    public int read(char[] buf, int n) {
+        int ptr = 0;
+        while (ptr &lt; n) {
+            if (bufferPtr == 0) bufferCnt = read4(buffer);
+            if (bufferCnt == 0) break;
+            while (ptr &lt; n &amp;&amp; bufferPtr &lt; bufferCnt) {
+                buf[ptr++] = buffer[bufferPtr++];
+            }
+            if (bufferPtr &gt;= bufferCnt) bufferPtr = 0;
+        }
+        return ptr;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/642-Design-Search-Autocomplete-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1556,820 +2309,11 @@ return its zigzag level order traversal as:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/09/151-Reverse-Words-in-a-String/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/09/151-Reverse-Words-in-a-String/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">151. Reverse Words in a String</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-09 20:34:54" itemprop="dateCreated datePublished" datetime="2019-01-09T20:34:54-08:00">2019-01-09</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-10 12:45:42" itemprop="dateModified" datetime="2019-01-10T12:45:42-08:00">2019-01-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an input string, reverse the string word by word.</p>
-<pre><code>Example:  
-
-Input: &quot;the sky is blue&quot;,
-Output: &quot;blue is sky the&quot;.
-</code></pre><p>Note:<br>A word is defined as a sequence of non-space characters.<br>Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.<br>You need to reduce multiple spaces between two words to a single space in the reversed string.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a StringBuilder, iterate the string from back to front and select word to be appended to StringBuilder.</p>
-<p>Time complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public String reverseWords(String s) {
-  StringBuilder res = new StringBuilder();
-
-  for (int i = s.length()-1; i &gt; -1; i--) {
-      if (s.charAt(i) == &apos; &apos;) continue;
-      int start = i;
-      while (start &gt; -1 &amp;&amp; s.charAt(start) != &apos; &apos;) start--;
-      res.append(s.substring(start+1, i+1)).append(&quot; &quot;);
-      i = start;
-  }
-
-  return res.toString().trim();
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/09/653-Two-Sum-IV-Input-is-a-BST/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/09/653-Two-Sum-IV-Input-is-a-BST/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">653. Two Sum IV - Input is a BST</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-09 20:28:41 / Modified: 20:33:18" itemprop="dateCreated datePublished" datetime="2019-01-09T20:28:41-08:00">2019-01-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.</p>
-<pre><code>Example 1:
-
-Input:
-    5
-   / \
-  3   6
- / \   \
-2   4   7
-
-Target = 9
-Output: True
-
-Example 2:
-
-Input:
-    5
-   / \
-  3   6
- / \   \
-2   4   7
-
-Target = 28
-Output: False
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Typical Two Sum. Use a stack to iterate through all nodes and add node’s value into a list. Just check if list contains (target-current).</p>
-<p>Time complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean findTarget(TreeNode root, int k) {
-    if (root == null) return false;
-    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
-    stack.push(root);
-    while (!stack.isEmpty()) {
-        TreeNode curr = stack.pop();
-        if (list.contains(k-curr.val)) return true;
-        list.add(curr.val);
-        if (curr.left != null) stack.push(curr.left);
-        if (curr.right != null) stack.push(curr.right);
-    }
-    return false;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/07/206-Reverse-Linked-List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/07/206-Reverse-Linked-List/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">206. Reverse Linked List</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-07 14:35:20 / Modified: 18:21:14" itemprop="dateCreated datePublished" datetime="2019-01-07T14:35:20-08:00">2019-01-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Reverse a singly linked list.</p>
-<pre><code>Example:
-
-Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
-Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Iterative method just move the element that curr.next points to (the initial head of the list) to become the new head, illustration:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">head</th>
-<th style="text-align:center">curr</th>
-<th style="text-align:center">back</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1 2 3 4 5</td>
-<td style="text-align:center">1 3 4 5</td>
-<td style="text-align:center">2 3 4 5 -&gt; 2 1 3 4 5</td>
-</tr>
-<tr>
-<td style="text-align:center">2 1 3 4 5</td>
-<td style="text-align:center">1 4 5</td>
-<td style="text-align:center">3 4 5 -&gt; 3 2 1 4 5</td>
-</tr>
-<tr>
-<td style="text-align:center">3 2 1 4 5</td>
-<td style="text-align:center">1 5</td>
-<td style="text-align:center">4 5 -&gt; 4 3 2 1 5</td>
-</tr>
-<tr>
-<td style="text-align:center">4 3 2 1 5</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">5 -&gt; 5 4 3 2 1</td>
-</tr>
-<tr>
-<td style="text-align:center">5 4 3 2 1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<p>Recursive method is pretty straight-forward, each time we take the head out of list and reverse the remaining list, then set head to be the remaining.next and set head.next to null.</p>
-<p>Time complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>// Recursive version
-public ListNode reverseList(ListNode head) {
-    if (head == null || head.next == null) return head;
-    ListNode tmp = head.next;
-    ListNode res = reverseList(tmp);
-    tmp.next = head;
-    head.next = null;
-    return res;
-}
-
-// Iterative version
-public ListNode reverseList(ListNode head) {
-    if (head == null || head.next == null) return head;
-    ListNode curr = head;
-    ListNode back = null;
-    while (curr.next != null) {
-        back = curr.next;
-        curr.next = curr.next.next;
-        back.next = head;
-        head = back;
-    }
-    return head;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">340. Longest Substring with At Most K Distinct Characters</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-06 23:39:12 / Modified: 23:42:11" itemprop="dateCreated datePublished" datetime="2019-01-06T23:39:12-08:00">2019-01-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
-<pre><code>Example 1:
-
-Input: s = &quot;eceba&quot;, k = 2
-Output: 3
-Explanation: T is &quot;ece&quot; which its length is 3.
-
-Example 2:
-
-Input: s = &quot;aa&quot;, k = 1
-Output: 2
-Explanation: T is &quot;aa&quot; which its length is 2.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Almost the same as LC159.<br>Use a HashMap to keep track of frequency of each character, if map size exceeds k, deduct the frequency of character pointed by left pointer by 1 and move forward the left pointer. Remove the character from map if the frequency reaches 0;</p>
-<p>Time complexity: O(n).</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int lengthOfLongestSubstringTwoDistinct(String s) {
-    int left = 0, right = 0;
-    int maxLength = 0;
-    Map&lt;Character, Integer&gt; window = new HashMap&lt;&gt;();
-
-    while (right &lt; s.length()) {
-        char curr = s.charAt(right);
-        window.put(curr, window.getOrDefault(curr, 0)+1);
-        while (window.size() &gt; k) {
-            char prev = s.charAt(left++);
-            window.replace(prev, window.get(prev)-1);
-            window.remove(prev, 0);
-        }
-        maxLength = Math.max(maxLength, right-left+1);
-        right++;
-    }
-
-    return maxLength;    
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2416,7 +2360,7 @@ Explanation: T is &quot;aa&quot; which its length is 2.
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
