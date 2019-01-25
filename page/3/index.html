@@ -329,6 +329,395 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/04/301-Remove-Invalid-Parentheses/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/04/301-Remove-Invalid-Parentheses/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">301. Remove Invalid Parentheses</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-04 20:34:36 / Modified: 20:46:38" itemprop="dateCreated datePublished" datetime="2019-01-04T20:34:36-08:00">2019-01-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
+<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
+<pre><code>Example 1:
+
+Input: &quot;()())()&quot;
+Output: [&quot;()()()&quot;, &quot;(())()&quot;]
+
+Example 2:
+
+Input: &quot;(a)())()&quot;
+Output: [&quot;(a)()()&quot;, &quot;(a())()&quot;]
+
+Example 3:
+
+Input: &quot;)(&quot;
+Output: [&quot;&quot;]
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>BFS. Use HashSet and LinkedList to store all possible substrings. And check if each substring is valid parentheses.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;String&gt; removeInvalidParentheses(String s) {
+
+    // s = s.replaceAll(&quot;[^().]&quot;, &quot;&quot;);
+    List&lt;String&gt; res = new ArrayList&lt;&gt;();
+    Queue&lt;String&gt; waitlist = new LinkedList&lt;&gt;();
+    Set&lt;String&gt; visited = new HashSet&lt;&gt;();
+    waitlist.add(s); visited.add(s);
+
+    while (!waitlist.isEmpty()) {
+        String cur = waitlist.poll();
+        if (isValidParentheses(cur)) {
+            if (!res.isEmpty() &amp;&amp; cur.length() &lt; res.get(0).length()) continue;
+            res.add(cur); continue;
+        }
+
+        for (int i = 0; i &lt; cur.length(); i++) {
+            if (cur.charAt(i) != &apos;(&apos; &amp;&amp; cur.charAt(i) != &apos;)&apos;) continue;
+            String sub = cur.substring(0, i) + cur.substring(i+1);
+            if (visited.contains(sub)) continue;
+            visited.add(sub); waitlist.add(sub);
+        }
+    }
+
+    return res;
+}
+
+private boolean isValidParentheses(String s) {
+    int count = 0;
+
+    for (int i = 0; i &lt; s.length(); i++) {
+        char c = s.charAt(i);
+        if (c == &apos;(&apos;) count++;
+        if (c == &apos;)&apos; &amp;&amp; count-- == 0) return false;
+    }
+
+    return count == 0;        
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/04/560-Subarray-Sum-Equals-K/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/04/560-Subarray-Sum-Equals-K/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">560. Subarray Sum Equals K</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-04 17:01:03 / Modified: 17:35:25" itemprop="dateCreated datePublished" datetime="2019-01-04T17:01:03-08:00">2019-01-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.</p>
+<p>Example:</p>
+<pre><code>Input: nums = [1,1,1], k = 2
+Output: 2
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>For this problem we can use a map to store the sum between 0 and i. By doing that we can easily get the sum of continuous array between i and j.</p>
+<p>Time complexity: O(n), Space complexity: O(n).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int subarraySum(int[] nums, int k) {
+    int sum = 0, cnt = 0;
+    Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+    map.put(0, 1);
+    for (int i = 0; i &lt; nums.length; i++) {
+        sum += nums[i];
+        if (map.containsKey(sum-k)) cnt += map.get(sum-k);
+        map.put(sum, map.getOrDefault(sum, 0)+1);
+    }
+    return cnt;        
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/12/16/85-Maximal-Rectangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1933,445 +2322,6 @@ Explanation: 342 + 465 = 807.
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/794-Valid-Tic-Tac-Toe-State/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/16/794-Valid-Tic-Tac-Toe-State/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">794. Valid Tic-Tac-Toe State</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-16 20:03:41" itemprop="dateCreated datePublished" datetime="2018-03-16T20:03:41-07:00">2018-03-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.</p>
-<p>The board is a 3 x 3 array, and consists of characters “ “, “X”, and “O”.  The “ “ character represents an empty square.</p>
-<p>Here are the rules of Tic-Tac-Toe:</p>
-<ul>
-<li>Players take turns placing characters into empty squares (“ “).</li>
-<li>The first player always places “X” characters, while the second player always places “O” characters.</li>
-<li>“X” and “O” characters are always placed into empty squares, never filled ones.</li>
-<li>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</li>
-<li>The game also ends if all squares are non-empty.</li>
-<li>No more moves can be played if the game is over.</li>
-</ul>
-<pre><code>Example 1:
-Input: board = [&quot;O  &quot;, &quot;   &quot;, &quot;   &quot;]
-Output: false
-</code></pre><p>Explanation: The first player always plays “X”.</p>
-<pre><code>Example 2:
-Input: board = [&quot;XOX&quot;, &quot; X &quot;, &quot;   &quot;]
-Output: false
-</code></pre><p>Explanation: Players take turns making moves.</p>
-<pre><code>Example 3:
-Input: board = [&quot;XXX&quot;, &quot;   &quot;, &quot;OOO&quot;]
-Output: false
-
-
-Example 4:
-Input: board = [&quot;XOX&quot;, &quot;O O&quot;, &quot;XOX&quot;]
-Output: true
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>To Code as playing the Tic-Tac-Toe.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean validTicTacToe(String[] board) {
-    int player1 = 0;
-    int player2 = 0;
-    for (int i = 0; i &lt; 3; i++) {
-        for (int j = 0; j &lt; 3; j++) {
-            if (board[i].charAt(j) == &apos;X&apos;) { player1++; }
-            if (board[i].charAt(j) == &apos;O&apos;) { player2++; }
-        }
-    }
-    if (player1 &lt; player2) { return false; }
-    if (player1 - player2 &gt; 1) { return false; }
-
-    for (int m = 0; m &lt; 3; m++) {
-        if (board[m].equals(&quot;XXX&quot;)) {
-            if (player1 != player2 + 1) { return false; }
-        }
-        if (board[m].equals(&quot;OOO&quot;)) {
-            if (player2 != player1) { return false; }
-        }
-        if (board[0].charAt(m) == &apos;X&apos; &amp;&amp; board[1].charAt(m) == &apos;X&apos; &amp;&amp; board[2].charAt(m) == &apos;X&apos;) {
-            if (player1 != player2 + 1) { return false; }
-        }
-        if (board[0].charAt(m) == &apos;O&apos; &amp;&amp; board[1].charAt(m) == &apos;O&apos; &amp;&amp; board[2].charAt(m) == &apos;O&apos;) {
-            if (player2 != player1) { return false; }
-        }
-    }
-    if (board[0].charAt(0) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(2) == &apos;X&apos;) {
-        if (player1 != player2 + 1) { return false; }
-    }
-    if (board[0].charAt(0) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(2) == &apos;O&apos;) {
-        if (player2 != player1) { return false; }
-    }
-    if (board[0].charAt(2) == &apos;X&apos; &amp;&amp; board[1].charAt(1) == &apos;X&apos; &amp;&amp; board[2].charAt(0) == &apos;X&apos;) {
-        if (player1 != player2 + 1) { return false; }
-    }
-    if (board[0].charAt(2) == &apos;O&apos; &amp;&amp; board[1].charAt(1) == &apos;O&apos; &amp;&amp; board[2].charAt(0) == &apos;O&apos;) {
-        if (player2 != player1) { return false; }
-    }
-    return true;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2018/03/16/792-Number-of-Matching-Subsequences/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/16/792-Number-of-Matching-Subsequences/" class="post-title-link" itemprop="https://yixuanzhou.github.io/page/3/index.html">792. Number of Matching Subsequences</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-16 19:42:36" itemprop="dateCreated datePublished" datetime="2018-03-16T19:42:36-07:00">2018-03-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-16 01:11:16" itemprop="dateModified" datetime="2018-12-16T01:11:16-08:00">2018-12-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h3><p>Given string S and a dictionary of words words, find the number of words[i] that is a subsequence of S.</p>
-<pre><code>Example :
-Input: 
-S = &quot;abcde&quot;
-words = [&quot;a&quot;, &quot;bb&quot;, &quot;acd&quot;, &quot;ace&quot;]
-Output: 3
-</code></pre><p>Explanation: There are three words in words that are a subsequence of S: “a”, “acd”, “ace”.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Compare each character of the word to the characters of given S. If match, compare next character with position + 1.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int numMatchingSubseq(String S, String[] words) {
-    int count = 0;
-    for (String word : words) {
-        int j = 0;
-        boolean found = false;
-        for (int i = 0; i &lt; word.length(); i++) {
-            char curr = word.charAt(i);
-            found = false;
-            while (j &lt; S.length()) {
-                if (curr == S.charAt(j)) {
-                    j++;
-                    found = true;
-                    break;
-                }
-                j++;
-            }
-        }
-        if (found) { count++; }
-    }
-    return count;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2423,7 +2373,7 @@ Output: 3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
