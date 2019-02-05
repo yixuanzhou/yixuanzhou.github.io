@@ -329,6 +329,1901 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/02/05/510-Inorder-Successor-in-BST-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/05/510-Inorder-Successor-in-BST-II/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">510. Inorder Successor in BST II</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-05 12:48:10 / Modified: 13:01:13" itemprop="dateCreated datePublished" datetime="2019-02-05T12:48:10-08:00">2019-02-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a binary search tree and a node in it, find the in-order successor of that node in the BST.</p>
+<p>The successor of a node p is the node with the smallest key greater than p.val.</p>
+<p>You will have direct access to the node but not to the root of the tree. Each node will have a reference to its parent node.</p>
+<pre><code>Example 1:
+![](https://assets.leetcode.com/uploads/2019/01/23/285_example_1.PNG)
+Input:
+root = {&quot;$id&quot;:&quot;1&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;2&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:null,&quot;val&quot;:1},&quot;parent&quot;:null,&quot;right&quot;:{&quot;$id&quot;:&quot;3&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:null,&quot;val&quot;:3},&quot;val&quot;:2}
+p = 1
+Output: 2
+Explanation: 1&apos;s in-order successor node is 2. Note that both p and the return value is of Node type.
+
+Example 2:
+![](https://assets.leetcode.com/uploads/2019/01/23/285_example_2.PNG)
+Input:
+root = {&quot;$id&quot;:&quot;1&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;2&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;3&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;4&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;3&quot;},&quot;right&quot;:null,&quot;val&quot;:1},&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:null,&quot;val&quot;:2},&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;5&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:null,&quot;val&quot;:4},&quot;val&quot;:3},&quot;parent&quot;:null,&quot;right&quot;:{&quot;$id&quot;:&quot;6&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:null,&quot;val&quot;:6},&quot;val&quot;:5}
+p = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
+
+Example 3:
+![](https://assets.leetcode.com/uploads/2019/02/02/285_example_34.PNG)
+Input:
+root = {&quot;$id&quot;:&quot;1&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;2&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;3&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;4&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;3&quot;},&quot;right&quot;:null,&quot;val&quot;:2},&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;5&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;3&quot;},&quot;right&quot;:null,&quot;val&quot;:4},&quot;val&quot;:3},&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;6&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;7&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;8&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;7&quot;},&quot;right&quot;:null,&quot;val&quot;:9},&quot;parent&quot;:{&quot;$ref&quot;:&quot;6&quot;},&quot;right&quot;:null,&quot;val&quot;:13},&quot;val&quot;:7},&quot;val&quot;:6},&quot;parent&quot;:null,&quot;right&quot;:{&quot;$id&quot;:&quot;9&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;10&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;9&quot;},&quot;right&quot;:null,&quot;val&quot;:17},&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;11&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;9&quot;},&quot;right&quot;:null,&quot;val&quot;:20},&quot;val&quot;:18},&quot;val&quot;:15}
+p = 15
+Output: 17
+
+Example 4:
+![](https://assets.leetcode.com/uploads/2019/02/02/285_example_34.PNG)
+Input:
+root = {&quot;$id&quot;:&quot;1&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;2&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;3&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;4&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;3&quot;},&quot;right&quot;:null,&quot;val&quot;:2},&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;5&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;3&quot;},&quot;right&quot;:null,&quot;val&quot;:4},&quot;val&quot;:3},&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;6&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;2&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;7&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;8&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;7&quot;},&quot;right&quot;:null,&quot;val&quot;:9},&quot;parent&quot;:{&quot;$ref&quot;:&quot;6&quot;},&quot;right&quot;:null,&quot;val&quot;:13},&quot;val&quot;:7},&quot;val&quot;:6},&quot;parent&quot;:null,&quot;right&quot;:{&quot;$id&quot;:&quot;9&quot;,&quot;left&quot;:{&quot;$id&quot;:&quot;10&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;9&quot;},&quot;right&quot;:null,&quot;val&quot;:17},&quot;parent&quot;:{&quot;$ref&quot;:&quot;1&quot;},&quot;right&quot;:{&quot;$id&quot;:&quot;11&quot;,&quot;left&quot;:null,&quot;parent&quot;:{&quot;$ref&quot;:&quot;9&quot;},&quot;right&quot;:null,&quot;val&quot;:20},&quot;val&quot;:18},&quot;val&quot;:15}
+p = 13
+Output: 15
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Similar to LC285.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public Node inorderSuccessor(Node x) {
+    Node curr = x;
+    Node res = null;
+    if (curr.right != null) {
+        res = curr.right;
+        while (res.left != null) res = res.left;
+    } else {
+        while (curr.parent != null &amp;&amp; curr.parent.left != curr) curr = curr.parent;
+        res = curr.parent;
+    }
+    return res;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/02/05/285-Inorder-Successor-in-BST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/05/285-Inorder-Successor-in-BST/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">285. Inorder Successor in BST</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-05 12:47:39 / Modified: 12:57:06" itemprop="dateCreated datePublished" datetime="2019-02-05T12:47:39-08:00">2019-02-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a binary search tree and a node in it, find the in-order successor of that node in the BST.</p>
+<p>The successor of a node p is the node with the smallest key greater than p.val.</p>
+<pre><code>Example 1:
+
+![](https://assets.leetcode.com/uploads/2019/01/23/285_example_1.PNG)
+Input: root = [2,1,3], p = 1
+Output: 2
+Explanation: 1&apos;s in-order successor node is 2. Note that both p and the return value is of TreeNode type.
+
+Example 2:
+
+![](https://assets.leetcode.com/uploads/2019/01/23/285_example_2.PNG)
+Input: root = [5,3,6,2,4,null,null,1], p = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>It’s a little bit difficult to understand this problem, a good explanation can be found here: <a href="https://stackoverflow.com/questions/5471731/in-order-successor-in-binary-search-tree" target="_blank" rel="noopener">https://stackoverflow.com/questions/5471731/in-order-successor-in-binary-search-tree</a></p>
+<p>In other words, <b>we just need to find the smallest node value in the BST that is larger than the node p.</b></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+    TreeNode res = null;
+    while (root != null) {
+        if (root.val &gt; p.val) {
+            res = root;
+            root = root.left;
+        } else root = root.right;
+    }
+    return res;       
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/30/314-Binary-Tree-Vertical-Order-Traversal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/30/314-Binary-Tree-Vertical-Order-Traversal/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">314. Binary Tree Vertical Order Traversal</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-30 10:45:00 / Modified: 10:48:36" itemprop="dateCreated datePublished" datetime="2019-01-30T10:45:00-08:00">2019-01-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a binary tree, return the vertical order traversal of its nodes’ values. (ie, from top to bottom, column by column).</p>
+<p>If two nodes are in the same row and column, the order should be from left to right.</p>
+<pre><code>Examples 1:
+
+Input: [3,9,20,null,null,15,7]
+
+   3
+  /\
+ /  \
+ 9  20
+    /\
+   /  \
+  15   7
+
+Output:
+
+[
+  [9],
+  [3,15],
+  [20],
+  [7]
+]
+
+Examples 2:
+
+Input: [3,9,8,4,0,1,7]
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7
+
+Output:
+
+[
+  [4],
+  [9],
+  [3,0,1],
+  [8],
+  [7]
+]
+
+Examples 3:
+
+Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0&apos;s right child is 2 and 1&apos;s left child is 5)
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7
+    /\
+   /  \
+   5   2
+
+Output:
+
+[
+  [4],
+  [9,5],
+  [3,0,1],
+  [8,2],
+  [7]
+]
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use Queue and TreeMap.</p>
+<p>BFS, put node, col into queue at the same time.</p>
+<p>Every left child access col - 1 while right child col + 1.</p>
+<p>This maps node into different col buckets.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public List&lt;List&lt;Integer&gt;&gt; verticalOrder(TreeNode root) {
+    List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
+    if (root == null) return res;
+    Queue&lt;Pair&gt; s = new LinkedList&lt;&gt;();
+    TreeMap&lt;Integer, List&lt;Integer&gt;&gt; map = new TreeMap&lt;&gt;();
+    s.add(new Pair(0, root));
+
+    while (!s.isEmpty()) {
+        Queue&lt;Pair&gt; sp = new LinkedList&lt;&gt;();
+        while (!s.isEmpty()) {
+            Pair curr = s.remove();
+            if (!map.containsKey(curr.col)) map.put(curr.col, new ArrayList&lt;&gt;());
+            map.get(curr.col).add(curr.node.val);
+            if (curr.node.left != null) sp.add(new Pair(curr.col-1, curr.node.left));
+            if (curr.node.right != null) sp.add(new Pair(curr.col+1, curr.node.right));
+        }
+        s = sp;           
+    }
+
+    for (List&lt;Integer&gt; list : map.values()) res.add(list);
+
+    return res;
+}
+
+private class Pair {
+    int col;
+    TreeNode node;
+
+    public Pair(int col, TreeNode node) {
+        this.col = col;
+        this.node = node;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/29/422-Valid-Word-Square/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/29/422-Valid-Word-Square/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">422. Valid Word Square</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-29 14:36:19 / Modified: 14:39:31" itemprop="dateCreated datePublished" datetime="2019-01-29T14:36:19-08:00">2019-01-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a sequence of words, check whether it forms a valid word square.</p>
+<p>A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k &lt; max(numRows, numColumns).</p>
+<p>Note:</p>
+<p>The number of words given is at least 1 and does not exceed 500.<br>Word length will be at least 1 and does not exceed 500.<br>Each word contains only lowercase English alphabet a-z.<br>    Example 1:</p>
+<pre><code>Input:
+[
+  &quot;abcd&quot;,
+  &quot;bnrt&quot;,
+  &quot;crmy&quot;,
+  &quot;dtye&quot;
+]
+
+Output:
+true
+</code></pre><p>Explanation:<br>The first row and first column both read “abcd”.<br>The second row and second column both read “bnrt”.<br>The third row and third column both read “crmy”.<br>The fourth row and fourth column both read “dtye”.</p>
+<p>Therefore, it is a valid word square.<br>    Example 2:</p>
+<pre><code>Input:
+[
+  &quot;abcd&quot;,
+  &quot;bnrt&quot;,
+  &quot;crm&quot;,
+  &quot;dt&quot;
+]
+
+Output:
+true
+</code></pre><p>Explanation:<br>The first row and first column both read “abcd”.<br>The second row and second column both read “bnrt”.<br>The third row and third column both read “crm”.<br>The fourth row and fourth column both read “dt”.</p>
+<p>Therefore, it is a valid word square.</p>
+<pre><code>Example 3:
+
+Input:
+[
+  &quot;ball&quot;,
+  &quot;area&quot;,
+  &quot;read&quot;,
+  &quot;lady&quot;
+]
+
+Output:
+false
+</code></pre><p>Explanation:<br>The third row reads “read” while the third column reads “lead”.</p>
+<p>Therefore, it is NOT a valid word square.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Straightforward.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean validWordSquare(List&lt;String&gt; words) {
+    int len = words.size();
+    for (int i = 0; i &lt; len; i++) {
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (i &lt; word.length()) sb.append(word.charAt(i));
+        }
+        if (!words.get(i).equals(sb.toString())) return false;
+    }
+    return true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/29/683-K-Empty-Slots/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/29/683-K-Empty-Slots/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">683. K Empty Slots</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-29 09:57:58 / Modified: 10:15:31" itemprop="dateCreated datePublished" datetime="2019-01-29T09:57:58-08:00">2019-01-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>There is a garden with N slots. In each slot, there is a flower. The N flowers will bloom one by one in N days. In each day, there will be exactly one flower blooming and it will be in the status of blooming since then.</p>
+<p>Given an array flowers consists of number from 1 to N. Each number in the array represents the place where the flower will open in that day.</p>
+<p>For example, flowers[i] = x means that the unique flower that blooms at day i will be at position x, where i and x will be in the range from 1 to N.</p>
+<p>Also given an integer k, you need to output in which day there exists two flowers in the status of blooming, and also the number of flowers between them is k and these flowers are not blooming.</p>
+<p>If there isn’t such day, output -1.</p>
+<pre><code>Example 1:
+
+Input:
+flowers: [1,3,2]
+k: 1
+Output: 2
+Explanation: In the second day, the first and the third flower have become blooming.
+
+Example 2:
+
+Input:
+flowers: [1,2,3]
+k: 1
+Output: -1
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>First create an array days[], days[i] = x means that the flower at position i would be bloom at day x. Then we need to find a subarray with length k+2 that satisfies: all elements except head and tail in the subarray is larger than head and tail. This means that these flowers are not bloomed yet. </p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int kEmptySlots(int[] flowers, int k) {
+    int len = flowers.length;
+    int[] days = new int[len];
+    for (int i = 0; i &lt; len; i++) days[flowers[i]-1] = i+1;
+    int left = -1, right = left+k+1;
+    int res = Integer.MAX_VALUE;
+
+    outer:
+    while (right &lt; len-1) {
+        left++; right++;
+        for (int i = left+1; i &lt; right; i++) {
+            if (days[i] &lt; days[left] || days[i] &lt; days[right]) continue outer;
+        }
+        res = Math.min(res, Math.max(days[left], days[right]));
+    }
+
+    return res == Integer.MAX_VALUE ? -1 : res;  
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/26/23-Merge-k-Sorted-Lists/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/26/23-Merge-k-Sorted-Lists/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">23. Merge k Sorted Lists</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-26 20:34:25 / Modified: 20:37:25" itemprop="dateCreated datePublished" datetime="2019-01-26T20:34:25-08:00">2019-01-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+<pre><code>Example:
+
+Input:
+[
+  1-&gt;4-&gt;5,
+  1-&gt;3-&gt;4,
+  2-&gt;6
+]
+Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>We use a min heap of size k and insert 1st element in all the lists into the heap. Every time we remove the head of heap and add it into the final list, at the same time we insert the next element from the same list of removed elements into the heap. So the heap size is fixed at k. Every insert and retrieve action takes O(logk). And there are n elements in total, so the time complexity is nO(logk).</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public class Solution {
+    public ListNode mergeKLists(List&lt;ListNode&gt; lists) {
+        if (lists==null || lists.size()==0) return null;
+
+        PriorityQueue&lt;ListNode&gt; queue = new PriorityQueue&lt;ListNode&gt;(lists.size());
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail=dummy;
+
+        for (ListNode node : lists)
+            if (node != null)
+                queue.add(node);
+
+        while (!queue.isEmpty()){
+            tail.next = queue.poll();
+            tail = tail.next;
+
+            if (tail.next != null)
+                queue.add(tail.next);
+        }
+        return dummy.next;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/26/703-Kth-Largest-Element-in-a-Stream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/26/703-Kth-Largest-Element-in-a-Stream/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">703. Kth Largest Element in a Stream</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-26 16:41:47 / Modified: 20:33:54" itemprop="dateCreated datePublished" datetime="2019-01-26T16:41:47-08:00">2019-01-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+<p>Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.</p>
+<pre><code>Example:
+
+int k = 3;
+int[] arr = [4,5,8,2];
+KthLargest kthLargest = new KthLargest(3, arr);
+kthLargest.add(3);   // returns 4
+kthLargest.add(5);   // returns 5
+kthLargest.add(10);  // returns 5
+kthLargest.add(9);   // returns 8
+kthLargest.add(4);   // returns 8
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Just use a min-heap of size k, and use the heap to store the k largest number and the head of the heap is the kth largest number.<br>If the heap size is less than k, we simply add number into the heap.<br>Else if the heap size is equal to k, we compare the number with the head of the heap, if the number is greater, we poll out the head and add that number into the heap.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>class KthLargest {
+    PriorityQueue&lt;Integer&gt; pq;
+    int size;
+    public KthLargest(int k, int[] nums) {
+        pq = new PriorityQueue&lt;&gt;();
+        size = k;
+        for (int num : nums) add(num);
+    }
+
+    public int add(int val) {
+        if (pq.size() &lt; size) pq.add(val);
+        else {
+            if (val &gt; pq.peek()) {
+                pq.poll();
+                pq.add(val);
+            }
+        }
+        return pq.peek();
+    }
+}
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest obj = new KthLargest(k, nums);
+ * int param_1 = obj.add(val);
+ */
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/25/364-Nested-List-Weight-Sum-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/25/364-Nested-List-Weight-Sum-II/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">364. Nested List Weight Sum II</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-25 00:51:34 / Modified: 01:03:33" itemprop="dateCreated datePublished" datetime="2019-01-25T00:51:34-08:00">2019-01-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
+<p><b>Different from the previous question where weight is increasing from root to leaf, now the weight is defined from bottom up.</b> i.e., the leaf level integers have weight 1, and the root level integers have the largest weight.</p>
+<pre><code>Example 1:
+
+Input: [[1,1],2,[1,1]]
+Output: 8
+Explanation: Four 1&apos;s at depth 1, one 2 at depth 2.
+Example 2:
+
+Input: [1,[4,[6]]]
+Output: 17
+Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2 + 6*1 = 17.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>The trick here is how to get the maximum depth correctly. We can do it recursively as well. If the NestedInteger is an integer, we know that we have reached the end. The exclusion is when the NestedInteger is degree 1, which should be set manually. If the NestedInteger is still a NestedList, we call the recursion and add 1 to the result.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * public interface NestedInteger {
+ *     // Constructor initializes an empty nested list.
+ *     public NestedInteger();
+ *
+ *     // Constructor initializes a single integer.
+ *     public NestedInteger(int value);
+ *
+ *     // @return true if this NestedInteger holds a single integer, rather than a nested list.
+ *     public boolean isInteger();
+ *
+ *     // @return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // Return null if this NestedInteger holds a nested list
+ *     public Integer getInteger();
+ *
+ *     // Set this NestedInteger to hold a single integer.
+ *     public void setInteger(int value);
+ *
+ *     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+ *     public void add(NestedInteger ni);
+ *
+ *     // @return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // Return null if this NestedInteger holds a single integer
+ *     public List&lt;NestedInteger&gt; getList();
+ * }
+ */
+class Solution {
+    public int depthSumInverse(List&lt;NestedInteger&gt; nestedList) {
+        int maxDepth = getDepth(nestedList);
+        return depthSumHelper(nestedList, maxDepth);
+    }
+
+    private int getDepth(List&lt;NestedInteger&gt; nestedList) {
+        int maxDepth = 0;
+        for (NestedInteger ni : nestedList) {
+            if (ni.isInteger()) maxDepth = Math.max(maxDepth, 1);
+            else maxDepth = Math.max(maxDepth, getDepth(ni.getList())+1);
+        }
+        return maxDepth;
+    }
+
+    private int depthSumHelper(List&lt;NestedInteger&gt; nestedList, int degree) {
+        int sum = 0;
+        for (NestedInteger ni : nestedList) {
+            if (ni.isInteger()) sum += (degree*ni.getInteger());
+            else sum += depthSumHelper(ni.getList(), degree-1);
+        }
+        return sum;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/24/339-Nested-List-Weight-Sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yixuan Zhou">
+      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
+      <meta itemprop="image" content="/images/takumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Depot">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/24/339-Nested-List-Weight-Sum/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">339. Nested List Weight Sum</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-24 23:45:27 / Modified: 23:47:12" itemprop="dateCreated datePublished" datetime="2019-01-24T23:45:27-08:00">2019-01-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
+<pre><code>Example 1:
+
+Input: [[1,1],2,[1,1]]
+Output: 10
+Explanation: Four 1&apos;s at depth 2, one 2 at depth 1.
+Example 2:
+
+Input: [1,[4,[6]]]
+Output: 27
+Explanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 + 6*3 = 27.
+</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a helper function to do recursion.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * public interface NestedInteger {
+ *     // Constructor initializes an empty nested list.
+ *     public NestedInteger();
+ *
+ *     // Constructor initializes a single integer.
+ *     public NestedInteger(int value);
+ *
+ *     // @return true if this NestedInteger holds a single integer, rather than a nested list.
+ *     public boolean isInteger();
+ *
+ *     // @return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // Return null if this NestedInteger holds a nested list
+ *     public Integer getInteger();
+ *
+ *     // Set this NestedInteger to hold a single integer.
+ *     public void setInteger(int value);
+ *
+ *     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+ *     public void add(NestedInteger ni);
+ *
+ *     // @return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // Return null if this NestedInteger holds a single integer
+ *     public List&lt;NestedInteger&gt; getList();
+ * }
+ */
+class Solution {
+    public int depthSum(List&lt;NestedInteger&gt; nestedList) {
+        return depthSumHelper(nestedList, 1);
+    }
+
+    private int depthSumHelper(List&lt;NestedInteger&gt; nestedList, int degree) {
+        int sum = 0;
+        for (NestedInteger ni : nestedList) {
+            if (ni.isInteger()) sum += (degree*ni.getInteger());
+            else sum += depthSumHelper(ni.getList(), degree+1);
+        }
+        return sum;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/24/362-Design-Hit-Counter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -534,1838 +2429,11 @@ counter.getHits(301);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/24/716-Max-Stack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/24/716-Max-Stack/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">716. Max Stack</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-24 11:38:28 / Modified: 11:40:21" itemprop="dateCreated datePublished" datetime="2019-01-24T11:38:28-08:00">2019-01-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Design a max stack that supports push, pop, top, peekMax and popMax.</p>
-<p>push(x) – Push element x onto stack.<br>pop() – Remove the element on top of the stack and return it.<br>top() – Get the element on the top.<br>peekMax() – Retrieve the maximum element in the stack.<br>popMax() – Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.<br>    Example 1:</p>
-<pre><code>MaxStack stack = new MaxStack();
-stack.push(5);
-stack.push(1);
-stack.push(5);
-stack.top(); -&gt; 5
-stack.popMax(); -&gt; 5
-stack.top(); -&gt; 1
-stack.peekMax(); -&gt; 5
-stack.pop(); -&gt; 1
-stack.top(); -&gt; 5
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use ArrayDeque and TreeMap.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>class MaxStack {
-    ArrayDeque&lt;Integer&gt; deque;
-    TreeMap&lt;Integer, Integer&gt; map;
-    int max = Integer.MIN_VALUE;
-    /** initialize your data structure here. */
-    public MaxStack() {
-        deque = new ArrayDeque&lt;&gt;();
-        map = new TreeMap&lt;&gt;();
-    }
-
-    public void push(int x) {
-        if (x &gt; max) max = x;
-        deque.add(x);
-        map.put(x, map.getOrDefault(x, 0)+1);
-    }
-
-    public int pop() {
-        int curr = deque.peekLast();
-        map.put(curr, map.get(curr)-1);
-        if (map.get(curr) == 0) {
-            map.remove(curr);
-            if (max == curr) {
-                if (map.size() &gt; 0) max = map.lastKey();
-                else max = Integer.MIN_VALUE;
-            }
-        }
-        return deque.pollLast();
-    }
-
-    public int top() {
-        return deque.peekLast();
-    }
-
-    public int peekMax() {
-        return max;
-    }
-
-    public int popMax() {
-        int currMax = max;
-        deque.removeLastOccurrence(currMax);
-        map.put(currMax, map.get(currMax)-1);
-        if (map.get(currMax) == 0) {
-            map.remove(currMax);
-            if (map.size() &gt; 0) max = map.lastKey();
-            else max = Integer.MIN_VALUE;
-        }
-        return currMax;        
-    }
-}
-
-/**
- * Your MaxStack object will be instantiated and called as such:
- * MaxStack obj = new MaxStack();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.peekMax();
- * int param_5 = obj.popMax();
- */
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/19/857-Minimum-Cost-to-Hire-K-Workers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/19/857-Minimum-Cost-to-Hire-K-Workers/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">857. Minimum Cost to Hire K Workers</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-19 00:16:53 / Modified: 00:25:44" itemprop="dateCreated datePublished" datetime="2019-01-19T00:16:53-08:00">2019-01-19</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>There are N workers.  The i-th worker has a quality[i] and a minimum wage expectation wage[i].</p>
-<p>Now we want to hire exactly K workers to form a paid group.  When hiring a group of K workers, we must pay them according to the following rules:</p>
-<p>Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.<br>Every worker in the paid group must be paid at least their minimum wage expectation.<br>Return the least amount of money needed to form a paid group satisfying the above conditions.</p>
-<pre><code>Example 1:
-
-Input: quality = [10,20,5], wage = [70,50,30], K = 2
-Output: 105.00000
-Explanation: We pay 70 to 0-th worker and 35 to 2-th worker.
-
-Example 2:
-
-Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], K = 3
-Output: 30.66667
-Explanation: We pay 4 to 0-th worker, 13.33333 to 2-th and 3-th workers seperately.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>From: <a href="https://leetcode.com/problems/minimum-cost-to-hire-k-workers/discuss/185085/75ms-Java-with-Explanations" target="_blank" rel="noopener">LeetCode</a></p>
-<p>Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.<br>-&gt;</p>
-<pre><code>quality[i]   money[i]
-_________  = ________
-quality[j]   money[j]
-
-money[i] / quality[i] = money[j] / quality[j] -- ratio
-</code></pre><p>That is, the group of people should have the same ratio.</p>
-<p>Every worker in the paid group must be paid at least their minimum wage expectation.<br>-&gt;</p>
-<pre><code>money[i] &gt;= wage[i]
-ratio &gt;= wage[i] / quality[i] -- ratio2
-</code></pre><p>-&gt;<br><b>ratio</b> is at least the maximum <b>ratio2</b> within the group of K people.</p>
-<p>If we keep current candidates in a priority queue as below,</p>
-<pre><code>|-- &lt; k candidates--|    
-            new worker to join is with higher ratio2
-</code></pre><p>If there are k + 1candidates, we pop the highest quality to reduce total cost.<br>If there are k candidates, we can calculate the total cost.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public double mincostToHireWorkers(int[] quality, int[] wage, int K) {
-    double[][] qualityRatios = new double[quality.length][2];
-
-    for (int i = 0; i &lt; quality.length; i++) {
-        qualityRatios[i][0] = quality[i];
-        qualityRatios[i][1] = (double) wage[i] / quality[i];
-    }
-
-    Arrays.sort(qualityRatios, (a, b) -&gt; Double.compare(a[1], b[1]));
-    PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;((a, b) -&gt; Integer.compare(b, a));
-    double res = Double.MAX_VALUE;
-    int sumQuality = 0;
-
-    for (int i = 0; i &lt; qualityRatios.length; i++) {
-        pq.add((int) qualityRatios[i][0]);
-        sumQuality += qualityRatios[i][0];
-        if (pq.size() &gt; K) sumQuality -= pq.poll();
-        if (pq.size() == K) res = Math.min(res, qualityRatios[i][1]*sumQuality);
-    }
-
-    return res;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/17/829-Consecutive-Numbers-Sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/17/829-Consecutive-Numbers-Sum/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">829. Consecutive Numbers Sum</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-17 23:59:48" itemprop="dateCreated datePublished" datetime="2019-01-17T23:59:48-08:00">2019-01-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-18 00:02:02" itemprop="dateModified" datetime="2019-01-18T00:02:02-08:00">2019-01-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given a positive integer N, how many ways can we write it as a sum of consecutive positive integers?</p>
-<pre><code>Example 1:
-
-Input: 5
-Output: 2
-Explanation: 5 = 5 = 2 + 3
-
-Example 2:
-
-Input: 9
-Output: 3
-Explanation: 9 = 9 = 4 + 5 = 2 + 3 + 4
-
-Example 3:
-
-Input: 15
-Output: 4
-Explanation: 15 = 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>It’s literally an arithmetic progression problem.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int consecutiveNumbersSum(int N) {
-    int res = 1;
-    // (a_1+a_n) * d / 2 = N =&gt; (a_1+a_1+d-1) * d / 2 = N =&gt; a_1 = N/d - (d + 1)/2
-    for (double i = 2; i &lt; Math.sqrt(2*N); i++) {
-        double a_1 = N/i - (i-1)/2;
-        if (a_1 &gt; 0 &amp;&amp; a_1 == Math.ceil(a_1)) res += 1; // check if a_1 is an valid integer
-    }
-    return res;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/157-Read-N-Characters-Given-Read4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/13/157-Read-N-Characters-Given-Read4/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">157. Read N Characters Given Read4</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-13 19:08:18" itemprop="dateCreated datePublished" datetime="2019-01-13T19:08:18-08:00">2019-01-13</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/13/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">158. Read N Characters Given Read4 II - Call multiple times</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-13 17:26:39 / Modified: 17:32:54" itemprop="dateCreated datePublished" datetime="2019-01-13T17:26:39-08:00">2019-01-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>The API: int read4(char *buf) reads 4 characters at a time from a file.</p>
-<p>The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.</p>
-<p>By using the read4 API, implement the function int read(char *buf, int n) that reads n characters from the file.</p>
-<p>Note:<br>The read function may be called multiple times.</p>
-<pre><code>Example 1:
-
-Given buf = &quot;abc&quot;
-read(&quot;abc&quot;, 1) // returns &quot;a&quot;
-read(&quot;abc&quot;, 2); // returns &quot;bc&quot;
-read(&quot;abc&quot;, 1); // returns &quot;&quot;
-
-Example 2:
-
-Given buf = &quot;abc&quot;
-read(&quot;abc&quot;, 4) // returns &quot;abc&quot;
-read(&quot;abc&quot;, 1); // returns &quot;&quot;
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Three points to understand this problem:</p>
-<ol>
-<li>char[] buf is not the source, it’s the output buffer.</li>
-<li>We just need to return the length of output buffer.</li>
-</ol>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>/* The read4 API is defined in the parent class Reader4.
-      int read4(char[] buf); \*/
-
-public class Solution extends Reader4 {
-    /**
-     * @param buf Destination buffer
-     * @param n   Maximum number of characters to read
-     * @return    The number of characters read
-     \*/
-
-    private int bufferPtr = 0;
-    private int bufferCnt = 0;
-    private char[] buffer = new char[4];
-    public int read(char[] buf, int n) {
-        int ptr = 0;
-        while (ptr &lt; n) {
-            if (bufferPtr == 0) bufferCnt = read4(buffer);
-            if (bufferCnt == 0) break;
-            while (ptr &lt; n &amp;&amp; bufferPtr &lt; bufferCnt) {
-                buf[ptr++] = buffer[bufferPtr++];
-            }
-            if (bufferPtr &gt;= bufferCnt) bufferPtr = 0;
-        }
-        return ptr;
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/13/642-Design-Search-Autocomplete-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/13/642-Design-Search-Autocomplete-System/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">642. Design Search Autocomplete System</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-13 11:28:56 / Modified: 11:34:30" itemprop="dateCreated datePublished" datetime="2019-01-13T11:28:56-08:00">2019-01-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a special character ‘#’). For each character they type except ‘#’, you need to return the top 3 historical hot sentences that have prefix the same as the part of sentence already typed. Here are the specific rules:</p>
-<p>The hot degree for a sentence is defined as the number of times a user typed the exactly same sentence before.<br>The returned top 3 hot sentences should be sorted by hot degree (The first is the hottest one). If several sentences have the same degree of hot, you need to use ASCII-code order (smaller one appears first).<br>If less than 3 hot sentences exist, then just return as many as you can.<br>When the input is a special character, it means the sentence ends, and in this case, you need to return an empty list.<br>Your job is to implement the following functions:</p>
-<p>The constructor function:</p>
-<p>AutocompleteSystem(String[] sentences, int[] times): This is the constructor. The input is historical data. Sentences is a string array consists of previously typed sentences. Times is the corresponding times a sentence has been typed. Your system should record these historical data.</p>
-<p>Now, the user wants to input a new sentence. The following function will provide the next character the user types:</p>
-<p>List<string> input(char c): The input c is the next character typed by the user. The character will only be lower-case letters (‘a’ to ‘z’), blank space (‘ ‘) or a special character (‘#’). Also, the previously typed sentence should be recorded in your system. The output will be the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.</string></p>
-<pre><code>Example:
-Operation: AutocompleteSystem([&quot;i love you&quot;, &quot;island&quot;,&quot;ironman&quot;, &quot;i love leetcode&quot;], [5,3,2,2])
-The system have already tracked down the following sentences and their corresponding times:
-&quot;i love you&quot; : 5 times
-&quot;island&quot; : 3 times
-&quot;ironman&quot; : 2 times
-&quot;i love leetcode&quot; : 2 times
-Now, the user begins another search:
-
-Operation: input(&apos;i&apos;)
-Output: [&quot;i love you&quot;, &quot;island&quot;,&quot;i love leetcode&quot;]
-Explanation:
-There are four sentences that have prefix &quot;i&quot;. Among them, &quot;ironman&quot; and &quot;i love leetcode&quot; have same hot degree. Since &apos; &apos; has ASCII code 32 and &apos;r&apos; has ASCII code 114, &quot;i love leetcode&quot; should be in front of &quot;ironman&quot;. Also we only need to output top 3 hot sentences, so &quot;ironman&quot; will be ignored.
-
-Operation: input(&apos; &apos;)
-Output: [&quot;i love you&quot;,&quot;i love leetcode&quot;]
-Explanation:
-There are only two sentences that have prefix &quot;i &quot;.
-
-Operation: input(&apos;a&apos;)
-Output: []
-Explanation:
-There are no sentences that have prefix &quot;i a&quot;.
-
-Operation: input(&apos;#&apos;)
-Output: []
-Explanation:
-The user finished the input, the sentence &quot;i a&quot; should be saved as a historical sentence in system. And the following input will be counted as a new search.
-</code></pre><p>Note:</p>
-<p>The input sentence will always start with a letter and end with ‘#’, and only one blank space will exist between two words.<br>The number of complete sentences that to be searched won’t exceed 100. The length of each sentence including those in the historical data won’t exceed 100.<br>Please use double-quote instead of single-quote when you write test cases even for a character input.<br>Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see here for more details.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>This problem is designed for using Trie and PriorityQueue.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>class AutocompleteSystem {
-    private class Trie {
-        private final int R = 256;
-        private Node root = new Node();
-
-        private class Node {
-            boolean exists;
-            Node[] next;
-
-            public Node() {
-                exists = false;
-                next = new Node[R];
-            }
-        }
-
-        public void insert(String key) { insert(root, key, 0); }
-
-        private Node insert(Node n, String key, int d) {
-            if (n == null) n = new Node();
-            if (d == key.length()) {
-                n.exists = true;
-                return n;
-            }
-            char c = key.charAt(d);
-            n.next[c] = insert(n.next[c], key, d+1);
-            return n;
-        }
-
-        public List&lt;String&gt; search(String pre) {
-            List&lt;String&gt; keys = new ArrayList&lt;&gt;();
-            Node x = root;
-            for (int i = 0; i &lt; pre.length(); i++) {
-                char c = pre.charAt(i);                
-                x = x.next[c];
-                if (x == null) return keys;
-            }
-            collect(x, pre, keys);
-            return keys;      
-        }
-
-        private void collect(Node n, String pre, List&lt;String&gt; keys) {
-            if (n == null) return;
-            if (n.exists) keys.add(pre);
-            for (char c = 0; c &lt; R; c++) collect(n.next[c], pre+c, keys);
-        }       
-    }
-
-    private class Pair {
-        public String s;
-        public int ct;
-
-        public Pair(String s, int ct) {
-            this.s = s;
-            this.ct = ct;
-        }
-    }
-
-    PriorityQueue&lt;Pair&gt; pq;
-    Map&lt;String, Integer&gt; count;
-    Trie trie;
-    StringBuilder curr;
-
-    public AutocompleteSystem(String[] sentences, int[] times) {
-        pq = new PriorityQueue&lt;&gt;((a,b) -&gt; a.ct != b.ct ? b.ct - a.ct : a.s.compareTo(b.s));
-        count = new HashMap&lt;&gt;();
-        trie = new Trie();
-        curr = new StringBuilder();
-        for (int i = 0; i &lt; sentences.length; i++) {
-            trie.insert(sentences[i]);
-            count.put(sentences[i], times[i]);
-        }
-    }
-
-    public List&lt;String&gt; input(char c) {
-        List&lt;String&gt; matches = new ArrayList&lt;&gt;();
-        if (c == &apos;#&apos;) {
-            String sentence = curr.toString();
-            curr.setLength(0);
-            count.put(sentence, count.getOrDefault(sentence, 0)+1);
-            trie.insert(sentence);
-        } else {
-            curr.append(c);
-            matches = trie.search(curr.toString());
-        }
-
-        pq.clear();
-        for (String match : matches) pq.add(new Pair(match, count.get(match)));
-
-        List&lt;String&gt; res = new ArrayList&lt;&gt;();
-        for (int i = 0; i &lt; 3 &amp;&amp; !pq.isEmpty(); i++) res.add(pq.poll().s);
-        return res;
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/53-Maximum-Subarray/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/10/53-Maximum-Subarray/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">53. Maximum Subarray</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-10 19:30:25 / Modified: 19:43:42" itemprop="dateCreated datePublished" datetime="2019-01-10T19:30:25-08:00">2019-01-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
-<pre><code>Example:
-
-Input: [-2,1,-3,4,-1,2,1,-5,4],
-Output: 6
-
-Explanation: [4,-1,2,1] has the largest sum = 6.
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Dynamic programming, there are two results at position i: either max subarray happen before i, or max subarray contains i. </p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int maxSubArray(int[] nums) {
-
-    int[] sums = new int[nums.length];
-    sums[0] = nums[0];
-    int max = nums[0];
-
-    for (int i = 1; i &lt; nums.length; i++) {
-        sums[i] = Math.max(sums[i-1] + nums[i], nums[i]);
-        max = Math.max(max, sums[i]);            
-    }
-    return max;        
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/238-Product-of-Array-Except-Self/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/10/238-Product-of-Array-Except-Self/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">238. Product of Array Except Self</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-10 18:46:45 / Modified: 18:54:51" itemprop="dateCreated datePublished" datetime="2019-01-10T18:46:45-08:00">2019-01-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given an array nums of n integers where n &gt; 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</p>
-<pre><code>Example:
-
-Input:  [1,2,3,4]
-Output: [24,12,8,6]
-</code></pre><p>Note: Please solve it without division and in O(n).</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>A straightforward solution is to get the product of all elements in the array, and use that product to divide each element. However, it says we should not use division here. An alternative solution is two-pass. In the first pass, we calculate the product of all elements before element i. In the second pass, we calculate the product of all elements after element i. Thus we obtain the product except itself.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public int[] productExceptSelf(int[] nums) {
-    int[] res = new int[nums.length];
-    for (int i = 0, tmp = 1; i &lt; nums.length; i++) {
-        res[i] = tmp;
-        tmp *= nums[i];
-    }
-
-    for (int i = nums.length-1, tmp = 1; i &gt; -1; i--) {
-        res[i] *= tmp;
-        tmp *= nums[i];
-    }        
-    return res;        
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yixuanzhou.github.io/2019/01/10/205-Isomorphic-Strings/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yixuan Zhou">
-      <meta itemprop="description" content="To die, to sleep � to sleep, perchance to dream">
-      <meta itemprop="image" content="/images/takumi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Depot">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/10/205-Isomorphic-Strings/" class="post-title-link" itemprop="https://yixuanzhou.github.io/index.html">205. Isomorphic Strings</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-10 18:21:45 / Modified: 18:29:39" itemprop="dateCreated datePublished" datetime="2019-01-10T18:21:45-08:00">2019-01-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
-<pre><code>Example 1:
-
-Input: s = &quot;egg&quot;, t = &quot;add&quot;
-Output: true
-
-Example 2:
-
-Input: s = &quot;foo&quot;, t = &quot;bar&quot;
-Output: false
-
-Example 3:
-
-Input: s = &quot;paper&quot;, t = &quot;title&quot;
-Output: true
-</code></pre><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Use a map to establish the corresponding characters between two strings s and t. Also use a list to store used characters in t.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code>public boolean isIsomorphic(String s, String t) {
-    Map&lt;Character, Character&gt; map = new HashMap&lt;&gt;();
-    List&lt;Character&gt; used = new ArrayList&lt;&gt;();
-    for (int i = 0; i &lt; s.length(); i++) {
-        char curr_s = s.charAt(i);
-        char curr_t = t.charAt(i);
-        if (map.containsKey(curr_s)) {
-            if (map.get(curr_s) != curr_t) return false;
-        } else {
-            if (used.contains(curr_t)) return false;
-            else {
-                used.add(curr_t);
-                map.put(curr_s, curr_t);
-            }
-        }
-    }
-
-    return true;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2412,7 +2480,7 @@ Output: true
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
